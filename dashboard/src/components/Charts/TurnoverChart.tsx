@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts"
 
 import {
   Card,
@@ -40,36 +40,6 @@ const chartData = [
   { date: "2024-04-18", attendance: 364, absence: 410 },
   { date: "2024-04-19", attendance: 243, absence: 180 },
   { date: "2024-04-20", attendance: 89, absence: 150 },
-  { date: "2024-04-21", attendance: 137, absence: 200 },
-  { date: "2024-04-22", attendance: 224, absence: 170 },
-  { date: "2024-04-23", attendance: 138, absence: 230 },
-  { date: "2024-04-24", attendance: 387, absence: 290 },
-  { date: "2024-04-25", attendance: 215, absence: 250 },
-  { date: "2024-04-26", attendance: 75, absence: 130 },
-  { date: "2024-04-27", attendance: 383, absence: 420 },
-  { date: "2024-04-28", attendance: 122, absence: 180 },
-  { date: "2024-04-29", attendance: 315, absence: 240 },
-  { date: "2024-04-30", attendance: 454, absence: 380 },
-  { date: "2024-05-01", attendance: 165, absence: 220 },
-  { date: "2024-05-02", attendance: 293, absence: 310 },
-  { date: "2024-05-03", attendance: 247, absence: 190 },
-  { date: "2024-05-04", attendance: 385, absence: 420 },
-  { date: "2024-05-05", attendance: 481, absence: 390 },
-  { date: "2024-05-06", attendance: 498, absence: 520 },
-  { date: "2024-05-07", attendance: 388, absence: 300 },
-  { date: "2024-05-08", attendance: 149, absence: 210 },
-  { date: "2024-05-09", attendance: 227, absence: 180 },
-  { date: "2024-05-10", attendance: 293, absence: 330 },
-  { date: "2024-05-11", attendance: 335, absence: 270 },
-  { date: "2024-05-12", attendance: 197, absence: 240 },
-  { date: "2024-05-13", attendance: 197, absence: 160 },
-  { date: "2024-05-14", attendance: 448, absence: 490 },
-  { date: "2024-05-15", attendance: 473, absence: 380 },
-  { date: "2024-05-16", attendance: 338, absence: 400 },
-  { date: "2024-05-17", attendance: 499, absence: 420 },
-  { date: "2024-05-18", attendance: 315, absence: 350 },
-  { date: "2024-05-19", attendance: 235, absence: 180 },
-  { date: "2024-05-20", attendance: 177, absence: 230 },
 ]
 
 const chartConfig = {
@@ -172,8 +142,22 @@ export function TurnoverChart() {
                 />
               }
             />
-            <Bar dataKey={"attendance"} fill={`var(--color-${"attendance"})`} />
-            <Bar dataKey={"absence"} fill={`var(--color-${"absence"})`} />
+            <Bar dataKey={"attendance"} fill={`var(--color-${"attendance"})`}>
+              <LabelList 
+                dataKey={"attendance"} 
+                position="top" 
+                formatter={(val: number) => `${val}`} 
+                className="text-xs sm:text-sm min-[2000px]:text-base"
+              />
+            </Bar>
+            <Bar dataKey={"absence"} fill={`var(--color-${"absence"})`} >
+              <LabelList 
+                dataKey={"absence"} 
+                position="top" 
+                formatter={(val: number) => `${val}`} 
+                className="text-xs md:text-sm min-[2000px]:text-base"
+              />
+            </Bar>
           </BarChart>
         </ChartContainer>
       </CardContent>

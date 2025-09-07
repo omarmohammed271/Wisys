@@ -7,18 +7,34 @@ import {
   Repeat2,
   Users,
   Hourglass,
+  BookCheck,
+  FileQuestion,
 } from "lucide-react";
 
 export default function HRDashboard() {
   return (
     <div className="p-6 flex flex-col h-full space-y-2">
       {/* Stat Cards */}
-      <div className="grid h-fit grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+      <div className="grid h-fit grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-2">
         <StatsCard
           className="bg-card via-card to-purple-900/40 border border-border p-4 rounded-2xl"
           title="Total Employees"
           value={128}
           icon={<Users />}
+        />
+
+        <StatsCard
+            className="bg-card border border-border p-4 rounded-2xl"
+            title="Present Today"
+            value={112}
+            icon={<BookCheck />}
+        />
+
+        <StatsCard
+            className="bg-card border border-border p-4 rounded-2xl"
+            title="Absent Today"
+            value={16}
+            icon={<FileQuestion />}
         />
 
         <StatsCard

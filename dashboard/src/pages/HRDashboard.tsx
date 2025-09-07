@@ -1,5 +1,7 @@
 import StatsCard from "@/components/Cards/StatsCards";
 import { AttendanceChart } from "@/components/Charts/AttendanceChart";
+import { GenderAgeDist } from "@/components/Charts/GenderAgeDist";
+import { TurnoverChart } from "@/components/Charts/TurnoverChart";
 import {
   CalendarSync,
   Repeat2,
@@ -9,9 +11,9 @@ import {
 
 export default function HRDashboard() {
   return (
-    <div className="p-6 flex flex-col h-full space-y-8">
+    <div className="p-6 flex flex-col h-full space-y-2">
       {/* Stat Cards */}
-      <div className="grid h-fit grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid h-fit grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
         <StatsCard
           className="bg-card via-card to-purple-900/40 border border-border p-4 rounded-2xl"
           title="Total Employees"
@@ -42,11 +44,19 @@ export default function HRDashboard() {
       </div>
 
       {/* Charts Section */}
-      <div className="grid flex-1 grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid flex-1 grid-cols-1 lg:grid-cols-3 gap-x-2">
         {/* Upper */}
-        <div className="lg:h-1/2">
+        <div className=" flex flex-col space-y-2 col-span-2">
             {/* Attendance / Absence */}
             <AttendanceChart />
+            {/* Turnover */}
+            <TurnoverChart />
+        </div>
+        <div className=" flex flex-col space-y-2 col-span-1 h-full overflow-clip">
+            {/* Gender Distribution */}
+            <GenderAgeDist />
+            {/* Age Distribution */}
+            {/* <GenderAgeDist /> */}
         </div>
       </div>
     </div>

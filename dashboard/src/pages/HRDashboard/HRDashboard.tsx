@@ -1,8 +1,8 @@
-import StatsCard from "@/components/Cards/StatsCards";
-import { AgeDist } from "@/components/Charts/AgeDist";
-import { AttendanceChart } from "@/components/Charts/AttendanceChart";
-import { GenderDist } from "@/components/Charts/GenderDist";
-import { TurnoverChart } from "@/components/Charts/TurnoverChart";
+import StatsCard from '@/components/Cards/StatsCards';
+import { AgeDist } from '@/components/Charts/AgeDist';
+import { AttendanceChart } from '@/components/Charts/AttendanceChart';
+import { GenderDist } from '@/components/Charts/GenderDist';
+import { TurnoverChart } from '@/components/Charts/TurnoverChart';
 import {
   CalendarSync,
   Repeat2,
@@ -10,7 +10,7 @@ import {
   Hourglass,
   BookCheck,
   FileQuestion,
-} from "lucide-react";
+} from 'lucide-react';
 
 export default function HRDashboard() {
   return (
@@ -25,17 +25,17 @@ export default function HRDashboard() {
         />
 
         <StatsCard
-            className="border border-border p-4 rounded-2xl"
-            title="Present Today"
-            value={112}
-            icon={<BookCheck />}
+          className="border border-border p-4 rounded-2xl"
+          title="Present Today"
+          value={112}
+          icon={<BookCheck />}
         />
 
         <StatsCard
-            className="border border-border p-4 rounded-2xl"
-            title="Absent Today"
-            value={16}
-            icon={<FileQuestion />}
+          className="border border-border p-4 rounded-2xl"
+          title="Absent Today"
+          value={16}
+          icon={<FileQuestion />}
         />
 
         <StatsCard
@@ -64,16 +64,16 @@ export default function HRDashboard() {
       <div className="grid flex-1 grid-cols-1 lg:grid-cols-3 gap-2">
         {/* Upper */}
         <div className=" flex flex-col space-y-2 col-span-2">
-            {/* Attendance / Absence */}
-            <AttendanceChart />
-            {/* Turnover */}
-            <TurnoverChart />
+          {/* Attendance / Absence */}
+          <AttendanceChart />
+          {/* Turnover */}
+          <TurnoverChart />
         </div>
         <div className=" flex flex-col gap-y-2 col-span-1 overflow-hidden">
-            {/* Gender Distribution */}
-            <GenderDist />
-            {/* Age Distribution */}
-            <AgeDist />
+          {/* Gender Distribution */}
+          <GenderDist />
+          {/* Age Distribution */}
+          <AgeDist />
         </div>
       </div>
     </div>

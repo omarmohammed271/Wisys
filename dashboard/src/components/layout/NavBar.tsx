@@ -1,7 +1,7 @@
 import { ModeToggle } from "../mode-toggle";
 import logo from "@/assets/img/logo-1.png"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "../ui/navigation-menu";
-import { CircleUserRound, Grid2x2 } from "lucide-react";
+import { BadgeCent, CircleUserRound, Grid2x2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 type RoutesData = {
@@ -17,6 +17,12 @@ const routes: RoutesData[] = [
         name: "HR Dashboard",
         link: "/",
         icon: <CircleUserRound />,
+    },
+    {
+        id: "2",
+        name: "Finance Dashboard",
+        link: "/finance",
+        icon: <BadgeCent />,
     }
 ]
 

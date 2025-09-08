@@ -69,7 +69,7 @@ export function AttendanceChart() {
   
 
   return (
-    <Card className="py-4 sm:py-0 border-border h-full max-md:h-[350px] flex flex-col overflow-hidden">
+    <Card className="py-4 sm:py-0 border-border h-full max-md:h-[350px] flex flex-col overflow-hidden bg-gradient-to-br from-primary/10 to-background">
       <CardHeader className="flex flex-col items-stretch border-b border-border !p-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1 px-6 pb-3 sm:pb-0">
           <CardTitle>Attendance/Absence</CardTitle>

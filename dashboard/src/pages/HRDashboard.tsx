@@ -1,6 +1,7 @@
 import StatsCard from "@/components/Cards/StatsCards";
+import { AgeDist } from "@/components/Charts/AgeDist";
 import { AttendanceChart } from "@/components/Charts/AttendanceChart";
-import { GenderAgeDist } from "@/components/Charts/GenderAgeDist";
+import { GenderDist } from "@/components/Charts/GenderDist";
 import { TurnoverChart } from "@/components/Charts/TurnoverChart";
 import {
   CalendarSync,
@@ -13,46 +14,46 @@ import {
 
 export default function HRDashboard() {
   return (
-    <div className="p-6 flex flex-col h-full space-y-2">
+    <div className="p-3 flex flex-col h-full space-y-2">
       {/* Stat Cards */}
       <div className="grid h-fit grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-2">
         <StatsCard
-          className="bg-card via-card to-purple-900/40 border border-border p-4 rounded-2xl"
+          className="border border-border p-4 rounded-2xl"
           title="Total Employees"
           value={128}
           icon={<Users />}
         />
 
         <StatsCard
-            className="bg-card border border-border p-4 rounded-2xl"
+            className="border border-border p-4 rounded-2xl"
             title="Present Today"
             value={112}
             icon={<BookCheck />}
         />
 
         <StatsCard
-            className="bg-card border border-border p-4 rounded-2xl"
+            className="border border-border p-4 rounded-2xl"
             title="Absent Today"
             value={16}
             icon={<FileQuestion />}
         />
 
         <StatsCard
-          className="bg-card via-card to-purple-900/40 border border-border p-4 rounded-2xl"
+          className="border border-border p-4 rounded-2xl"
           title="Attendance Rate"
           value="92%"
           icon={<CalendarSync />}
         />
 
         <StatsCard
-          className="bg-card via-card to-purple-900/40 border border-border p-4 rounded-2xl"
+          className="border border-border p-4 rounded-2xl"
           title="Turnover Rate"
           value="6%"
           icon={<Repeat2 />}
         />
 
         <StatsCard
-          className="bg-card via-card to-purple-900/40 border border-border p-4 rounded-2xl"
+          className="border border-border p-4 rounded-2xl"
           title="Average Age"
           value="32 yrs"
           icon={<Hourglass />}
@@ -60,7 +61,7 @@ export default function HRDashboard() {
       </div>
 
       {/* Charts Section */}
-      <div className="grid flex-1 grid-cols-1 lg:grid-cols-3 gap-x-2">
+      <div className="grid flex-1 grid-cols-1 lg:grid-cols-3 gap-2">
         {/* Upper */}
         <div className=" flex flex-col space-y-2 col-span-2">
             {/* Attendance / Absence */}
@@ -68,11 +69,11 @@ export default function HRDashboard() {
             {/* Turnover */}
             <TurnoverChart />
         </div>
-        <div className=" flex flex-col space-y-2 col-span-1 h-full overflow-clip">
+        <div className=" flex flex-col gap-y-2 col-span-1 overflow-hidden">
             {/* Gender Distribution */}
-            <GenderAgeDist />
+            <GenderDist />
             {/* Age Distribution */}
-            {/* <GenderAgeDist /> */}
+            <AgeDist />
         </div>
       </div>
     </div>

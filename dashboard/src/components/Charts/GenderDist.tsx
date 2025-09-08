@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts"
+import { Label, LabelList, PolarRadiusAxis, RadialBar, RadialBarChart, ResponsiveContainer } from "recharts"
 
 import {
   Card,
@@ -19,29 +19,29 @@ import {
 
 export const description = "A radial chart with stacked sections"
 
-const chartData = [{ month: "january", desktop: 1260, mobile: 570 }]
+const chartData = [{ month: "january", male: 1260, female: 570 }]
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  male: {
+    label: "Male",
     color: "var(--chart-1)",
   },
-  mobile: {
-    label: "Mobile",
+  female: {
+    label: "Female",
     color: "var(--chart-2)",
   },
 }
 
-export function GenderAgeDist() {
-  const totalVisitors = chartData[0].desktop + chartData[0].mobile
+export function GenderDist() {
+  const totalVisitors = chartData[0].male + chartData[0].female
 
   return (
-    <Card className="flex h-1/2 flex-col border-border">
+    <Card className="border-border max-md:h-[350px] flex flex-col flex-1 overflow-hidden bg-gradient-to-bl from-secondary/10 to-background m-0">
       <CardHeader className="items-center pb-0">
         <CardTitle>Gender Distribution</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-1  items-center pb-0">
+      <CardContent className="flex flex-1 items-center pb-0 pt-5">
         <ChartContainer
           config={chartConfig}
           className="mx-auto aspect-square w-full max-w-[250px]"
@@ -51,6 +51,7 @@ export function GenderAgeDist() {
             endAngle={180}
             innerRadius={80}
             outerRadius={130}
+            className="scale-120 sm:scale-150"
           >
             <ChartTooltip
               cursor={false}
@@ -83,19 +84,33 @@ export function GenderAgeDist() {
               />
             </PolarRadiusAxis>
             <RadialBar
-              dataKey="desktop"
+              dataKey="male"
               stackId="a"
               cornerRadius={5}
-              fill="var(--color-desktop)"
+              fill="var(--color-male)"
               className="stroke-transparent stroke-2"
-            />
+            >
+              <LabelList
+                position="outside"   // try "insideStart", "insideEnd", "outside"
+                formatter={(value: string) => `${value}`}
+                fontSize={12}
+              />
+            </RadialBar>
+
             <RadialBar
-              dataKey="mobile"
-              fill="var(--color-mobile)"
+              dataKey="female"
               stackId="a"
               cornerRadius={5}
+              fill="var(--color-female)"
               className="stroke-transparent stroke-2"
-            />
+            >
+              <LabelList
+                position="outside"
+                formatter={(value: string) => `${value}`}
+                fontSize={12}
+              />
+            </RadialBar>
+
           </RadialBarChart>
         </ChartContainer>
       </CardContent>

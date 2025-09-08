@@ -4,7 +4,7 @@ import logo from "@/assets/img/logo-1.png"
 function NavBar(){
 
     return(
-        <div className="navbar px-5 pt-3 backdrop-blur-md flex w-full justify-between">
+        <div className="p-3 backdrop-blur-md flex w-full justify-between h-fit">
 
             {/* Digiations Logo */}
             <div className="">

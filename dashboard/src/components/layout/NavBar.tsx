@@ -39,7 +39,7 @@ function NavBar(){
                         {
                             routes.map((route) => (
                                 <Link to={route.link}>
-                                    <NavigationMenuLink key={route.id} className="w-max">
+                                    <NavigationMenuLink key={route.id} className="w-max max-w-26">
                                         <div className="flex space-x-2 items-center">
                                             <span>{route.icon}</span>
                                             <span>{route.name}</span>

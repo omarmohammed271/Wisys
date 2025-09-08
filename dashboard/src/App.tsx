@@ -9,7 +9,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Router>
-        <main className='bg-background text-foreground lg:h-screen overflow-hidden flex flex-col py-3 md:px-20'>
+        <main className='bg-background select-none text-foreground lg:h-screen overflow-hidden flex flex-col py-3 md:px-20'>
           <NavBar />
           <div className='flex flex-col flex-1'>
             <Routes>

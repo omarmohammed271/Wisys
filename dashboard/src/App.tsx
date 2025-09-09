@@ -15,7 +15,7 @@ function App() {
               <Route path="/" element={<HRDashboard />} />
             </Routes>
             <Routes>
-              <Route path="/finance" element={<FinanceDashboard />} />
+              <Route path="/finance-dashboard" element={<FinanceDashboard />} />
             </Routes>
           </div>
         </main>

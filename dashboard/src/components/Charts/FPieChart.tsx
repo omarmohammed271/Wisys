@@ -24,7 +24,7 @@ export default function FPieChart() {
       <CardContent>
         <ChartContainer
           config={expenseConfig}
-          className="h-[170px] w-full flex items-center justify-center"
+          className="h-[150px] w-full flex items-center justify-center"
         >
           <PieChart width={250} height={170}>
             <Pie
@@ -34,14 +34,40 @@ export default function FPieChart() {
               cx="50%"
               cy="50%"
               outerRadius={65}
-              label={({ name, percent }) =>
-                `${name} ${(percent * 100).toFixed(0)}%`
-              }
+              labelLine={false}
+              label={({
+                cx,
+                cy,
+                midAngle,
+                innerRadius,
+                outerRadius,
+                percent,
+                name,
+              }) => {
+                const RADIAN = Math.PI / 170;
+                const radius = innerRadius + (outerRadius - innerRadius) / 1.5;
+                const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+                return (
+                  <text
+                    x={x}
+                    y={y}
+                    fill="white"
+                    textAnchor="middle"
+                    dominantBaseline="central"
+                    fontSize={10}
+                  >
+                    {`${name} ${(percent * 100).toFixed(0)}%`}
+                  </text>
+                );
+              }}
             >
               {expenseData.map((entry) => (
                 <Cell key={entry.key} fill={`var(--color-${entry.key})`} />
               ))}
             </Pie>
+
             <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
           </PieChart>
         </ChartContainer>

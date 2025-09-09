@@ -8,10 +8,41 @@ export default function FRadialChart() {
     { key: 'budget', name: 'Budget', value: 100 },
     { key: 'actual', name: 'Actual', value: 85 },
   ];
+
   const budgetConfig = {
     budget: { label: 'Budget', color: 'var(--chart-1)' },
     actual: { label: 'Actual', color: 'var(--chart-2)' },
   };
+
+  const renderLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    percent,
+    name,
+    value,
+  }: any) => {
+    const RADIAN = Math.PI / 180;
+    const radius = innerRadius + (outerRadius - innerRadius) / 2;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="white"
+        fontSize={11}
+        textAnchor="middle"
+        dominantBaseline="central"
+      >
+        {`${name} ${value} (${(percent * 100).toFixed(0)}%)`}
+      </text>
+    );
+  };
+
   return (
     <Card className="border-border h-[250px]">
       <CardHeader>
@@ -20,7 +51,7 @@ export default function FRadialChart() {
       <CardContent>
         <ChartContainer
           config={budgetConfig}
-          className="h-[170px] w-full flex items-center justify-center"
+          className="h-[150px] w-full flex items-center justify-center"
         >
           <PieChart width={250} height={170}>
             <Pie
@@ -30,9 +61,10 @@ export default function FRadialChart() {
               cx="50%"
               cy="50%"
               innerRadius={30}
-              outerRadius={55}
+              outerRadius={65}
               paddingAngle={5}
-              label={({ name, value }) => `${name}: ${value}`}
+              labelLine={false}  
+              label={renderLabel}  
             >
               {budgetData.map((entry) => (
                 <Cell key={entry.key} fill={`var(--color-${entry.key})`} />

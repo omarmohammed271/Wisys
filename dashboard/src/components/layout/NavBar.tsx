@@ -12,26 +12,25 @@ type RoutesData = {
 }
 
 const routes: RoutesData[] = [
-    {
-        id: "1",
-        name: "HR Dashboard",
-        link: "/",
-        icon: <CircleUserRound />,
-    },
-    {
-        id: "2",
-        name: "Finance Dashboard",
-        link: "/finance",
-        icon: <BadgeCent />,
-    }
-]
+  {
+    id: '1',
+    name: 'HR Dashboard',
+    link: '/',
+    icon: <CircleUserRound />,
+  },
+  {
+    id: '2',
+    name: 'Finance Dashboard',
+    link: '/finance-dashboard',
+    icon: <BadgeCent />,
+  },
+];
 
 function NavBar(){
 
     return(
         <div className="p-3 backdrop-blur-md flex w-full justify-between h-fit border-border">
 
-            {/* Digiations Logo */}
             <div className="">
                 <img src={logo} alt="Digiation" className="w-30"/>
             </div>

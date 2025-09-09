@@ -58,7 +58,7 @@ export function SpendDistributionChart() {
   }, [])
 
   return (
-    <Card className="flex flex-col bg-gradient-to-tl from-primary/10 to-background">
+    <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
         <CardTitle>Spend Distribution</CardTitle>
         <CardDescription>January – June 2024</CardDescription>

@@ -1,13 +1,11 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
 import { Area, AreaChart, CartesianGrid, LabelList, XAxis } from "recharts"
 
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -17,30 +15,30 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-export const description = "Monthly spend trend with gradient fill"
+export const description = "OEE (Overall Equipment Effectiveness) trend chart"
 
 const chartData = [
-  { month: "January", spend: 120000 },
-  { month: "February", spend: 135000 },
-  { month: "March", spend: 142000 },
-  { month: "April", spend: 128000 },
-  { month: "May", spend: 150000 },
-  { month: "June", spend: 160000 },
+  { month: "January", oee: 72 },
+  { month: "February", oee: 75 },
+  { month: "March", oee: 70 },
+  { month: "April", oee: 78 },
+  { month: "May", oee: 82 },
+  { month: "June", oee: 80 },
 ]
 
 const chartConfig = {
-  spend: {
-    label: "Spend (USD)",
+  oee: {
+    label: "OEE (%)",
     color: "var(--chart-1)",
   },
 }
 
-export function MonthlySpendChart() {
+export function OEETrendChart() {
   return (
     <Card className="bg-gradient-to-tl from-secondary/10 to-background">
       <CardHeader>
-        <CardTitle>Monthly Spend</CardTitle>
-        <CardDescription>Jan – Jun 2024</CardDescription>
+        <CardTitle>OEE Trend</CardTitle>
+        <CardDescription>Overall Equipment Effectiveness (Jan – Jun 2024)</CardDescription>
       </CardHeader>
       <CardContent className="size-[80%] mx-auto">
         <ChartContainer config={chartConfig}>
@@ -48,6 +46,7 @@ export function MonthlySpendChart() {
             accessibilityLayer
             data={chartData}
             margin={{
+              top: 20,
               left: 12,
               right: 12,
             }}
@@ -62,33 +61,33 @@ export function MonthlySpendChart() {
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <defs>
-              <linearGradient id="fillSpend" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="fillOEE" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor="var(--color-spend)"
+                  stopColor="var(--color-oee)"
                   stopOpacity={0.8}
                 />
                 <stop
                   offset="95%"
-                  stopColor="var(--color-spend)"
+                  stopColor="var(--color-oee)"
                   stopOpacity={0.1}
                 />
               </linearGradient>
             </defs>
             <Area
-              dataKey="spend"
+              dataKey="oee"
               type="natural"
-              fill="url(#fillSpend)"
+              fill="url(#fillOEE)"
               fillOpacity={0.4}
-              stroke="var(--color-spend)"
+              stroke="var(--color-oee)"
             >
               <LabelList
-                dataKey="spend"
+                dataKey="oee"
                 position="top"
                 offset={4}
                 className="fill-foreground"
                 fontSize={12}
-                formatter={(value: number) => `$${(value / 1000).toFixed(0)}k`}
+                formatter={(value: number) => `${value}%`}
               />
             </Area>
           </AreaChart>

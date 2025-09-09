@@ -1,13 +1,11 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
 import { Area, AreaChart, CartesianGrid, LabelList, XAxis } from "recharts"
 
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -17,40 +15,39 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-export const description = "Monthly spend trend with gradient fill"
+export const description = "Maintenance Compliance trend chart"
 
 const chartData = [
-  { month: "January", spend: 120000 },
-  { month: "February", spend: 135000 },
-  { month: "March", spend: 142000 },
-  { month: "April", spend: 128000 },
-  { month: "May", spend: 150000 },
-  { month: "June", spend: 160000 },
+  { month: "January", compliance: 88 },
+  { month: "February", compliance: 91 },
+  { month: "March", compliance: 85 },
+  { month: "April", compliance: 92 },
+  { month: "May", compliance: 95 },
+  { month: "June", compliance: 90 },
 ]
 
 const chartConfig = {
-  spend: {
-    label: "Spend (USD)",
-    color: "var(--chart-1)",
+  compliance: {
+    label: "Compliance (%)",
+    color: "var(--chart-2)",
   },
 }
 
-export function MonthlySpendChart() {
+export function MaintenanceComplianceTrendChart() {
   return (
-    <Card className="bg-gradient-to-tl from-secondary/10 to-background">
+    <Card className="bg-gradient-to-br from-primary/10 to-background">
       <CardHeader>
-        <CardTitle>Monthly Spend</CardTitle>
-        <CardDescription>Jan – Jun 2024</CardDescription>
+        <CardTitle>Maintenance Compliance Trend</CardTitle>
+        <CardDescription>
+          % of scheduled maintenance completed (Jan – Jun 2024)
+        </CardDescription>
       </CardHeader>
       <CardContent className="size-[80%] mx-auto">
         <ChartContainer config={chartConfig}>
           <AreaChart
             accessibilityLayer
             data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
+            margin={{ top: 20,left: 12, right: 12 }}
           >
             <CartesianGrid vertical={false} />
             <XAxis
@@ -62,33 +59,33 @@ export function MonthlySpendChart() {
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <defs>
-              <linearGradient id="fillSpend" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="fillCompliance" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor="var(--color-spend)"
+                  stopColor="var(--color-compliance)"
                   stopOpacity={0.8}
                 />
                 <stop
                   offset="95%"
-                  stopColor="var(--color-spend)"
+                  stopColor="var(--color-compliance)"
                   stopOpacity={0.1}
                 />
               </linearGradient>
             </defs>
             <Area
-              dataKey="spend"
+              dataKey="compliance"
               type="natural"
-              fill="url(#fillSpend)"
+              fill="url(#fillCompliance)"
               fillOpacity={0.4}
-              stroke="var(--color-spend)"
+              stroke="var(--color-compliance)"
             >
               <LabelList
-                dataKey="spend"
+                dataKey="compliance"
                 position="top"
                 offset={4}
                 className="fill-foreground"
                 fontSize={12}
-                formatter={(value: number) => `$${(value / 1000).toFixed(0)}k`}
+                formatter={(value: number) => `${value}%`}
               />
             </Area>
           </AreaChart>

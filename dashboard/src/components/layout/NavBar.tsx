@@ -1,7 +1,7 @@
 import { ModeToggle } from "../mode-toggle";
 import logo from "@/assets/img/logo-1.png"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "../ui/navigation-menu";
-import { CircleUserRound, Grid2x2 } from "lucide-react";
+import { CircleUserRound, Factory, Grid2x2, Waypoints } from "lucide-react";
 import { Link } from "react-router-dom";
 
 type RoutesData = {
@@ -22,7 +22,13 @@ const routes: RoutesData[] = [
         id: "2",
         name: "Procurement Dashboard",
         link: "/procurement-dashboard",
-        icon: <CircleUserRound />,
+        icon: <Waypoints />,
+    },
+    {
+        id: "3",
+        name: "Manufacturing Dashboard",
+        link: "/manufacturing-dashboard",
+        icon: <Factory />,
     },
 ]
 
@@ -37,7 +43,7 @@ function NavBar(){
             </div>
 
             <div className="flex space-x-4">
-            <NavigationMenu viewport={false} >
+            <NavigationMenu viewport={false} className="lg:end-2" >
                 <NavigationMenuList>
                     <NavigationMenuItem>
                     <NavigationMenuTrigger><Grid2x2 /></NavigationMenuTrigger>

@@ -43,13 +43,13 @@ export function TopSuppliersChart() {
         <CardTitle>Top Suppliers by Spend</CardTitle>
         <CardDescription>January – June 2024</CardDescription>
       </CardHeader>
-      <CardContent className="max-[2000px]:w-[80%]">
+      <CardContent className="max-[2000px]:w-[80%] mx-auto">
         <ChartContainer config={chartConfig}>
           <BarChart
             accessibilityLayer
             data={chartData}
             layout="vertical"
-            margin={{ right: 16 }}
+            margin={{ right: 20 }}
           >
             <CartesianGrid horizontal={false} />
             <YAxis
@@ -67,18 +67,9 @@ export function TopSuppliersChart() {
               fill="var(--chart-2)"
               radius={4}
             >
-              {/* Supplier names on left */}
-              <LabelList
-                dataKey="supplier"
-                position="insideLeft"
-                offset={8}
-                className="fill-(--color-label)"
-                fontSize={12}
-              />
               {/* Spend values on right */}
               <LabelList
                 dataKey="spend"
-                position="right"
                 offset={8}
                 className="fill-foreground"
                 fontSize={12}

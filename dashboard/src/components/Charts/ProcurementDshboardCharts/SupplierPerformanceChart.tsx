@@ -35,7 +35,7 @@ const chartConfig = {
 
 export function SupplierPerformanceChart() {
   return (
-    <Card>
+    <Card className=" bg-gradient-to-bl from-secondary/10 to-background">
       <CardHeader className="items-center">
         <CardTitle>Supplier Performance</CardTitle>
         <CardDescription>
@@ -49,7 +49,6 @@ export function SupplierPerformanceChart() {
         >
           <RadarChart data={chartData}>
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-            {/* ✅ Supplier labels fixed */}
             <PolarAngleAxis
               dataKey="supplier"
               tick={{
@@ -66,7 +65,6 @@ export function SupplierPerformanceChart() {
               stroke="var(--chart-1)"
               dot={{ r: 4, fillOpacity: 1 }}
             >
-              {/* ✅ Keep performance labels upright */}
               <LabelList
                 dataKey="performance"
                 content={(props) => {

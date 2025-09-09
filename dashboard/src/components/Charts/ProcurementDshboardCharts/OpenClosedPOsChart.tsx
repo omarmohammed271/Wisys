@@ -48,7 +48,7 @@ export function OpenClosedPOsChart() {
   }, [])
 
   return (
-    <Card className="flex flex-col bg-gradient-to-tl from-primary/10 to-background">
+    <Card className="flex flex-col bg-gradient-to-tr from-primary/10 to-background">
       <CardHeader className="items-center pb-0">
         <CardTitle>Open vs Closed POs</CardTitle>
         <CardDescription>January – June 2024</CardDescription>

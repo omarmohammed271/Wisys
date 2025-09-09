@@ -71,20 +71,14 @@ export default function ProcurmentDashboard() {
       <div className="grid flex-1 grid-cols-1 lg:grid-cols-3 gap-2">
         {/* Upper */}
         <div className=" flex flex-col space-y-2">
-            {/* Attendance / Absence */}
             <TopSuppliersChart />
-            {/* Turnover */}
             <OpenClosedPOsChart />
         </div>
         <div className=" flex flex-col gap-y-2 col-span-1 overflow-hidden">
-            {/* Gender Distribution */}
             <AverageDeliveryTimeTrendChart />
-            {/* Age Distribution */}
             <SpendDistributionChart />
         </div>
         <div className=" flex flex-col gap-y-2 col-span-1 overflow-hidden">
-            {/* Gender Distribution */}
-            {/* Age Distribution */}
             <SupplierPerformanceChart />
             <MonthlySpendChart />
         </div>

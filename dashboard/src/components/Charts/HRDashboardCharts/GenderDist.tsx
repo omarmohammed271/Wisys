@@ -36,12 +36,12 @@ export function GenderDist() {
   const totalVisitors = chartData[0].male + chartData[0].female
 
   return (
-    <Card className="border-border max-md:h-[350px] flex flex-col flex-1 overflow-hidden bg-gradient-to-bl from-secondary/10 to-background m-0">
+    <Card className="border-border bg-gradient-to-bl from-secondary/10 to-background m-0">
       <CardHeader className="items-center pb-0">
         <CardTitle>Gender Distribution</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-1 items-center pb-0 pt-5">
+      <CardContent className="flex flex-1 items-center pb-0 pt-5 size-[45%] mx-auto">
         <ChartContainer
           config={chartConfig}
           className="mx-auto aspect-square w-full max-w-[250px]"

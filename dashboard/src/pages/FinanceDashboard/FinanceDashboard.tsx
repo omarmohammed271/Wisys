@@ -1,0 +1,39 @@
+'use client';
+import StatsCardData from '@/components/Cards/StatsCardData';
+import FLineChart from '@/components/Charts/FLineChart';
+import FAreaChart from '@/components/Charts/FAreaChart';
+import FBarChart from '@/components/Charts/FBarChart';
+import FPieChart from '@/components/Charts/FPieChart';
+import FRadialChart from '@/components/Charts/FRadialChart';
+import FLollipopChart from '@/components/Charts/FLollipopChart';
+
+
+
+// -------- Dashboard --------
+export default function FinanceDashboard() {
+  return (
+    <>
+      <StatsCardData />
+
+      <div className="p-4 grid grid-cols-1 lg:grid-cols-3 gap-3">
+        {/* Line Chart */}
+        <FLineChart />
+
+        {/* Area Chart */}
+
+        <FAreaChart />
+        {/* Bar Chart */}
+        <FBarChart />
+
+        {/* Pie Chart (Expense Breakdown) */}
+        
+        <FPieChart />
+        {/* Radial / Donut: Budget vs Actual */}
+        
+        <FRadialChart />
+
+        <FLollipopChart />
+      </div>
+    </>
+  );
+}

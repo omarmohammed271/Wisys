@@ -17,7 +17,13 @@ const routes: RoutesData[] = [
         name: "HR Dashboard",
         link: "/",
         icon: <CircleUserRound />,
-    }
+    },
+    {
+        id: "2",
+        name: "Procurement Dashboard",
+        link: "/procurement-dashboard",
+        icon: <CircleUserRound />,
+    },
 ]
 
 function NavBar(){
@@ -39,7 +45,7 @@ function NavBar(){
                         {
                             routes.map((route) => (
                                 <Link to={route.link}>
-                                    <NavigationMenuLink key={route.id} className="w-max max-w-26">
+                                    <NavigationMenuLink key={route.id} className="w-max">
                                         <div className="flex space-x-2 items-center">
                                             <span>{route.icon}</span>
                                             <span>{route.name}</span>

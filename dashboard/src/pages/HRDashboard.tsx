@@ -1,8 +1,8 @@
 import StatsCard from "@/components/Cards/StatsCards";
-import { AgeDist } from "@/components/Charts/AgeDist";
-import { AttendanceChart } from "@/components/Charts/AttendanceChart";
-import { GenderDist } from "@/components/Charts/GenderDist";
-import { TurnoverChart } from "@/components/Charts/TurnoverChart";
+import { AgeDist } from "@/components/Charts/HRDashboardCharts/AgeDist";
+import { AttendanceChart } from "@/components/Charts/HRDashboardCharts/AttendanceChart";
+import { GenderDist } from "@/components/Charts/HRDashboardCharts/GenderDist";
+import { TurnoverChart } from "@/components/Charts/HRDashboardCharts/TurnoverChart";
 import {
   CalendarSync,
   Repeat2,

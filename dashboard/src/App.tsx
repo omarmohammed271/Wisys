@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import HRDashboard from './pages/HRDashboard'
 import { ThemeProvider } from "@/components/theme-provider"
 import NavBar from './components/layout/NavBar'
+import ProcurmentDashboard from './pages/ProcurmentDashboard'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           <div className='flex flex-col flex-1'>
             <Routes>
               <Route path="/" element={<HRDashboard />} />
+              <Route path="/procurement-dashboard" element={<ProcurmentDashboard />} />
             </Routes>
           </div>
         </main>

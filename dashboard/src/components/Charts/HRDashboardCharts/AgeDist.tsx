@@ -60,12 +60,12 @@ export function AgeDist() {
   }, [])
 
   return (
-    <Card className="flex flex-col border-border flex-1 bg-gradient-to-tr from-secondary/10 to-background m-0">
+    <Card className="border-border bg-gradient-to-tr from-secondary/10 to-background m-0">
       <CardHeader className="items-center pb-0">
         <CardTitle>Pie Chart - Donut with Text</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 pb-0">
+      <CardContent className="flex-1 pb-0 size-[48%] mx-auto">
         <ChartContainer
           config={chartConfig}
           className="mx-auto aspect-square flex-1 max-h-[250px]"
@@ -81,7 +81,8 @@ export function AgeDist() {
               dataKey="visitors"
               nameKey="browser"
               innerRadius={60}
-              strokeWidth={5}
+              strokeWidth={2}
+              label
             >
               <Label
                 content={({ viewBox }) => {

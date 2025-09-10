@@ -1,5 +1,16 @@
 import { useState } from "react";
-import { Send, MessageCircle } from "lucide-react";
+import { Send, MessageCircle, Bot } from "lucide-react";
+import { Button } from "../ui/button";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
@@ -20,52 +31,42 @@ export default function Chatbot() {
   return (
     <>
       {/* Toggle Button */}
-      <button
-        onClick={() => setOpen(!open)}
-        className="fixed bottom-5 right-5 bg-blue-600 text-white p-4 rounded-full shadow-lg"
-      >
-        <MessageCircle />
-      </button>
+      {/* <div className={`bg-gradient-to-br from-primary to-secondary fixed bottom-[60%] transition-all chatbot-radius ps-[1px] py-[1px] ` + ( open ? `-right-15` : `right-0` )}> */}
+      <div className={`bg-gradient-to-br from-primary to-secondary fixed bottom-[60%] transition-all chatbot-radius ps-[1px] py-[1px] ` + ( `right-0` )}>
+        <button
+          onClick={() => setOpen(!open)}
+          className=" p-4 chatbot-radius bg-card/60 border border-e-0 border-border"
+        >
+          <Bot />
+        </button>
+      </div>
 
-      {/* Chat Window */}
-      {open && (
-        <div className="fixed bottom-20 right-5 w-80 bg-white shadow-xl rounded-2xl flex flex-col">
-          {/* Header */}
-          <div className="bg-blue-600 text-white p-3 rounded-t-2xl font-semibold">
-            HR Assistant
-          </div>
+      <div className={`fixed flex justify-center items-center right-[5%] top-[5%] h-screen w-[500px] ` + ( !open && `hidden` )}>
+        {/* Chat Window */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              className=" bg-card border border-border transition-all p-2 rounded-lg"
+              initial={{
+                opacity: 0, width: "5px", height: "5px"
+              }}
+              animate={{
+                opacity: 1, width: "100%", height: "80%"
+              }}
+              transition={{
+                duration: 0.4
+              }}
+              exit={{
+                opacity: 0, width: "5px", height: "5px"
+              }}
+            >
+              <Card>
 
-          {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-3 space-y-2">
-            {messages.map((msg, i) => (
-              <div
-                key={i}
-                className={`p-2 rounded-xl max-w-[75%] ${
-                  msg.sender === "user"
-                    ? "bg-blue-600 text-white ml-auto"
-                    : "bg-gray-200 text-gray-800"
-                }`}
-              >
-                {msg.text}
-              </div>
-            ))}
-          </div>
-
-          {/* Input */}
-          <div className="flex p-2 border-t">
-            <input
-              value={input}
-              onChange={e => setInput(e.target.value)}
-              onKeyDown={e => e.key === "Enter" && handleSend()}
-              placeholder="Type a message..."
-              className="flex-1 px-3 py-2 border rounded-lg outline-none"
-            />
-            <button onClick={handleSend} className="ml-2 bg-blue-600 text-white p-2 rounded-lg">
-              <Send size={18} />
-            </button>
-          </div>
-        </div>
-      )}
+              </Card>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </>
   );
 }

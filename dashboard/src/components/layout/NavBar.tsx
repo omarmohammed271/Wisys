@@ -54,7 +54,7 @@ function NavBar(){
                 <img src={logo} alt="Digiation" className="w-30"/>
             </div>
 
-            <div className="text-muted-foreground font-medium">
+            <div className="text-muted-foreground text-[160%] max-md:hidden font-medium">
                 {currentRoute?.name || "Comprehensive Dashboard"}
             </div>
 

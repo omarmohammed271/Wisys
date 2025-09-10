@@ -23,7 +23,6 @@ const mockResponses: Record<string, string> = {
     "Predicted performance distribution: High 60%, Medium 30%, Low 10%.",
   hiring: "Forecasted headcount needs: Sales +5, HR +2, Engineering +8.",
 };
-
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<

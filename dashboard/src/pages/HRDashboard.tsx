@@ -3,6 +3,7 @@ import { AgeDist } from "@/components/Charts/HRDashboardCharts/AgeDist";
 import { AttendanceChart } from "@/components/Charts/HRDashboardCharts/AttendanceChart";
 import { GenderDist } from "@/components/Charts/HRDashboardCharts/GenderDist";
 import { TurnoverChart } from "@/components/Charts/HRDashboardCharts/TurnoverChart";
+import Chatbot from "@/components/Chatbot/Chatbot";
 import {
   CalendarSync,
   Repeat2,
@@ -76,6 +77,8 @@ export default function HRDashboard() {
             <AgeDist />
         </div>
       </div>
+
+      <Chatbot />
     </div>
   );
 }

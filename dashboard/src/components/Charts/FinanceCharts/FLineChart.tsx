@@ -5,8 +5,8 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '../ui/card';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from '../ui/chart';
+} from '../../ui/card';
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '../../ui/chart';
 import { LineChart, Line, CartesianGrid, XAxis } from 'recharts'; // ✅ من recharts
 import { LineChart as LineChartIcon } from 'lucide-react'; // ✅ الأيقونة
 

@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import NavBar from './components/layout/NavBar'
 import ProcurmentDashboard from './pages/ProcurmentDashboard'
 import ManufacturingDashboard from './pages/ManufacturingDashboard'
-import FinanceDashboard from './pages/FinanceDashboard/FinanceDashboard'
+import FinanceDashboard from './pages/FinanceDashboard'
 
 function App() {
 

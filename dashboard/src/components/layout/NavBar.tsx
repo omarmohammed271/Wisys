@@ -4,6 +4,8 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { BadgeCent, CircleUserRound, Factory, Grid2x2, Waypoints } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import FullscreenToggle from "../ui/FullscreenToggle";
 
 type RoutesData = {
     id: string,
@@ -41,12 +43,8 @@ const routes: RoutesData[] = [
 
 function NavBar(){
 
-    const [currentPage, setCurrentPage] = useState("")
-    
-    useEffect(() => {
-        let pathname = window.location.pathname;
-        setCurrentPage(routes.filter(route => route.link == pathname)[0].name);
-    }, [])
+    const location = useLocation();
+    const currentRoute = routes.find(route => route.link === location.pathname);
 
     return(
         <div className="p-3 backdrop-blur-md flex w-full justify-between h-fit border-border">
@@ -56,11 +54,12 @@ function NavBar(){
                 <img src={logo} alt="Digiation" className="w-30"/>
             </div>
 
-            <div className="text-muted-foreground font-medium">
-                {currentPage}
+            <div className="text-muted-foreground text-[160%] max-md:hidden font-medium">
+                {currentRoute?.name || "Comprehensive Dashboard"}
             </div>
 
             <div className="flex space-x-4">
+                {/* <FullscreenToggle /> */}
                 <NavigationMenu viewport={false} className="lg:end-2" >
                     <NavigationMenuList>
                         <NavigationMenuItem>
@@ -69,7 +68,7 @@ function NavBar(){
                             {
                                 routes.map((route) => (
                                     <Link to={route.link}>
-                                        <NavigationMenuLink key={route.id} className="w-max" onClick={() => setCurrentPage(route.name)}>
+                                        <NavigationMenuLink key={route.id} className="w-max">
                                             <div className="flex space-x-2 items-center">
                                                 <span>{route.icon}</span>
                                                 <span>{route.name}</span>

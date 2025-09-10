@@ -1,11 +1,11 @@
 'use client';
 import StatsCardData from '@/components/Cards/StatsCardData';
-import FLineChart from '@/components/Charts/FLineChart';
-import FAreaChart from '@/components/Charts/FAreaChart';
-import FBarChart from '@/components/Charts/FBarChart';
-import FPieChart from '@/components/Charts/FPieChart';
-import FRadialChart from '@/components/Charts/FRadialChart';
-import FLollipopChart from '@/components/Charts/FLollipopChart';
+import FLineChart from '@/components/Charts/FinanceCharts/FLineChart';
+import FAreaChart from '@/components/Charts/FinanceCharts/FAreaChart';
+import FBarChart from '@/components/Charts/FinanceCharts/FBarChart';
+import FPieChart from '@/components/Charts/FinanceCharts/FPieChart';
+import FRadialChart from '@/components/Charts/FinanceCharts/FRadialChart';
+import FLollipopChart from '@/components/Charts/FinanceCharts/FLollipopChart';
 
 
 

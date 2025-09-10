@@ -1,6 +1,14 @@
 "use client"
 
-import { PolarAngleAxis, PolarGrid, Radar, RadarChart, LabelList } from "recharts"
+import {
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  ComposedChart,
+  Bar,
+  Scatter,
+  LabelList,
+} from "recharts"
 
 import {
   Card,
@@ -15,7 +23,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-export const description = "Supplier performance radar chart"
+export const description = "Supplier performance lollipop chart"
 
 const chartData = [
   { supplier: "Supplier A", performance: 86 },
@@ -35,57 +43,49 @@ const chartConfig = {
 
 export function SupplierPerformanceChart() {
   return (
-    <Card className=" bg-gradient-to-bl from-secondary/10 to-background">
-      <CardHeader className="items-center">
+    <Card className="bg-gradient-to-bl from-secondary/10 to-background">
+      <CardHeader>
         <CardTitle>Supplier Performance</CardTitle>
-        <CardDescription>
-          On-time delivery & quality scores (Jan – Jun 2024)
-        </CardDescription>
+        <CardDescription>Performance scores across suppliers</CardDescription>
       </CardHeader>
-      <CardContent className="pb-0 size-[49%] mx-auto">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[320px]"
-        >
-          <RadarChart data={chartData}>
-            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-            <PolarAngleAxis
+      <CardContent className="size-[80%] mx-auto">
+        <ChartContainer config={chartConfig}>
+          <ComposedChart data={chartData}>
+            <CartesianGrid vertical={false} />
+            <XAxis
               dataKey="supplier"
-              tick={{
-                fontSize: 12,
-                textAnchor: "middle",
-              }}
-              orientation="outer"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
             />
-            <PolarGrid />
-            <Radar
+            <YAxis />
+            <ChartTooltip
+              cursor={true}
+              content={<ChartTooltipContent hideLabel />}
+            />
+
+            {/* Stick (bars) */}
+            <Bar
               dataKey="performance"
-              fill="var(--chart-1)"
-              fillOpacity={0.6}
-              stroke="var(--chart-1)"
-              dot={{ r: 4, fillOpacity: 1 }}
+              fill="var(--color-performance)"
+              barSize={4}
+              radius={[4, 4, 0, 0]}
             >
               <LabelList
                 dataKey="performance"
-                content={(props) => {
-                  const { x, y, value } = props
-                  return (
-                    <text
-                      x={x}
-                      y={y}
-                      dy={-6} // move label above the dot
-                      textAnchor="middle"
-                      fill="var(--foreground)"
-                      fontSize={12}
-                      fontWeight={500}
-                    >
-                      {value}
-                    </text>
-                  )
-                }}
+                position="right"
+                className="fill-foreground text-xs"
               />
-            </Radar>
-          </RadarChart>
+            </Bar>
+
+            {/* Lollipop head (points) */}
+            <Scatter
+              data={chartData}
+              dataKey="performance"
+              fill="var(--color-primary)"
+              shape="circle"
+            />
+          </ComposedChart>
         </ChartContainer>
       </CardContent>
     </Card>

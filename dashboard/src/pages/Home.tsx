@@ -1,8 +1,12 @@
+import AreaChart from "@/components/Charts/Home/AreaChart";
+import PieChart from "@/components/Charts/Home/PieChart";
+import RadarChart from "@/components/Charts/Home/RadarChart";
 import ServiceCard from "@/components/ui/ServiceCard";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { BrainCircuit, Globe } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Home(){
     return (
@@ -65,17 +69,21 @@ export default function Home(){
                         
                     <div className='grid lg:grid-cols-2 max-lg:grid-cols-1 gap-x-5 z-10 w-full'>
 
-                        <ServiceCard
-                            icon= {<BrainCircuit />}
-                            title= {`Health Cluster`}
-                            description= {`Leverage machine learning and automation to optimize workflows, personalize experiences, and drive innovation.`}
-                        />
+                        <Link to={''}>
+                            <ServiceCard
+                                icon= {<BrainCircuit />}
+                                title= {`Health Cluster`}
+                                description= {`Leverage machine learning and automation to optimize workflows, personalize experiences, and drive innovation.`}
+                            />
+                        </Link>
 
-                        <ServiceCard
-                            icon= {<Globe />}
-                            title= {`Non-health Cluster`}
-                            description= {`Build fast, scalable, and responsive websites with cutting-edge technologies, ensuring seamless user experiences.`}
-                        />
+                        <Link to={'/hr-dashboard'}>
+                            <ServiceCard
+                                icon= {<Globe />}
+                                title= {`Non-health Cluster`}
+                                description= {`Build fast, scalable, and responsive websites with cutting-edge technologies, ensuring seamless user experiences.`}
+                            />
+                        </Link>
                         
                     </div>
                     </motion.div>
@@ -83,6 +91,33 @@ export default function Home(){
 
             </div>
             
+            {/* First chart */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 2 }} // Delay before animation starts
+                className=""
+            >
+            <AreaChart />
+            </motion.div>
+            {/* Second chart */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 2 }} // Delay before animation starts
+                className=""
+            >
+            <PieChart />
+            </motion.div>
+            {/* Third chart */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 2 }} // Delay before animation starts
+                className=""
+            >
+            <RadarChart />
+            </motion.div>
         </div>
     );
 }

@@ -45,42 +45,50 @@ function NavBar(){
 
     const location = useLocation();
     const currentRoute = routes.find(route => route.link === location.pathname);
-
+    console.log(currentRoute)
     return(
         <div className="p-3 backdrop-blur-md flex w-full justify-between h-fit border-border">
 
             {/* Digiations Logo */}
-            <div className="">
-                <img src={logo} alt="Digiation" className="w-30"/>
-            </div>
+            <Link to={'/'}>
+                <div className="">
+                    <img src={logo} alt="Digiation" className="w-30"/>
+                </div>
+            </Link>
 
-            <div className="text-muted-foreground text-[160%] max-md:hidden font-medium">
-                {currentRoute?.name || "Comprehensive Dashboard"}
-            </div>
+            {   currentRoute &&
+                (<div className="text-muted-foreground text-[160%] max-md:hidden font-medium">
+                    {currentRoute?.name || "Comprehensive Dashboard"}
+                </div>)
+            }
 
             <div className="flex space-x-4">
                 {/* <FullscreenToggle /> */}
-                <NavigationMenu viewport={false} className="lg:end-2" >
-                    <NavigationMenuList>
-                        <NavigationMenuItem>
-                        <NavigationMenuTrigger><Grid2x2 /></NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                            {
-                                routes.map((route) => (
-                                    <Link to={route.link}>
-                                        <NavigationMenuLink key={route.id} className="w-max">
-                                            <div className="flex space-x-2 items-center">
-                                                <span>{route.icon}</span>
-                                                <span>{route.name}</span>
-                                            </div>
-                                        </NavigationMenuLink>
-                                    </Link>
-                                ))
-                            }
-                        </NavigationMenuContent>
-                        </NavigationMenuItem>
-                    </NavigationMenuList>
-                </NavigationMenu>
+                {
+                    currentRoute && (
+                        <NavigationMenu viewport={false} className="lg:end-2" >
+                            <NavigationMenuList>
+                                <NavigationMenuItem>
+                                <NavigationMenuTrigger><Grid2x2 /></NavigationMenuTrigger>
+                                <NavigationMenuContent>
+                                    {
+                                        routes.map((route) => (
+                                            <Link to={route.link}>
+                                                <NavigationMenuLink key={route.id} className="w-max">
+                                                    <div className="flex space-x-2 items-center">
+                                                        <span>{route.icon}</span>
+                                                        <span>{route.name}</span>
+                                                    </div>
+                                                </NavigationMenuLink>
+                                            </Link>
+                                        ))
+                                    }
+                                </NavigationMenuContent>
+                                </NavigationMenuItem>
+                            </NavigationMenuList>
+                        </NavigationMenu>
+                    )
+                }
                 <ModeToggle />
             </div>
 

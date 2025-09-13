@@ -9,9 +9,9 @@ interface Details {
 
 const ServiceCard: React.FC<Details> = ({ icon, title, description }) => {
   return (
-    <div className="max-lg:mx-10 mt-6 text-start p-4 border border-border bg-gradient-to-br from-background/60 backdrop-blur-md
-     to-accent rounded-lg dark:shadow-[0_4px_20px_#171716FF] hover:translate-y-3 transition-all duration-500">
-      <div className="flex items-center justify-between">
+    <div className="max-lg:mx-10 mt-6 text-start bg-gradient-to-br from-primary to-secondary p-[1px] backdrop-blur-md
+      rounded-lg dark:shadow-[0_4px_20px_#171716FF] hover:scale-105 transition-all duration-500">
+      <div className="flex rounded-lg items-center justify-between w-full h-full p-4 bg-gradient-to-br from-background to-accent ">
         <div className="*:size-7 text-muted-foreground bg-background w-fit p-2 rounded-md border border-border">
             {icon}
         </div>

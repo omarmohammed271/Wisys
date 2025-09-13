@@ -18,7 +18,7 @@ const routes: RoutesData[] = [
     {
         id: "1",
         name: "HR Dashboard",
-        link: "/",
+        link: "/hr-dashboard",
         icon: <CircleUserRound />,
     },
     {

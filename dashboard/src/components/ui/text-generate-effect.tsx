@@ -37,7 +37,7 @@ export const TextGenerateEffect = ({
           return (
             <motion.span
               key={word + idx}
-              className="text-white opacity-0"
+              className="text-foreground opacity-0"
               style={{
                 filter: filter ? "blur(10px)" : "none",
               }}
@@ -53,7 +53,7 @@ export const TextGenerateEffect = ({
   return (
     <div className={cn("font-bold", className)}>
       <div className="">
-        <div className="lg:text-6xl text-center max-lg:text-4xl ">
+        <div className="lg:text-7xl text-center max-lg:text-4xl ">
           {renderWords()}
         </div>
       </div>

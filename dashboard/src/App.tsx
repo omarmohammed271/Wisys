@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import HRDashboard from './pages/HRDashboard'
+import HRDashboard from './pages/dashboards/HRDashboard'
 import { ThemeProvider } from "@/components/theme-provider"
 import NavBar from './components/layout/NavBar'
-import ProcurmentDashboard from './pages/ProcurmentDashboard'
-import ManufacturingDashboard from './pages/ManufacturingDashboard'
-import FinanceDashboard from './pages/FinanceDashboard'
+import ProcurmentDashboard from './pages/dashboards/ProcurmentDashboard'
+import ManufacturingDashboard from './pages/dashboards/ManufacturingDashboard'
+import FinanceDashboard from './pages/dashboards/FinanceDashboard'
+import Home from './pages/Home'
 
 function App() {
 
@@ -16,7 +17,8 @@ function App() {
           <NavBar />
           <div className='flex flex-col flex-1'>
             <Routes>
-              <Route path="/" element={<HRDashboard />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/hr-dashboard" element={<HRDashboard />} />
               <Route path="/procurement-dashboard" element={<ProcurmentDashboard />} />
               <Route path="/manufacturing-dashboard" element={<ManufacturingDashboard />} />
               <Route path="/finance-dashboard" element={<FinanceDashboard />} />

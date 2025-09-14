@@ -30,7 +30,6 @@ export default function Home(){
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_0%,black)] dark:bg-background"></div>
             
             <div className='relative xl:px-80 w-full'>
-
                 <section id={`hero`} className="flex items-center">
                     <div className="w-full xl:mx-10 flex justify-center z-10 items-center lg:px-15">
                         <div className='text-center rounded-3xl w-full'>
@@ -88,7 +87,6 @@ export default function Home(){
                     </div>
                     </motion.div>
                 </section>
-
             </div>
             
             {/* First chart */}

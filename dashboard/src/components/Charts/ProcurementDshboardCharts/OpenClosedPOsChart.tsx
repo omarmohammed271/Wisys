@@ -1,7 +1,7 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import { Pie, PieChart, Label, LabelList } from "recharts"
+import * as React from 'react';
+import { Pie, PieChart, Label } from 'recharts';
 
 import {
   Card,
@@ -9,73 +9,68 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from '@/components/ui/card';
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
+} from '@/components/ui/chart';
 
-export const description = "Open vs Closed Purchase Orders (POs)"
+export const description = 'Maverick Spend Rate';
 
-const chartData = [
-  { status: "Open", value: 126, fill: "var(--chart-1)" },
-  { status: "Closed", value: 342, fill: "var(--chart-2)" },
-  { status: "Pending Approval", value: 58, fill: "var(--chart-3)" },
-]
+const rawData = {
+  maverick_spend: 50000,
+  total_spend: 200000,
+};
 
-const chartConfig = {
-  value: {
-    label: "Purchase Orders",
-  },
-  open: {
-    label: "Open",
-    color: "var(--chart-1)",
-  },
-  closed: {
-    label: "Closed",
-    color: "var(--chart-2)",
-  },
-  pending: {
-    label: "Pending Approval",
-    color: "var(--chart-3)",
-  },
-}
+export function MaverickSpendRateChart() {
+  const maverickRate = React.useMemo(
+    () => (rawData.maverick_spend / rawData.total_spend) * 100,
+    []
+  );
 
-export function OpenClosedPOsChart() {
-  const totalPOs = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.value, 0)
-  }, [])
+  const chartData = [
+    { status: 'Maverick Spend', value: maverickRate, fill: 'var(--chart-1)' },
+    { status: 'Other Spend', value: 100 - maverickRate, fill: 'var(--chart-2)' },
+  ];
 
   return (
     <Card className="flex flex-col bg-gradient-to-tr from-primary/10 to-background">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Open vs Closed POs</CardTitle>
-        <CardDescription>January – June 2024</CardDescription>
+        <CardTitle>Maverick Spend Rate</CardTitle>
+        <CardDescription>Percentage of Maverick vs Total Spend</CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 mx-auto pb-0 md:w-[80%]">
+      <CardContent className="flex flex-col items-center pb-4">
         <ChartContainer
-          config={chartConfig}
-          className="mx-auto max-md:aspect-square max-h-[250px]"
+          config={{
+            value: { label: 'Spend' },
+            maverick: { label: 'Maverick Spend', color: 'var(--chart-1)' },
+            other: { label: 'Other Spend', color: 'var(--chart-2)' },
+          }}
+          className="flex items-center justify-center h-[180px] w-[180px]"
         >
-          <PieChart>
+          <PieChart width={240} height={240}>
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+              content={
+                <ChartTooltipContent
+                  valueFormatter={(v) => `${v.toFixed(1)}%`}
+                />
+              }
             />
             <Pie
               data={chartData}
               dataKey="value"
               nameKey="status"
-              innerRadius={60}
-              strokeWidth={5}
-              label 
+              innerRadius={35}
+              outerRadius={65}
+              strokeWidth={3}
+              labelLine={false}
+              label={false}
             >
-
-              {/* ✅ Center label */}
               <Label
                 content={({ viewBox }) => {
-                  if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                  if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
                     return (
                       <text
                         x={viewBox.cx}
@@ -86,26 +81,43 @@ export function OpenClosedPOsChart() {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold"
+                          className="fill-foreground text-base font-bold"
                         >
-                          {totalPOs.toLocaleString()}
+                          {maverickRate.toFixed(1)}%
                         </tspan>
                         <tspan
                           x={viewBox.cx}
-                          y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground"
+                          y={(viewBox.cy || 0) + 16}
+                          className="fill-muted-foreground text-xs"
                         >
-                          Total POs
+                          Maverick Rate
                         </tspan>
                       </text>
-                    )
+                    );
                   }
                 }}
               />
             </Pie>
           </PieChart>
         </ChartContainer>
+
+        <div className=" flex flex-wrap justify-center gap-2">
+          {chartData.map((item) => (
+            <div key={item.status} className="flex items-center gap-1">
+              <span
+                className="inline-block w-2.5 h-2.5 rounded-sm"
+                style={{ backgroundColor: item.fill }}
+              />
+              <span className="text-xs text-muted-foreground">
+                {item.status}:{' '}
+                <span className="font-medium text-foreground">
+                  {item.value.toFixed(1)}%
+                </span>
+              </span>
+            </div>
+          ))}
+        </div>
       </CardContent>
     </Card>
-  )
+  );
 }

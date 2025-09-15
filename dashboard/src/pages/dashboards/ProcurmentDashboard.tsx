@@ -1,87 +1,77 @@
-import StatsCard from "@/components/Cards/StatsCards";
-import { AgeDist } from "@/components/Charts/HRDashboardCharts/AgeDist";
-import { AttendanceChart } from "@/components/Charts/HRDashboardCharts/AttendanceChart";
-import { GenderDist } from "@/components/Charts/HRDashboardCharts/GenderDist";
-import { TurnoverChart } from "@/components/Charts/HRDashboardCharts/TurnoverChart";
-import { AverageDeliveryTimeTrendChart } from "@/components/Charts/ProcurementDshboardCharts/AverageDeliveryTimeTrendChart";
-import { MonthlySpendChart } from "@/components/Charts/ProcurementDshboardCharts/MonthlySpendChart";
-import { OpenClosedPOsChart } from "@/components/Charts/ProcurementDshboardCharts/OpenClosedPOsChart";
-import { SpendDistributionChart } from "@/components/Charts/ProcurementDshboardCharts/SpendDistributionChart";
-import { SupplierPerformanceChart } from "@/components/Charts/ProcurementDshboardCharts/SupplierPerformanceChart";
-import { TopSuppliersChart } from "@/components/Charts/ProcurementDshboardCharts/TopSuppliers";
-import {
-  CalendarSync,
-  Repeat2,
-  Users,
-  Hourglass,
-  FileQuestion,
-  TrendingUp,
-} from "lucide-react";
+'use client';
 
-export default function ProcurmentDashboard() {
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from '@/components/ui/chart';
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  XAxis,
+  LabelList,
+  Bar,
+  BarChart,
+  PieChart,
+  Pie,
+  Label,
+} from 'recharts';
+import * as React from 'react';
+import { TopSuppliersChart } from '@/components/Charts/ProcurementDshboardCharts/TopSuppliers';
+import { EmergencyPurchaseChart } from '@/components/Charts/ProcurementDshboardCharts/SpendDistributionChart';
+import { MonthlyCostAvoidanceChart } from '@/components/Charts/ProcurementDshboardCharts/MonthlySpendChart';
+import StatsCardData from '@/components/Cards/StatsCardData';
+import { SpendUnderManagementChart } from '@/components/Charts/ProcurementDshboardCharts/SpendUnderManagementChart';
+import { ChartPieLabelList } from '@/components/Charts/ProcurementDshboardCharts/ROIChart';
+import { CostReductionTrendChart } from '@/components/Charts/ProcurementDshboardCharts/AverageDeliveryTimeTrendChart';
+import { POCycleTimeChart } from '@/components/Charts/ProcurementDshboardCharts/TopSavingChart';
+import { TCPSavingChart } from '@/components/Charts/ProcurementDshboardCharts/TCPSavingPresChart';
+import { MaverickSpendRateChart } from '@/components/Charts/ProcurementDshboardCharts/OpenClosedPOsChart';
+import { ChartTcoSavingOutsource } from '@/components/Charts/ProcurementDshboardCharts/TCOSavingOutsource';
+
+const savingsData = [
+  { month: 'Jan', savings: 6.2 },
+  { month: 'Feb', savings: 7.5 },
+  { month: 'Mar', savings: 8.1 },
+  { month: 'Apr', savings: 7.9 },
+  { month: 'May', savings: 8.8 },
+  { month: 'Jun', savings: 9.2 },
+];
+
+
+
+export default function ProcurementDashboard() {
   return (
     <div className="p-3 flex flex-col h-full space-y-2">
-      {/* Stat Cards */}
-      <div className="grid h-fit grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-2">
-        <StatsCard
-          className="border border-border p-4 rounded-2xl"
-          title="Total Suppliers"
-          value={48}
-          icon={<Users />}
-        />
+      {/* ── Stat Cards ── */}
+      <StatsCardData />
 
-        <StatsCard
-          className="border border-border p-4 rounded-2xl"
-          title="Open POs"
-          value={126}
-          icon={<FileQuestion />}
-        />
+      {/* ── Charts ── */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 auto-rows-[350px]">
+        <SpendUnderManagementChart />
+        <ChartPieLabelList />
+        <TopSuppliersChart />
+        <CostReductionTrendChart />
+        <MonthlyCostAvoidanceChart />
 
-        <StatsCard
-          className="border border-border p-4 rounded-2xl"
-          title="Pending Deliveries"
-          value={32}
-          icon={<CalendarSync />}
-        />
+        <POCycleTimeChart />
 
-        <StatsCard
-          className="border border-border p-4 rounded-2xl"
-          title="Avg. Delivery Time"
-          value="5.2 days"
-          icon={<Hourglass />}
-        />
+        <TCPSavingChart />
 
-        <StatsCard
-          className="border border-border p-4 rounded-2xl"
-          title="Spend This Month"
-          value="$142K"
-          icon={<TrendingUp />}
-        />
+        <ChartTcoSavingOutsource />
 
-        <StatsCard
-          className="border border-border p-4 rounded-2xl"
-          title="Savings Rate"
-          value="8.5%"
-          icon={<Repeat2 />}
-        />
-      </div>
+        <MaverickSpendRateChart />
+        <EmergencyPurchaseChart />
 
 
-      {/* Charts Section */}
-      <div className="grid flex-1 grid-cols-1 lg:grid-cols-3 gap-2">
-        {/* Upper */}
-        <div className=" flex flex-col space-y-2">
-            <TopSuppliersChart />
-            <OpenClosedPOsChart />
-        </div>
-        <div className=" flex flex-col gap-y-2 col-span-1 overflow-hidden">
-            <AverageDeliveryTimeTrendChart />
-            <SpendDistributionChart />
-        </div>
-        <div className=" flex flex-col gap-y-2 col-span-1 overflow-hidden">
-            <SupplierPerformanceChart />
-            <MonthlySpendChart />
-        </div>
       </div>
     </div>
   );

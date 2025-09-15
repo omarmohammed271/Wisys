@@ -1,91 +1,85 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
-import { CartesianGrid, LabelList, Line, LineChart, XAxis } from "recharts"
-
+import { CartesianGrid, LabelList, Line, LineChart, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts"
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from "@/components/ui/card"
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart"
-
-export const description = "Average delivery time trend (days per month)"
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 const chartData = [
-  { month: "January", avgDeliveryDays: 6.2 },
-  { month: "February", avgDeliveryDays: 5.8 },
-  { month: "March", avgDeliveryDays: 5.4 },
-  { month: "April", avgDeliveryDays: 4.9 },
-  { month: "May", avgDeliveryDays: 5.6 },
-  { month: "June", avgDeliveryDays: 4.7 },
+  { month: "January", previousCost: 120000, currentCost: 110000 },
+  { month: "February", previousCost: 115000, currentCost: 107000 },
+  { month: "March", previousCost: 130000, currentCost: 125000 },
+  { month: "April", previousCost: 125000, currentCost: 118000 },
+  { month: "May", previousCost: 140000, currentCost: 130000 },
+  { month: "June", previousCost: 135000, currentCost: 128000 },
 ]
 
-const chartConfig = {
-  avgDeliveryDays: {
-    label: "Avg Delivery Time (Days)",
-    color: "var(--chart-1)",
-  },
+function calculateCostReduction(previousCost: number, currentCost: number): number {
+  if (previousCost === 0) return 0
+  return ((previousCost - currentCost) / previousCost) * 100
 }
 
-export function AverageDeliveryTimeTrendChart() {
+const chartDataWithReduction = chartData.map((item) => ({
+  month: item.month,
+  costReduction: calculateCostReduction(item.previousCost, item.currentCost),
+}))
+
+export function CostReductionTrendChart() {
   return (
-    <Card className="h-[50%]">
+    <Card  >
       <CardHeader>
-        <CardTitle>Average Delivery Time Trend</CardTitle>
+        <CardTitle>Cost Reduction Trend</CardTitle>
         <CardDescription>Jan – Jun 2024</CardDescription>
       </CardHeader>
-      <CardContent className="size-[65%] mx-auto">
-        <ChartContainer config={chartConfig} className=" size-[110%]">
-          <LineChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              top: 20,
-              left: 12,
-              right: 12,
-            }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent indicator="line" />}
-            />
-            <Line
-              dataKey="avgDeliveryDays"
-              type="natural"
-              stroke="var(--color-avgDeliveryDays)"
-              strokeWidth={2}
-              dot={{
-                fill: "var(--color-avgDeliveryDays)",
-              }}
-              activeDot={{
-                r: 6,
-              }}
+
+      <CardContent className="w-full mt-7">
+        <ChartContainer className="w-full" config={{}}>
+          <ResponsiveContainer width="100%" height={250}>
+            <LineChart
+              data={chartDataWithReduction}
+              margin={{ top: 30, left:-10, right: 12,bottom:-20 }}
             >
-              <LabelList
-                dataKey="avgDeliveryDays"
-                position="top"
-                offset={12}
-                className="fill-foreground"
-                fontSize={12}
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="month"
+                tickLine={false}
+                axisLine={false}
+                tickMargin={8}
+                tickFormatter={(value) => value.slice(0, 3)}
               />
-            </Line>
-          </LineChart>
+              <YAxis
+                tickFormatter={(value) => `${value.toFixed(1)}%`}
+                axisLine={false}
+                tickLine={false}
+              />
+              <Tooltip
+                content={<ChartTooltipContent indicator="line" />}
+                formatter={(value: number) => `${value.toFixed(1)}%`}
+              />
+              <Line
+                dataKey="costReduction"
+                type="natural"
+                stroke="var(--chart-1)"  
+                strokeWidth={2}
+                dot={{ fill: "var(--chart-1)" }}  
+                activeDot={{ r: 6 }}
+              >
+                <LabelList
+                  dataKey="costReduction"
+                  position="top"
+                  offset={12}
+                  className="fill-foreground"
+                  fontSize={12}
+                  formatter={(value: number) => `${value.toFixed(1)}%`}
+                />
+              </Line>
+            </LineChart>
+          </ResponsiveContainer>
         </ChartContainer>
       </CardContent>
     </Card>

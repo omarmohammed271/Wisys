@@ -1,13 +1,11 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
 import { Area, AreaChart, CartesianGrid, LabelList, XAxis } from "recharts"
 
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -17,39 +15,56 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-export const description = "Monthly spend trend with gradient fill"
-
 const chartData = [
-  { month: "January", spend: 120000 },
-  { month: "February", spend: 135000 },
-  { month: "March", spend: 142000 },
-  { month: "April", spend: 128000 },
-  { month: "May", spend: 150000 },
-  { month: "June", spend: 160000 },
+  { month: "January", potentialCost: 120000, actualCost: 100000 },
+  { month: "February", potentialCost: 135000, actualCost: 110000 },
+  { month: "March", potentialCost: 142000, actualCost: 120000 },
+  { month: "April", potentialCost: 128000, actualCost: 115000 },
+  { month: "May", potentialCost: 150000, actualCost: 130000 },
+  { month: "June", potentialCost: 160000, actualCost: 140000 },
 ]
 
+function calculateCostAvoidance(potentialCost: number, actualCost: number) {
+  const costAvoided = potentialCost - actualCost
+  const avoidancePercentage = (costAvoided / potentialCost) * 100
+  return { costAvoided, avoidancePercentage: Number(avoidancePercentage.toFixed(2)) }
+}
+
+const processedData = chartData.map((item) => {
+  const { costAvoided, avoidancePercentage } = calculateCostAvoidance(
+    item.potentialCost,
+    item.actualCost
+  )
+  return {
+    month: item.month,
+    costAvoidance: costAvoided,
+    avoidancePercentage, //  Tooltip  Labels
+  }
+})
+
 const chartConfig = {
-  spend: {
-    label: "Spend (USD)",
+  costAvoidance: {
+    label: "Cost Avoidance (USD)",
     color: "var(--chart-1)",
   },
 }
 
-export function MonthlySpendChart() {
+export function MonthlyCostAvoidanceChart() {
   return (
     <Card className="bg-gradient-to-tl from-secondary/10 to-background">
       <CardHeader>
-        <CardTitle>Monthly Spend</CardTitle>
+        <CardTitle>Monthly Cost Avoidance</CardTitle>
         <CardDescription>Jan – Jun 2024</CardDescription>
       </CardHeader>
-      <CardContent className="size-[80%] mx-auto">
+      <CardContent className="size-[100%] mt-11 mx-auto">
         <ChartContainer config={chartConfig}>
           <AreaChart
             accessibilityLayer
-            data={chartData}
+            data={processedData}
             margin={{
               left: 12,
               right: 12,
+              top:10
             }}
           >
             <CartesianGrid vertical={false} />
@@ -62,10 +77,10 @@ export function MonthlySpendChart() {
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <defs>
-              <linearGradient id="fillSpend" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="fillCostAvoidance" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor="var(--color-spend)"
+                  stopColor='var(--chart-1)'
                   stopOpacity={0.8}
                 />
                 <stop
@@ -76,14 +91,14 @@ export function MonthlySpendChart() {
               </linearGradient>
             </defs>
             <Area
-              dataKey="spend"
+              dataKey="costAvoidance"
               type="natural"
-              fill="url(#fillSpend)"
+              fill="url(#fillCostAvoidance)"
               fillOpacity={0.4}
               stroke="var(--color-spend)"
             >
               <LabelList
-                dataKey="spend"
+                dataKey="costAvoidance"
                 position="top"
                 offset={4}
                 className="fill-foreground"

@@ -35,7 +35,7 @@ export default function Home(){
                         <div className='text-center rounded-3xl w-full'>
                             <span className='text-center'>
                                 <div className='bg-gradient-to-br from-white via-white to-orange-300 bg-clip-text text-transparent font-bold pb-5'>
-                                    <TextGenerateEffect words={`All Dashboards in One Place.`} className='' />
+                                    <TextGenerateEffect words={`Digiations 360.`} className='' />
                                 </div>
                                 <motion.div
                                     initial={{ opacity: 0 }}
@@ -46,7 +46,7 @@ export default function Home(){
                                     <div className="animate-in fade-in-55 transition-all">
                                         <span className="w-full flex justify-center mb-6">
                                             <h1 className="text-xl text-muted-foreground lg:w-1/2 text-center">
-                                            Access every team's insights from a single, unified platform.
+                                            Where Insights Drive You to Push Your Limits.
                                             </h1>
                                         </span>
                                     </div>

@@ -1,12 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { CartesianGrid, LabelList, Line, LineChart, XAxis } from "recharts"
+import {
+  CartesianGrid,
+  LabelList,
+  Line,
+  LineChart,
+  XAxis,
+} from "recharts"
 
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -16,37 +21,19 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-export const description = "An interactive line chart"
-
+// ---------- DATA ----------
 const chartData = [
-  { date: "2024-04-01", attendance: 222, absence: 150 },
-  { date: "2024-04-02", attendance: 97, absence: 180 },
-  { date: "2024-04-03", attendance: 167, absence: 120 },
-  { date: "2024-04-04", attendance: 242, absence: 260 },
-  { date: "2024-04-05", attendance: 373, absence: 290 },
-  { date: "2024-04-06", attendance: 301, absence: 340 },
-  { date: "2024-04-07", attendance: 245, absence: 180 },
-  { date: "2024-04-08", attendance: 409, absence: 320 },
-  { date: "2024-04-09", attendance: 59, absence: 110 },
-  { date: "2024-04-10", attendance: 261, absence: 190 },
-  { date: "2024-04-11", attendance: 327, absence: 350 },
-  { date: "2024-04-12", attendance: 292, absence: 210 },
-  { date: "2024-04-13", attendance: 342, absence: 380 },
-  { date: "2024-04-14", attendance: 137, absence: 220 },
-  { date: "2024-04-15", attendance: 120, absence: 170 },
-  { date: "2024-04-16", attendance: 138, absence: 190 },
-  { date: "2024-04-17", attendance: 446, absence: 360 },
-  { date: "2024-04-18", attendance: 364, absence: 410 },
-  { date: "2024-04-19", attendance: 243, absence: 180 },
-  { date: "2024-04-20", attendance: 89, absence: 150 },
+  { date: "2024-04-01", attendance: 220, absence: 30 },
+  { date: "2024-04-02", attendance: 210, absence: 40 },
+  { date: "2024-04-03", attendance: 230, absence: 20 },
+  { date: "2024-04-04", attendance: 200, absence: 50 },
+  { date: "2024-04-05", attendance: 225, absence: 25 },
 ]
 
+// ---------- CONFIG ----------
 const chartConfig = {
-  views: {
-    label: "Page Views",
-  },
   attendance: {
-    label: "Attendane",
+    label: "Attendance",
     color: "var(--chart-1)",
   },
   absence: {
@@ -66,52 +53,48 @@ export function AttendanceChart() {
     }),
     []
   )
-  
 
   return (
-    <Card className="py-4 sm:py-0 border-border h-full max-md:h-[350px] flex flex-col overflow-hidden bg-gradient-to-br from-primary/10 to-background">
-      <CardHeader className="flex flex-col items-stretch border-b border-border !p-0 sm:flex-row">
-        <div className="flex flex-1 flex-col justify-center gap-1 px-6 pb-3 sm:pb-0">
-          <CardTitle>Attendance/Absence</CardTitle>
-          <CardDescription>
-            Showing total visitors for the last 3 months
-          </CardDescription>
+    <Card className="py-4 sm:py-0 border-border h-full max-md:h-[350px] flex flex-col overflow-hidden">
+      {/* Header */}
+      <CardHeader className="flex flex-col items-stretch border-b border-border !p-0">
+        <div className="flex flex-1 flex-col justify-center gap-1 px-6 pb-3">
+          <CardTitle className="py-4 text-xl">Attendance / Absence</CardTitle>
         </div>
         <div className="flex">
-          {["attendance", "absence"].map((key) => {
-            const chart = key as keyof typeof chartConfig
-            return (
+          {(["attendance", "absence"] as (keyof typeof chartConfig)[]).map(
+            (key) => (
               <button
-                key={chart}
-                data-active={activeChart === chart}
-                // className="data-[active=true]:bg-muted/50 border-border flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-t-0 sm:border-l sm:px-8 sm:py-6"
-                className={`${chart == "attendance" ? "bg-primary/10" : "bg-secondary/10"} border-border flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-t-0 sm:border-l sm:px-8 sm:py-6`}
-                onClick={() => setActiveChart(chart)}
+                key={key}
+                data-active={activeChart === key}
+                className={`${
+                  key === "attendance"
+                    ? "bg-primary/10"
+                    : "bg-secondary/10"
+                } border-border flex flex-1 flex-col justify-center gap-1 px-6 py-4 text-left even:border-l`}
+                onClick={() => setActiveChart(key)}
               >
                 <span className="text-muted-foreground text-xs">
-                  {chartConfig[chart].label}
+                  {chartConfig[key].label}
                 </span>
-                <span className="text-lg leading-none font-bold sm:text-3xl">
-                  {total[key as keyof typeof total].toLocaleString()}
+                <span className="text-lg leading-none font-bold sm:text-xl">
+                  {total[key].toLocaleString()}
                 </span>
               </button>
             )
-          })}
+          )}
         </div>
       </CardHeader>
-      
+
+      {/* Chart */}
       <CardContent className="px-2 sm:p-6 flex-1">
         <ChartContainer
           config={chartConfig}
           className="aspect-auto h-full w-full"
         >
           <LineChart
-            accessibilityLayer
             data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
+            margin={{ top: 15, left: 12, right: 12 }}
           >
             <CartesianGrid vertical={false} />
             <XAxis
@@ -132,43 +115,44 @@ export function AttendanceChart() {
               content={
                 <ChartTooltipContent
                   className="w-[150px]"
-                  nameKey="views"
-                  labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
+                  labelFormatter={(value) =>
+                    new Date(value).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
                       year: "numeric",
                     })
-                  }}
+                  }
                 />
               }
             />
             <Line
-              dataKey={"attendance"}
+              dataKey="attendance"
+              name="Attendance"
               type="monotone"
-              stroke={`var(--color-${"attendance"})`}
+              stroke="var(--chart-1)"
               strokeWidth={2}
               dot={false}
             >
-              <LabelList 
-                dataKey={"attendance"} 
-                position="top" 
-                formatter={(val: number) => `${val}`} 
-                className="text-xs sm:text-sm min-[2000px]:text-base"
+              <LabelList
+                dataKey="attendance"
+                position="top"
+                formatter={(val: number) => `${val}`}
+                className="text-xs sm:text-sm"
               />
             </Line>
             <Line
-              dataKey={"absence"}
+              dataKey="absence"
+              name="Absence"
               type="monotone"
-              stroke={`var(--color-${"absence"})`}
+              stroke="var(--chart-2)"
               strokeWidth={2}
               dot={false}
             >
-              <LabelList 
-                dataKey={"absence"} 
-                position="top" 
-                formatter={(val: number) => `${val}`} 
-                className="text-xs sm:text-sm min-[2000px]:text-base"
+              <LabelList
+                dataKey="absence"
+                position="top"
+                formatter={(val: number) => `${val}`}
+                className="text-xs sm:text-sm"
               />
             </Line>
           </LineChart>

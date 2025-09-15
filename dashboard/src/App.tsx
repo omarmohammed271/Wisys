@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import HRDashboard from './pages/dashboards/HRDashboard'
+import HRDashboard from './pages/dashboards/HRDashboard/HRDashboard'
 import { ThemeProvider } from "@/components/theme-provider"
 import NavBar from './components/layout/NavBar'
 import ProcurmentDashboard from './pages/dashboards/ProcurmentDashboard'

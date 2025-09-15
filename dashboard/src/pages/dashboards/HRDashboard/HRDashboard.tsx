@@ -1,7 +1,12 @@
 import StatsCard from "@/components/Cards/StatsCards";
-import { AgeDist } from "@/components/Charts/HRDashboardCharts/AgeDist";
+import { AcceptanceRateChart } from "@/components/Charts/HRDashboardCharts/AcceptanceRate";
 import { AttendanceChart } from "@/components/Charts/HRDashboardCharts/AttendanceChart";
-import { GenderDist } from "@/components/Charts/HRDashboardCharts/GenderDist";
+import { AverageTenureChart } from "@/components/Charts/HRDashboardCharts/AverageTenure";
+import { CostPerHireChart } from "@/components/Charts/HRDashboardCharts/CostPerHire";
+import { EngagementScoreChart } from "@/components/Charts/HRDashboardCharts/EngagementScore";
+import { MeetingsSurvivabilityChart } from "@/components/Charts/HRDashboardCharts/MeetingsSurvivability";
+import { TimeToFillChart } from "@/components/Charts/HRDashboardCharts/TimeToFill";
+import { TimeToHireChart } from "@/components/Charts/HRDashboardCharts/TimeToHire";
 import { TurnoverChart } from "@/components/Charts/HRDashboardCharts/TurnoverChart";
 import Chatbot from "@/components/Chatbot/Chatbot";
 import {
@@ -62,19 +67,35 @@ export default function HRDashboard() {
       </div>
 
       {/* Charts Section */}
-      <div className="grid flex-1 grid-cols-1 lg:grid-cols-3 gap-2">
+      <div className="grid flex-1 grid-cols-1 lg:grid-cols-5 gap-2">
         {/* Upper */}
-        <div className=" flex flex-col space-y-2 col-span-2">
+        <div className=" flex flex-col space-y-2 col-span-1">
             {/* Attendance / Absence */}
             <AttendanceChart />
             {/* Turnover */}
             <TurnoverChart />
         </div>
-        <div className=" flex flex-col gap-y-2 col-span-1 overflow-hidden">
-            {/* Gender Distribution */}
-            <GenderDist />
-            {/* Age Distribution */}
-            <AgeDist />
+        <div className=" flex flex-col space-y-2 col-span-1">
+            {/* Attendance / Absence */}
+            <TimeToHireChart />
+            {/* Turnover */}
+            <TimeToFillChart />
+        </div>
+        <div className=" flex flex-col space-y-2 col-span-1">
+            {/* Attendance / Absence */}
+            <AcceptanceRateChart />
+            {/* Turnover */}
+            <CostPerHireChart />
+        </div>
+        <div className=" flex flex-col *:h-1/2 space-y-2 col-span-2">
+            {/* Turnover */}
+            <EngagementScoreChart />
+            <div className="grid grid-cols-2 gap-2">
+              {/* Attendance / Absence */}
+              <AverageTenureChart />
+              {/* Attendance / Absence */}
+              <MeetingsSurvivabilityChart />
+            </div>
         </div>
       </div>
 

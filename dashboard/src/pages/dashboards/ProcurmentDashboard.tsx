@@ -1,8 +1,4 @@
 import StatsCard from "@/components/Cards/StatsCards";
-import { AgeDist } from "@/components/Charts/HRDashboardCharts/AgeDist";
-import { AttendanceChart } from "@/components/Charts/HRDashboardCharts/AttendanceChart";
-import { GenderDist } from "@/components/Charts/HRDashboardCharts/GenderDist";
-import { TurnoverChart } from "@/components/Charts/HRDashboardCharts/TurnoverChart";
 import { AverageDeliveryTimeTrendChart } from "@/components/Charts/ProcurementDshboardCharts/AverageDeliveryTimeTrendChart";
 import { MonthlySpendChart } from "@/components/Charts/ProcurementDshboardCharts/MonthlySpendChart";
 import { OpenClosedPOsChart } from "@/components/Charts/ProcurementDshboardCharts/OpenClosedPOsChart";

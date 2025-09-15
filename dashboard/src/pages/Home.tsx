@@ -68,7 +68,7 @@ export default function Home(){
                         
                     <div className='grid lg:grid-cols-2 max-lg:grid-cols-1 gap-x-5 z-10 w-full'>
 
-                        <Link to={''}>
+                        <Link to={'/healthcare'}>
                             <ServiceCard
                                 icon= {<BrainCircuit />}
                                 title= {`Health Cluster`}
@@ -76,7 +76,7 @@ export default function Home(){
                             />
                         </Link>
 
-                        <Link to={'/hr-dashboard'}>
+                        <Link to={'/non-healthcare'}>
                             <ServiceCard
                                 icon= {<Globe />}
                                 title= {`Non-health Cluster`}

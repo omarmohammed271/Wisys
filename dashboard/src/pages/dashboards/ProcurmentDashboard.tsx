@@ -8,12 +8,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import StatsCard from "@/components/Cards/StatsCards";
-import { AverageDeliveryTimeTrendChart } from "@/components/Charts/ProcurementDshboardCharts/AverageDeliveryTimeTrendChart";
-import { MonthlySpendChart } from "@/components/Charts/ProcurementDshboardCharts/MonthlySpendChart";
-import { OpenClosedPOsChart } from "@/components/Charts/ProcurementDshboardCharts/OpenClosedPOsChart";
-import { SpendDistributionChart } from "@/components/Charts/ProcurementDshboardCharts/SpendDistributionChart";
-import { SupplierPerformanceChart } from "@/components/Charts/ProcurementDshboardCharts/SupplierPerformanceChart";
-import { TopSuppliersChart } from "@/components/Charts/ProcurementDshboardCharts/TopSuppliers";
 import {
   ChartContainer,
   ChartTooltip,

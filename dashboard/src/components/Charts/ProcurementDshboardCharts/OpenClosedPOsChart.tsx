@@ -50,13 +50,9 @@ export function MaverickSpendRateChart() {
           className="flex items-center justify-center h-[180px] w-[180px]"
         >
           <PieChart width={240} height={240}>
-            <ChartTooltip
+          <ChartTooltip
               cursor={false}
-              content={
-                <ChartTooltipContent
-                  valueFormatter={(v) => `${v.toFixed(1)}%`}
-                />
-              }
+              content={<ChartTooltipContent hideLabel hideIndicator />}
             />
             <Pie
               data={chartData}

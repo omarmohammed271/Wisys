@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { PieChart, Pie, Label } from 'recharts';
+import { PieChart, Pie, Label, type PieLabelRenderProps } from 'recharts';
 
 import {
   Card,
@@ -34,17 +34,17 @@ export function SpendUnderManagementChart() {
   );
 
   return (
-    <Card  >
-      <CardHeader className="items-center  pb-0">
+    <Card>
+      <CardHeader className="items-center pb-0">
         <CardTitle>Spend Under Management</CardTitle>
         <CardDescription>Jan – Jun 2024</CardDescription>
       </CardHeader>
 
-      <CardContent className="flex flex-col  items-center pb-0">
+      <CardContent className="flex flex-col items-center pb-0">
         {/* Pie Chart */}
         <ChartContainer className="mx-auto w-[180px] h-[180px]" config={{}}>
           <PieChart>
-            <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+            <ChartTooltip />
             <Pie
               data={spendData}
               dataKey="value"
@@ -56,20 +56,20 @@ export function SpendUnderManagementChart() {
               <Label
                 position="center"
                 content={({ viewBox }) => {
-                  if (!viewBox || typeof viewBox.cx !== 'number' || typeof viewBox.cy !== 'number') return null;
-                  const { cx, cy } = viewBox;
+                  const { cx, cy } = viewBox as PieLabelRenderProps; // ✅ safe cast for Pie
+
                   return (
                     <text x={cx} y={cy} textAnchor="middle" dominantBaseline="middle">
                       <tspan
                         x={cx}
-                        y={cy - 5}
+                        y={90}
                         className="fill-foreground text-2xl font-bold"
                       >
                         {`${Math.round(sumPercentage)}%`}
                       </tspan>
                       <tspan
                         x={cx}
-                        y={cy + 15}
+                        y={110}
                         className="fill-muted-foreground text-sm"
                       >
                         Managed

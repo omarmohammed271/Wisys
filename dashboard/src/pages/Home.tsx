@@ -14,7 +14,18 @@ export default function Home(){
         <div className="container relative h-full items-center flex mx-auto pt-12">
             
             {/* Floating animated charts in background */}
-            <FloatingCharts />
+            <motion.div
+                className="absolute inset-0 overflow-hidden pointer-events-none"
+                initial={{ opacity: 0, scale: 0.9, y: 40 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{
+                    duration: 1.2,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                }}
+                >
+                <FloatingCharts />
+            </motion.div>
+            
             
             <motion.div
                 initial={{ opacity: 0 }}
@@ -40,11 +51,12 @@ export default function Home(){
                     <div className="w-full xl:mx-10 flex justify-center z-10 items-center lg:px-15">
                         <div className='text-center rounded-3xl w-full'>
                             <span className='text-center'>
+                                
                                 {/* <div className='bg-gradient-to-br from-white via-white to-orange-300 bg-clip-text text-transparent font-bold pb-5'>
                                     <TextGenerateEffect words={`Digiations 360.`} className='' />
                                 </div> */}
+
                                 <div className="max-w-4xl mx-auto text-center relative z-10">
-                                    {/* Main title with enhanced animation */}
                                     <motion.div
                                         initial={{ opacity: 0, y: 50, scale: 0.9 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -55,23 +67,25 @@ export default function Home(){
                                         className="mb-8"
                                     >
                                         <motion.h1
-                                        className="text-5xl min-h-29 sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-primary via-foreground to-chart-2 bg-clip-text text-transparent"
+                                        className="text-5xl min-h-29 sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-clip-text text-transparent"
                                         animate={{
-                                            backgroundPosition: ["0%", "200%", "0%"],
+                                            backgroundPositionX: ["0%", "400%"],
                                         }}
                                         transition={{
-                                            duration: 6,
+                                            duration: 15,
                                             repeat: Infinity,
-                                            ease: "easeInOut",
+                                            ease: "linear",
                                         }}
                                         style={{
-                                            backgroundSize: "200% auto",
+                                            backgroundImage: "linear-gradient(270deg, var(--primary), var(--foreground), var(--chart-2), var(--primary))",
+                                            backgroundSize: "400% auto", // wide background for smooth motion
                                         }}
                                         >
                                         Digiations 360.
                                         </motion.h1>
                                     </motion.div>
                                 </div>
+
 
                                 <motion.div
                                     initial={{ opacity: 0 }}

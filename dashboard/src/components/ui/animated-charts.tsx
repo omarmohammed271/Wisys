@@ -46,7 +46,7 @@ export function AnimatedBars() {
         >
           {/* Glowing top effect */}
           <motion.div
-            className="absolute -top-1 left-0 right-0 h-3 rounded-full blur-sm"
+            className="absolute -top-1 left-0 end-0 h-3 rounded-full blur-sm"
             style={{ backgroundColor: 'var(--chart-1)' }}
             animate={{
               opacity: [0.3, 0.8, 0.3],
@@ -178,7 +178,7 @@ export function FloatingCharts() {
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Primary floating bar chart */}
       <motion.div
-        className="absolute top-[10%] start-[10%] opacity-25 scale-125"
+        className="absolute top-[10%] start-[10%] opacity-80 scale-125"
         animate={{
           y: [-20, 20, -20],
           x: [-12, 12, -12],
@@ -195,7 +195,7 @@ export function FloatingCharts() {
 
       {/* Primary floating donut chart */}
       <motion.div
-        className="absolute top-1/3 right-1/5 opacity-30 scale-125"
+        className="absolute top-[40%] end-[10%] opacity-80 scale-125"
         animate={{
           y: [16, -16, 16],
           x: [10, -10, 10],
@@ -212,7 +212,7 @@ export function FloatingCharts() {
 
       {/* Secondary smaller donut */}
       <motion.div
-        className="absolute bottom-1/4 left-1/4 opacity-20"
+        className="absolute bottom-[10%] start-[20%] opacity-60"
         animate={{
           y: [-12, 12, -12],
           x: [12, -12, 12],
@@ -242,7 +242,7 @@ export function FloatingCharts() {
 
       {/* Floating geometric shapes */}
       <motion.div
-        className="absolute top-2/3 right-1/6 w-8 h-8 opacity-25"
+        className="absolute top-[20%] end-[20%] w-8 h-8 opacity-25"
         style={{ backgroundColor: 'var(--chart-1)' }}
         animate={{
           rotate: [0, 360],
@@ -257,7 +257,7 @@ export function FloatingCharts() {
       />
 
       <motion.div
-        className="absolute bottom-1/3 right-1/3 w-6 h-6 opacity-20"
+        className="absolute top-5/6 end-1/3 w-6 h-6 opacity-20"
         style={{ backgroundColor: 'var(--chart-3)' }}
         animate={{
           y: [-28, 28, -28],

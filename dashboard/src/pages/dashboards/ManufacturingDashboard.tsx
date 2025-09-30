@@ -1,6 +1,6 @@
 "use client"
 
-import StatsCard from "@/components/Cards/StatsCards"
+import StatsCard from "@/pages/Home/componenets/Cards/StatsCards"
 import { DowntimeByMachineChart } from "@/components/Charts/ManufacturingDashboardCharts/DowntimeByMachineChart"
 import { MaintenanceComplianceTrendChart } from "@/components/Charts/ManufacturingDashboardCharts/MaintenanceComplianceTrendChart"
 import { OEETrendChart } from "@/components/Charts/ManufacturingDashboardCharts/OEETrendChart"

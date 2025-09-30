@@ -1,5 +1,5 @@
 import { ModeToggle } from "../mode-toggle";
-import logo from "@/assets/img/logo-1.png"
+import logo from "@/assets/img/Digiations.png"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "../ui/navigation-menu";
 import { BadgeCent, CircleUserRound, Factory, Grid2x2, Waypoints } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -39,6 +39,7 @@ const routes: RoutesData[] = [
         link: "/finance-dashboard",
         icon: <BadgeCent />,
     },
+    
 ]
 
 function NavBar(){
@@ -52,7 +53,7 @@ function NavBar(){
             {/* Digiations Logo */}
             <Link to={'/'}>
                 <div className="">
-                    <img src={logo} alt="Digiation" className="w-30"/>
+                    <img src={logo} alt="Digiation" className="w-23 h-10 "/>
                 </div>
             </Link>
 
@@ -61,6 +62,7 @@ function NavBar(){
                     {currentRoute?.name || "Comprehensive Dashboard"}
                 </div>)
             }
+            
 
             <div className="flex space-x-4">
                 {/* <FullscreenToggle /> */}

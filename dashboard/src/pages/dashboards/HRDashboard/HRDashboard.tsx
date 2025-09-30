@@ -1,4 +1,4 @@
-import StatsCard from "@/components/Cards/StatsCards";
+import StatsCard from "@/pages/Home/componenets/Cards/StatsCards";
 import { AcceptanceRateChart } from "@/components/Charts/HRDashboardCharts/AcceptanceRate";
 import { AttendanceChart } from "@/components/Charts/HRDashboardCharts/AttendanceChart";
 import { AverageTenureChart } from "@/components/Charts/HRDashboardCharts/AverageTenure";
@@ -20,7 +20,7 @@ import {
 
 export default function HRDashboard() {
   return (
-    <div className="p-3 flex flex-col h-full space-y-2">
+    <div className="p-3 flex flex-col h-[90vh] overflow-hidden space-y-2">
       {/* Stat Cards */}
       <div className="grid h-fit grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-2">
         <StatsCard

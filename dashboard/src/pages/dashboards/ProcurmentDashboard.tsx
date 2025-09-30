@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import StatsCard from "@/components/Cards/StatsCards";
+import StatsCard from "@/pages/Home/componenets/Cards/StatsCards";
 import {
   ChartContainer,
   ChartTooltip,
@@ -29,7 +29,7 @@ import * as React from 'react';
 import { TopSuppliersChart } from '@/components/Charts/ProcurementDshboardCharts/TopSuppliers';
 import { EmergencyPurchaseChart } from '@/components/Charts/ProcurementDshboardCharts/SpendDistributionChart';
 import { MonthlyCostAvoidanceChart } from '@/components/Charts/ProcurementDshboardCharts/MonthlySpendChart';
-import StatsCardData from '@/components/Cards/StatsCardData';
+import StatsCardData from '@/pages/Home/componenets/Cards/StatsCardData';
 import { SpendUnderManagementChart } from '@/components/Charts/ProcurementDshboardCharts/SpendUnderManagementChart';
 import { ChartPieLabelList } from '@/components/Charts/ProcurementDshboardCharts/ROIChart';
 import { CostReductionTrendChart } from '@/components/Charts/ProcurementDshboardCharts/AverageDeliveryTimeTrendChart';

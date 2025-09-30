@@ -1,5 +1,5 @@
 'use client';
-import StatsCardData from '@/components/Cards/StatsCardData';
+import StatsCardData from '@/pages/Home/componenets/Cards/StatsCardData';
 import FLineChart from '@/components/Charts/FinanceCharts/FLineChart';
 import FAreaChart from '@/components/Charts/FinanceCharts/FAreaChart';
 import FBarChart from '@/components/Charts/FinanceCharts/FBarChart';
@@ -12,7 +12,7 @@ import FLollipopChart from '@/components/Charts/FinanceCharts/FLollipopChart';
 // -------- Dashboard --------
 export default function FinanceDashboard() {
   return (
-    <>
+    <div className="h-screen overflow-hidden">
       <StatsCardData />
 
       <div className="p-4 grid grid-cols-1 lg:grid-cols-3 gap-3">
@@ -34,6 +34,6 @@ export default function FinanceDashboard() {
 
         <FLollipopChart />
       </div>
-    </>
+    </div>
   );
 }

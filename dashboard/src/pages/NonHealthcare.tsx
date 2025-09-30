@@ -42,7 +42,7 @@ const itemVariants = {
 // ------------------------------
 export default function NonHealthcare(){
   return (
-    <div className="container lg:h-full relative mx-auto">
+    <div className="container lg:h-screen lg:overflow-hidden relative mx-auto">
       {/* Background dots */}
       <div>
         <motion.div

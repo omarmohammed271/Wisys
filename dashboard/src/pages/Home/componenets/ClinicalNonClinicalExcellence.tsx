@@ -3,8 +3,19 @@ import { motion } from 'framer-motion';
 import { Network, BarChart3, Brain, Radio ,HeartPulse, Activity, Hospital, ShieldCheck ,Heart  } from "lucide-react";
 import NonTech from "@/assets/img/Healthcare_platform_illustration_3ba1d352.png"
 import Clincal from "@/assets/img/Enterprise_platform_illustration_1a918fd5.png"
+import { useNavigate } from 'react-router-dom';
 
 const ClinicalNonClinicalExcellence = () => {
+  const navigate = useNavigate();
+  
+  const navigateToClinical = () => {
+    navigate('/Clinical');
+  };
+  
+  const navigateToNonClinical = () => {
+    navigate('/non-Clinical');
+  };
+
   return (
     <section className="py-20 w-full bg-background">
       <div className="container mx-auto px-4">
@@ -107,14 +118,14 @@ const ClinicalNonClinicalExcellence = () => {
                 {/* CTA Buttons */}
                 <div className="flex flex-row sm:flex-row gap-3">
                  <button
-    onClick={() => (window.location.href = "http://87.237.225.137:3003/healthcare")}
+    onClick={navigateToClinical}
     className="px-6 py-3 w-100 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-900 transition-colors"
   >
     Explore Health360 Platform →
   </button>
 
   <button
-    onClick={() => (window.location.href = "http://87.237.225.137:3003/healthcare")}
+    onClick={navigateToClinical}
     className="px-6 py-3 w-100 bg-transparent border border-blue-500 text-blue-500 font-semibold rounded-lg hover:bg-blue-500/10 transition-colors"
   >
     Live Demo
@@ -206,14 +217,15 @@ const ClinicalNonClinicalExcellence = () => {
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3">
                 <button
-    onClick={() => (window.location.href = "http://87.237.225.137:3003/non-healthcare")}
+                
+    onClick={navigateToNonClinical}
     className="px-6 py-3 w-100 bg-purple-500 text-white font-semibold rounded-lg hover:bg-purple-900 transition-colors"
   >
     Explore DIGINexa Platform →
   </button>
 
   <button
-    onClick={() => (window.location.href = "http://87.237.225.137:3003/non-healthcare")}
+    onClick={navigateToNonClinical}
     className="px-6 py-3 w-100 bg-transparent border border-purple-500 text-purple-500 font-semibold rounded-lg hover:bg-purple-500/10 transition-colors"
   >
     Live Demo

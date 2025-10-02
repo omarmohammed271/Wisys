@@ -1,42 +1,72 @@
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 // ------------------------------
 // Data object for sections/items
 // ------------------------------
 const sections = [
   {
-    title: "Settings",
+    title: 'Settings',
     items: [
-      { label: "MasterBook", to: "http://87.237.225.137:3000/MasterBook" },
-      { label: "Region", to: "http://87.237.225.137:3000/Region" },
-      { label: "Pages", to: "http://87.237.225.137:3000/Pages" },
-      { label: "Roles", to: "http://87.237.225.137:3000/Roles" },
-      { label: "Users", to: "http://87.237.225.137:3000/Users" },
-      { label: "Domain", to: "http://87.237.225.137:3000/Domain" },
+      { label: 'MasterBook', to: 'http://87.237.225.137:3000/MasterBook' },
+      { label: 'Region', to: 'http://87.237.225.137:3000/Region' },
+      { label: 'Pages', to: 'http://87.237.225.137:3000/Pages' },
+      { label: 'Roles', to: 'http://87.237.225.137:3000/Roles' },
+      { label: 'Users', to: 'http://87.237.225.137:3000/Users' },
+      { label: 'Domain', to: 'http://87.237.225.137:3000/Domain' },
     ],
   },
   {
-    title: "Mapping",
+    title: 'Mapping',
     items: [
-      { label: "Facility", to: "http://87.237.225.137:3000/Facility" },
-      { label: "Facility Master Data", to: "http://87.237.225.137:3000/FacilityMasterData" },
-      { label: "Mapping Master Data", to: "http://87.237.225.137:3000/MappingMasterData" },
-      { label: "Section Master", to: "http://87.237.225.137:3000/section-master" },
-      { label: "Section Mapping", to: "http://87.237.225.137:3000/section-mapping" },
+      { label: 'Facility', to: 'http://87.237.225.137:3000/Facility' },
+      {
+        label: 'Facility Master Data',
+        to: 'http://87.237.225.137:3000/FacilityMasterData',
+      },
+      {
+        label: 'Mapping Master Data',
+        to: 'http://87.237.225.137:3000/MappingMasterData',
+      },
+      {
+        label: 'Section Master',
+        to: 'http://87.237.225.137:3000/section-master',
+      },
+      {
+        label: 'Section Mapping',
+        to: 'http://87.237.225.137:3000/section-mapping',
+      },
     ],
   },
   {
-    title: "Dashboard",
+    title: 'Dashboard',
     items: [
-      { label: "Healthcare Beds Overview New", to: "http://87.237.225.137:3000/N-Mhc-Beds" },
-      { label: "Healthcare Beds Critical New", to: "http://87.237.225.137:3000/N-Critical-Care" },
-      { label: "Emergency Dashboard New", to: "http://87.237.225.137:3000/MHCEmergencyNew" },
-      { label: "Emergency Status", to: "http://87.237.225.137:3000/MHCEmergency-two-new" },
-      { label: "Admitted New", to: "http://87.237.225.137:3000/Admitted-new" },
-      { label: "Healthcare Morque-Data New", to: "http://87.237.225.137:3000/N-Morque-Data" },
-      { label: "Healthcare Makkah Bed Details New", to: "http://87.237.225.137:3000/N-bed-makka-details" },
+      {
+        label: 'Clinical Beds Overview New',
+        to: 'http://87.237.225.137:3000/N-Mhc-Beds',
+      },
+      {
+        label: 'Clinical Beds Critical New',
+        to: 'http://87.237.225.137:3000/N-Critical-Care',
+      },
+      {
+        label: 'Emergency Dashboard New',
+        to: 'http://87.237.225.137:3000/MHCEmergencyNew',
+      },
+      {
+        label: 'Emergency Status',
+        to: 'http://87.237.225.137:3000/MHCEmergency-two-new',
+      },
+      { label: 'Admitted New', to: 'http://87.237.225.137:3000/Admitted-new' },
+      {
+        label: 'Clinical Morque-Data New',
+        to: 'http://87.237.225.137:3000/N-Morque-Data',
+      },
+      {
+        label: 'Clinical Makkah Bed Details New',
+        to: 'http://87.237.225.137:3000/N-bed-makka-details',
+      },
     ],
   },
 ];
@@ -53,18 +83,18 @@ const containerVariants = {
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" as const },
-    },
-  };
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' as const },
+  },
+};
 
 // ------------------------------
 // Main Component
 // ------------------------------
-export default function Healthcare() {
+export default function Clinical() {
   return (
     <div className="container lg:h-screen lg:overflow-hidden pb-10 relative mx-auto">
       {/* Background dots */}
@@ -76,10 +106,10 @@ export default function Healthcare() {
         >
           <div
             className={cn(
-              "absolute inset-0",
-              "[background-size:30px_30px]",
-              "[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]",
-              "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"
+              'absolute inset-0',
+              '[background-size:30px_30px]',
+              '[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]',
+              'dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]'
             )}
           />
         </motion.div>
@@ -93,12 +123,12 @@ export default function Healthcare() {
           <motion.div
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1, ease: 'easeOut' }}
             className="max-lg:mx-10 w-[80%] items-center py-10 bg-gradient-to-br from-primary to-secondary
               rounded-lg shadow-md transition-all duration-500"
           >
             <h1 className="text-7xl text-center font-bold text-white">
-              Healthcare Dashboards
+              Clinical Dashboards
             </h1>
           </motion.div>
         </div>
@@ -119,9 +149,10 @@ export default function Healthcare() {
               <h1 className="text-3xl font-medium mb-6">{section.title}</h1>
               <div className="relative">
                 {/* Vertical line */}
-                <div className="absolute start-2 top-0 h-full w-1 
-                  bg-gradient-to-b from-transparent via-secondary/40 dark:via-muted to-transparent">
-                </div>
+                <div
+                  className="absolute start-2 top-0 h-full w-1 
+                  bg-gradient-to-b from-transparent via-secondary/40 dark:via-muted to-transparent"
+                ></div>
 
                 {/* Items */}
                 <div className="space-y-8 relative ps-5">

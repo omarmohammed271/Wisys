@@ -8,9 +8,9 @@ import ProcurmentDashboard from './pages/dashboards/ProcurmentDashboard'
 import ManufacturingDashboard from './pages/dashboards/ManufacturingDashboard'
 import FinanceDashboard from './pages/dashboards/FinanceDashboard'
 import Home from './pages/Home/Home'
-import Healthcare from './pages/Healthcare'
-import NonHealthcare from './pages/NonHealthcare'
 import Contact from './pages/Contact'
+import NonClinical from './pages/NonClinical'
+import Clinical from './pages/Clinical'
 
 function App() {
 
@@ -20,8 +20,8 @@ function App() {
         <main className='bg-background select-none text-foreground flex flex-col py-3 md:px-20'>
           <Routes>
             <Route path="/" element={<><HomeNavBar /><Home /></>} />
-            <Route path="/healthcare" element={<><NavBar /><Healthcare /></>} />
-            <Route path="/non-healthcare" element={<><NavBar /><NonHealthcare /></>} />
+            <Route path="/Clinical" element={<><NavBar /><Clinical /></>} />
+            <Route path="/non-Clinical" element={<><NavBar /><NonClinical /></>} />
             <Route path="/contact" element={<><HomeNavBar /><Contact /></>} />
             <Route path="/hr-dashboard" element={<><NavBar /><HRDashboard /></>} />
             <Route path="/procurement-dashboard" element={<><NavBar /><ProcurmentDashboard /></>} />

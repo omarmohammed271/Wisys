@@ -1,18 +1,18 @@
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 // ------------------------------
 // Data object for sections/items
 // ------------------------------
 const sections = [
   {
-    title: "Dashboards",
+    title: 'Dashboards',
     items: [
-      { label: "HR Dashboard", to: "/hr-dashboard" },
-      { label: "Procurement Dashboard", to: "/procurement-dashboard" },
-      { label: "Finance Dashboard", to: "/finance-dashboard" },
-      { label: "Manufacturing Dashboard", to: "/manufacturing-dashboard" },
+      { label: 'HR Dashboard', to: '/hr-dashboard' },
+      { label: 'Procurement Dashboard', to: '/procurement-dashboard' },
+      { label: 'Finance Dashboard', to: '/finance-dashboard' },
+      { label: 'Manufacturing Dashboard', to: '/manufacturing-dashboard' },
     ],
   },
 ];
@@ -29,18 +29,18 @@ const containerVariants = {
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" as const },
-    },
-  };
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' as const },
+  },
+};
 
 // ------------------------------
 // Main Component
 // ------------------------------
-export default function NonHealthcare(){
+export default function NonClinical() {
   return (
     <div className="container lg:h-screen lg:overflow-hidden relative mx-auto">
       {/* Background dots */}
@@ -52,10 +52,10 @@ export default function NonHealthcare(){
         >
           <div
             className={cn(
-              "absolute inset-0",
-              "[background-size:30px_30px]",
-              "[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]",
-              "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"
+              'absolute inset-0',
+              '[background-size:30px_30px]',
+              '[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]',
+              'dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]'
             )}
           />
         </motion.div>
@@ -69,12 +69,12 @@ export default function NonHealthcare(){
           <motion.div
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1, ease: 'easeOut' }}
             className="max-lg:mx-10 w-[80%] items-center py-10 bg-gradient-to-br from-primary to-secondary
               rounded-lg shadow-md transition-all duration-500"
           >
             <h1 className="text-7xl text-center font-bold text-white">
-              Non-Healthcare Dashboards
+              Non-Clinical Dashboards
             </h1>
           </motion.div>
         </div>
@@ -95,9 +95,10 @@ export default function NonHealthcare(){
               <h1 className="text-3xl font-medium mb-6">{section.title}</h1>
               <div className="relative">
                 {/* Vertical line */}
-                <div className="absolute start-2 top-0 h-full w-1 
-                  bg-gradient-to-b from-transparent via-secondary/40 dark:via-muted to-transparent">
-                </div>
+                <div
+                  className="absolute start-2 top-0 h-full w-1 
+                  bg-gradient-to-b from-transparent via-secondary/40 dark:via-muted to-transparent"
+                ></div>
 
                 {/* Items */}
                 <div className="space-y-8 relative ps-5">

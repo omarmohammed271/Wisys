@@ -17,13 +17,13 @@ const services: ServiceItem[] = [
     {
         id: "1",
         name: "Clinic Services",
-        link: "/healthcare",
+        link: "/Clinical",
         icon: <Stethoscope />,
     },
     {
         id: "2",
         name: "Non-Clinical Services",
-        link: "/non-healthcare",
+        link: "/non-Clinical",
         icon: <Cpu />,
     },
 

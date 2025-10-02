@@ -22,7 +22,7 @@ const services: ServiceItem[] = [
     },
     {
         id: "2",
-        name: "Non-Healthcare Services",
+        name: "Non-Clinical Services",
         link: "/non-healthcare",
         icon: <Cpu />,
     },

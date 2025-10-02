@@ -15,10 +15,12 @@ const Preloader: React.FC = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="mb-8"
+          className="mb-8 " 
         >
-          <div className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
+          <div className="text-5xl h-15 font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 ">
+            
             Digiations 360.
+
           </div>
         </motion.div>
 

@@ -17,7 +17,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Router>
-        <main className='bg-background select-none text-foreground flex flex-col py-3 md:px-20'>
+        <main className='bg-background select-none text-foreground flex flex-col py-3'>
           <Routes>
             <Route path="/" element={<><HomeNavBar /><Home /></>} />
             <Route path="/Clinical" element={<><NavBar /><Clinical /></>} />

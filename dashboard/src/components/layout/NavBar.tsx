@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import FullscreenToggle from "../ui/FullscreenToggle";
+import { useResponsiveScalars } from "@/hooks/useResponsiveScalars";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import { Button } from "../ui/button";
 
 type RoutesData = {
     id: string,
@@ -46,49 +49,65 @@ function NavBar(){
 
     const location = useLocation();
     const currentRoute = routes.find(route => route.link === location.pathname);
-    console.log(currentRoute)
+    const { textScalar, barScalar, iScalar } = useResponsiveScalars();
     return(
-        <div className="p-3 backdrop-blur-md flex w-full justify-between h-fit border-border">
+        <div className="px-3 justify-between h-fit border-border backdrop-blur-md flex w-full min-[2000px]:py-[1px] items-center">
 
             {/* Digiations Logo */}
             <Link to={'/'}>
                 <div className="">
-                    <img src={logo} alt="Digiation" className="w-23 h-10 "/>
+                <img
+                    src={logo}
+                    alt="Digiation"
+                    style={{
+                    width: `${5 * textScalar}rem`, // logo scales with barScalar
+                    }}/>
                 </div>
             </Link>
 
             {   currentRoute &&
-                (<div className="text-muted-foreground text-[160%] max-md:hidden font-medium">
+                (<div className="text-muted-foreground max-md:hidden font-medium" 
+                style={{
+                    fontSize: `${1 * textScalar}rem`,
+                    }}>
                     {currentRoute?.name || "Comprehensive Dashboard"}
                 </div>)
             }
             
 
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 z-30">
                 {/* <FullscreenToggle /> */}
                 {
                     currentRoute && (
-                        <NavigationMenu viewport={false} className="lg:end-2" >
-                            <NavigationMenuList>
-                                <NavigationMenuItem>
-                                <NavigationMenuTrigger><Grid2x2 /></NavigationMenuTrigger>
-                                <NavigationMenuContent>
-                                    {
-                                        routes.map((route) => (
-                                            <Link to={route.link}>
-                                                <NavigationMenuLink key={route.id} className="w-max">
-                                                    <div className="flex space-x-2 items-center">
-                                                        <span>{route.icon}</span>
-                                                        <span>{route.name}</span>
-                                                    </div>
-                                                </NavigationMenuLink>
-                                            </Link>
-                                        ))
-                                    }
-                                </NavigationMenuContent>
-                                </NavigationMenuItem>
-                            </NavigationMenuList>
-                        </NavigationMenu>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant="ghost" size="icon" className="lg:end-2">
+                                <Grid2x2 style={{ width: `${iScalar}rem`, height: `${iScalar}rem` }} />
+                                </Button>
+                            </DropdownMenuTrigger>
+
+                            <DropdownMenuContent align="end" className="min-w-[10rem] border-border">
+                                {routes.map((route) => (
+                                <DropdownMenuItem asChild key={route.id}>
+                                    <Link
+                                    to={route.link}
+                                    className="flex items-center space-x-2 w-full"
+                                    style={{
+                                        fontSize: `${0.8 * textScalar}rem`,
+                                    }}
+                                    >
+                                    <span
+                                    style={{
+                                        transform: `scale(${0.7 * textScalar})`,
+                                        width: `${4 * textScalar}px`,
+                                    }}
+                                    >{route.icon}</span>
+                                    <span>{route.name}</span>
+                                    </Link>
+                                </DropdownMenuItem>
+                                ))}
+                            </DropdownMenuContent>
+                            </DropdownMenu>
                     )
                 }
                 <ModeToggle />

@@ -153,6 +153,9 @@
   
 }
 
+body{
+  @apply bg-background
+}
 
 body::-webkit-scrollbar {
   width: 12px;
@@ -180,15 +183,6 @@ body::-webkit-scrollbar-thumb:hover {
   
 }
 
-
-.chatbot-radius{
-  border-radius: 15px 0px 0px 15px;
-}
-
-.chart-card{
-  @apply absolute transition;
-}
-
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
@@ -198,4 +192,17 @@ body::-webkit-scrollbar-thumb:hover {
 .scrollbar-hide {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+
+
+.chatbot-radius{
+  border-radius: 15px 0px 0px 15px;
+}
+
+.chart-card{
+  @apply absolute transition;
+}
+
+.card-style{
+  @apply bg-gradient-to-br border-border from-primary/10 to-secondary/10 text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm;
 }

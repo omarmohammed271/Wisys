@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import FullscreenToggle from "../ui/FullscreenToggle";
+import { useResponsiveScalars } from "@/hooks/useResponsiveScalars";
 
 type RoutesData = {
     id: string,
@@ -46,19 +47,27 @@ function NavBar(){
 
     const location = useLocation();
     const currentRoute = routes.find(route => route.link === location.pathname);
-    console.log(currentRoute)
+    const { textScalar, barScalar, iScalar } = useResponsiveScalars();
     return(
-        <div className="p-3 backdrop-blur-md flex w-full justify-between h-fit border-border">
+        <div className="px-3 justify-between h-fit border-border backdrop-blur-md flex w-full min-[2000px]:py-[1px] items-center">
 
             {/* Digiations Logo */}
             <Link to={'/'}>
                 <div className="">
-                    <img src={logo} alt="Digiation" className="w-23 h-10 "/>
+                <img
+                    src={logo}
+                    alt="Digiation"
+                    style={{
+                    width: `${5 * textScalar}rem`, // logo scales with barScalar
+                    }}/>
                 </div>
             </Link>
 
             {   currentRoute &&
-                (<div className="text-muted-foreground text-[160%] max-md:hidden font-medium">
+                (<div className="text-muted-foreground max-md:hidden font-medium" 
+                style={{
+                    fontSize: `${1 * textScalar}rem`,
+                    }}>
                     {currentRoute?.name || "Comprehensive Dashboard"}
                 </div>)
             }
@@ -71,13 +80,16 @@ function NavBar(){
                         <NavigationMenu viewport={false} className="lg:end-2" >
                             <NavigationMenuList>
                                 <NavigationMenuItem>
-                                <NavigationMenuTrigger><Grid2x2 /></NavigationMenuTrigger>
+                                <NavigationMenuTrigger><Grid2x2 style={{width: `${iScalar}rem`, height: `${iScalar}rem`}}/></NavigationMenuTrigger>
                                 <NavigationMenuContent>
                                     {
                                         routes.map((route) => (
                                             <Link to={route.link}>
                                                 <NavigationMenuLink key={route.id} className="w-max">
-                                                    <div className="flex space-x-2 items-center">
+                                                    <div className="flex space-x-2 items-center" 
+                                                    style={{
+                                                    fontSize: `${0.8 * textScalar}rem`,
+                                                    }}>
                                                         <span>{route.icon}</span>
                                                         <span>{route.name}</span>
                                                     </div>

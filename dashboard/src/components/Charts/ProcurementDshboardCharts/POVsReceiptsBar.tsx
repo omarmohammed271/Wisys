@@ -3,6 +3,8 @@ import React, { useEffect, useRef } from "react";
 import ReactECharts from "echarts-for-react";
 import { useTheme } from "@/components/theme-provider";
 import { useResponsiveScalars } from "@/hooks/useResponsiveScalars";
+import { ChartDetailsDialog } from "@/components/DetailsOverlay/ChartDetailsDialog";
+import { Button } from "@/components/ui/button";
 
 export default function POVsReceiptsBar({
   categories,
@@ -17,62 +19,44 @@ export default function POVsReceiptsBar({
   const isDark = theme === "dark";
   const { textScalar, barScalar } = useResponsiveScalars();
 
-  const textColor = isDark ? "#FFFFFFFF" : "#111827"; // gray-200 vs gray-900
-  const gridLine = isDark ? "#374151" : "#e5e7eb"; // gray-700 vs gray-200
+  const textColor = isDark ? "#FFFFFF" : "#111827";
+  const gridLine = isDark ? "#374151" : "#e5e7eb";
 
-  // combine into rawData
   const rawData = [ordered, received];
 
-  // totals per category
   const totalData: number[] = [];
   for (let i = 0; i < rawData[0].length; ++i) {
     let sum = 0;
-    for (let j = 0; j < rawData.length; ++j) {
-      sum += rawData[j][i];
-    }
+    for (let j = 0; j < rawData.length; ++j) sum += rawData[j][i];
     totalData.push(sum);
   }
 
-  // series generation
   const seriesNames = ["Ordered Qty", "Received Qty"];
   const colors = ["var(--chart-1)", "var(--chart-2)"];
 
-  const series = seriesNames.map((name, sid) => {
-    return {
-      name,
-      type: "bar",
-      stack: "total",
-      barWidth: `${50}%`,
-      color: colors[sid],
-      label: {
-        show: true,
-        formatter: (params: any) =>
-          params.value > 0 ? (params.value * 100).toFixed(1) + "%" : "",
-        color: textColor,
-        fontSize: 10 * textScalar,
-      },
-      data: rawData[sid].map((d, did) =>
-        totalData[did] <= 0 ? 0 : d / totalData[did]
-      ),
-      emphasis: {
-        itemStyle: {
-          color: colors[sid],
-        },
-      },
-    };
-  });
+  const series = seriesNames.map((name, sid) => ({
+    name,
+    type: "bar",
+    stack: "total",
+    barWidth: `${50}%`,
+    color: colors[sid],
+    label: {
+      show: true,
+      formatter: (params: any) =>
+        params.value > 0 ? (params.value * 100).toFixed(1) + "%" : "",
+      color: textColor,
+      fontSize: 10 * textScalar,
+    },
+    data: rawData[sid].map((d, did) =>
+      totalData[did] <= 0 ? 0 : d / totalData[did]
+    ),
+    emphasis: {
+      itemStyle: { color: colors[sid] },
+    },
+  }));
 
   const option = {
     backgroundColor: "transparent",
-    title: {
-      text: "PO vs Receipts (%)",
-      left: "center",
-      textStyle: {
-        fontSize: 13 * textScalar,
-        fontWeight: "bold",
-        color: textColor,
-      },
-    },
     tooltip: {
       trigger: "axis",
       backgroundColor: isDark ? "#111827" : "#000000",
@@ -101,7 +85,7 @@ export default function POVsReceiptsBar({
       left: "center",
       textStyle: { color: textColor, fontSize: 9 * textScalar },
       data: seriesNames,
-      itemWidth: 10 * barScalar,   // width of the legend marker
+      itemWidth: 10 * barScalar,
       itemHeight: 8 * barScalar,
       itemGap: 3,
     },
@@ -120,7 +104,7 @@ export default function POVsReceiptsBar({
     },
     yAxis: {
       type: "value",
-      max: 1, // always 100% max
+      max: 1,
       axisLabel: {
         color: textColor,
         fontSize: 9 * textScalar,
@@ -133,14 +117,115 @@ export default function POVsReceiptsBar({
   };
 
   const chartRef = useRef<any>(null);
-
   useEffect(() => {
     const chart = chartRef.current?.getEchartsInstance();
-    chart?.resize(); // recalc size after mount
+    chart?.resize();
   }, []);
 
   return (
-    <div className="w-full p-5 card-style">
+    <div className="w-full p-5 card-style relative">
+      {/* Chart Details Dialog */}
+      <ChartDetailsDialog
+        title="PO vs Receipts (%)"
+        trigger={
+          <Button
+            variant="text"
+            className="absolute top-[5%] inset-x-0 active:ring-0 z-30"
+          >
+            <h1
+              className="absolute mx-auto font-bold"
+              style={{ fontSize: `${13 * textScalar}px` }}
+            >
+              PO vs Receipts (%)
+            </h1>
+          </Button>
+        }
+        summary={
+          <div
+            className="space-y-3"
+            style={{ fontSize: `${15 * textScalar}px`, lineHeight: 1.6 }}
+          >
+            <p>
+              The <strong>PO vs Receipts</strong> chart visualizes the fulfillment ratio of
+              purchase orders against goods received. It helps track procurement delivery
+              efficiency and identify discrepancies between ordered and received quantities.
+            </p>
+            <p>
+              This comparison ensures that supplier performance and warehouse intake
+              align with procurement expectations, reducing bottlenecks in material
+              availability and financial reconciliation.
+            </p>
+          </div>
+        }
+        dataAndFilters={
+          <div
+            className="space-y-4"
+            style={{ fontSize: `${15 * textScalar}px`, lineHeight: 1.6 }}
+          >
+            <p>
+              Data in this chart represents the proportion of received goods relative to
+              the total ordered quantities for each product category.
+            </p>
+            <table
+              className="w-full text-sm border-collapse border border-border"
+              style={{
+                fontSize: `${14 * textScalar}px`,
+                lineHeight: 1.5,
+              }}
+            >
+              <thead className="bg-muted/50">
+                <tr>
+                  <th className="border p-2 text-left">Category</th>
+                  <th className="border p-2 text-right">Ordered Qty</th>
+                  <th className="border p-2 text-right">Received Qty</th>
+                </tr>
+              </thead>
+              <tbody>
+                {categories.map((cat, i) => (
+                  <tr key={cat}>
+                    <td className="border p-2">{cat}</td>
+                    <td className="border p-2 text-right">{ordered[i]}</td>
+                    <td className="border p-2 text-right">{received[i]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="text-muted-foreground">
+              <em>Data Source: SAP B1 – Warehouse & Procurement Modules</em>
+            </p>
+          </div>
+        }
+        insights={
+          <div
+            className="space-y-3"
+            style={{ fontSize: `${15 * textScalar}px`, lineHeight: 1.6 }}
+          >
+            <p className="font-semibold text-foreground">
+              <strong>Key Insights</strong>
+            </p>
+            <ul className="list-disc pl-4 space-y-2">
+              <li>
+                Categories with high fulfillment (close to 100%) indicate strong supplier
+                reliability and good inventory flow.
+              </li>
+              <li>
+                Gaps between ordered and received quantities may highlight supply chain
+                delays or partially delivered POs.
+              </li>
+              <li>
+                Tracking these differences helps forecast warehouse replenishment needs
+                and prevent production halts.
+              </li>
+            </ul>
+            <p className="italic text-muted-foreground pt-1">
+              Tip: Monitor trends over time to detect supplier consistency and seasonal
+              fluctuations.
+            </p>
+          </div>
+        }
+      />
+
+      {/* Chart */}
       <ReactECharts
         ref={chartRef}
         option={option}

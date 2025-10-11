@@ -3,6 +3,8 @@ import React, { useEffect, useRef } from "react";
 import ReactECharts from "echarts-for-react";
 import { useTheme } from "@/components/theme-provider";
 import { useResponsiveScalars } from "@/hooks/useResponsiveScalars";
+import { ChartDetailsDialog } from "@/components/DetailsOverlay/ChartDetailsDialog";
+import { Button } from "@/components/ui/button";
 
 interface DeliveryDelaysBarProps {
   vendors: string[];
@@ -40,19 +42,6 @@ export default function DeliveryDelaysBar({ vendors, delays }: DeliveryDelaysBar
 
   const option = {
     backgroundColor: "transparent",
-    title: {
-      text: "Delivery Delays (Avg Days)",
-      left: "center",
-      textStyle: {
-        fontSize: 11 * textScalar,
-        fontWeight: "bold",
-        color: textColor,
-      },
-      subtextStyle: {
-        fontSize: 10 * textScalar,
-        color: subTextColor,
-      },
-    },
     tooltip: {
       trigger: "axis",
       axisPointer: { type: "shadow" },
@@ -121,7 +110,158 @@ export default function DeliveryDelaysBar({ vendors, delays }: DeliveryDelaysBar
   }, []);
 
   return (
-    <div className="w-full p-5 card-style">
+    <div className="w-full p-5 card-style relative">
+      <ChartDetailsDialog
+        title="Delivery Delays (Avg Days)"
+        trigger={
+          <Button
+            variant="text"
+            className="absolute top-[5%] inset-x-0 active:ring-0 z-30"
+          >
+            <h1
+              className="absolute mx-auto font-bold"
+              style={{ fontSize: `${13 * textScalar}px` }}
+            >
+              Delivery Delays (Avg Days)
+            </h1>
+          </Button>
+        }
+        summary={
+          <div
+            style={{ fontSize: `${15 * textScalar}px`, lineHeight: 1.6 }}
+            className="space-y-3"
+          >
+            <p>
+              The <strong>Delivery Delays (Avg Days)</strong> chart visualizes average
+              vendor delivery times, helping identify inefficiencies in supply chain
+              performance. It highlights which suppliers are consistently late and
+              which meet or exceed delivery expectations.
+            </p>
+
+            <p>
+              Each bar represents the <strong>average delivery delay</strong> per
+              vendor — measured as the number of days between the expected and actual
+              delivery dates. Higher values indicate greater delays, which may impact
+              production schedules and inventory turnover.
+            </p>
+
+            <ul className="list-disc pl-4">
+              <li>
+                <strong>Vendor:</strong> Supplier responsible for delivering goods or
+                materials.
+              </li>
+              <li>
+                <strong>Avg Delay:</strong> Mean number of delayed days across all
+                purchase orders.
+              </li>
+              <li>
+                <strong>Performance Grouping:</strong> Color-coded to quickly
+                distinguish reliable vs. underperforming vendors.
+              </li>
+            </ul>
+
+            <p className="text-muted-foreground">
+              This visualization assists supply chain managers in evaluating vendor
+              reliability and timing consistency, providing the foundation for
+              data-backed performance reviews and corrective action.
+            </p>
+          </div>
+        }
+        dataAndFilters={
+          <div
+            style={{ fontSize: `${15 * textScalar}px`, lineHeight: 1.6 }}
+            className="space-y-4"
+          >
+            <p>
+              The underlying dataset includes all completed purchase orders with
+              confirmed goods receipts during the selected period. Only finalized
+              transactions are included to ensure accuracy in average delay
+              calculations.
+            </p>
+
+            <table
+              className="w-full border-collapse border border-border"
+              style={{ fontSize: `${14 * textScalar}px`, lineHeight: 1.5 }}
+            >
+              <thead className="bg-muted/50">
+                <tr>
+                  <th className="border p-2 text-left">Vendor</th>
+                  <th className="border p-2 text-right">Avg Delay (Days)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {vendors.map((vendor, idx) => (
+                  <tr key={vendor}>
+                    <td className="border p-2">{vendor}</td>
+                    <td className="border p-2 text-right">{delays[idx]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            <div className="pt-2 text-muted-foreground">
+              <p className="font-medium mb-1">Active Filters:</p>
+              <ul className="list-disc pl-4 space-y-1">
+                <li>Date Range: <strong>Current Quarter (Q4 2025)</strong></li>
+                <li>Order Status: <strong>Completed Deliveries Only</strong></li>
+                <li>Company: <strong>Global Supply Operations</strong></li>
+                <li>Unit: <strong>Days (Standardized)</strong></li>
+              </ul>
+            </div>
+
+            <p className="text-muted-foreground">
+              <em>
+                Data Source: SAP Business One — Purchase Order and Goods Receipt
+                modules aggregated by vendor.
+              </em>
+            </p>
+          </div>
+        }
+        insights={
+          <div
+            style={{ fontSize: `${15 * textScalar}px`, lineHeight: 1.6 }}
+            className="space-y-3"
+          >
+            <p className="font-semibold text-foreground">
+              <strong>Key Observations & Insights</strong>
+            </p>
+
+            <ul className="list-disc pl-4 space-y-2">
+              <li>
+                <strong>High Delay Vendors:</strong> Suppliers with average delays
+                above 5 days indicate fulfillment bottlenecks or logistics issues.
+              </li>
+
+              <li>
+                <strong>Consistent Performers:</strong> Vendors averaging less than 2
+                days delay demonstrate strong operational reliability.
+              </li>
+
+              <li>
+                <strong>Seasonal Impacts:</strong> Periodic spikes in average delays
+                may align with peak demand cycles or supply disruptions.
+              </li>
+
+              <li>
+                <strong>Corrective Action:</strong> Procurement teams should review
+                SLAs and consider delivery penalties or alternative sourcing for
+                consistently underperforming vendors.
+              </li>
+            </ul>
+
+            <p className="text-muted-foreground">
+              Monitoring delay trends over time helps forecast potential supply
+              interruptions and supports proactive procurement scheduling.
+            </p>
+
+            <p className="italic text-muted-foreground pt-1">
+              Tip: Combine this metric with the procurement funnel and cost variance
+              charts for a complete vendor performance overview.
+            </p>
+          </div>
+        }
+      />
+
       <ReactECharts
         ref={chartRef}
         option={option}

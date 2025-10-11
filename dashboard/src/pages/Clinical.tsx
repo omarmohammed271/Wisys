@@ -96,7 +96,7 @@ const itemVariants = {
 // ------------------------------
 export default function Clinical() {
   return (
-    <div className="container lg:h-screen lg:overflow-hidden pb-10 relative mx-auto">
+    <div className="container lg:pt-10 lg:min-h-[88vh] lg:overflow-hidden pb-10 relative mx-auto">
       {/* Background dots */}
       <div>
         <motion.div
@@ -118,16 +118,16 @@ export default function Clinical() {
       </div>
 
       {/* Header */}
-      <div className="absolute w-full">
-        <div className="flex w-full justify-center px-20">
+      <div className="w-full relative">
+        <div className="flex w-full justify-center lg:px-20">
           <motion.div
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut' }}
-            className="max-lg:mx-10 w-[80%] items-center py-10 bg-gradient-to-br from-primary to-secondary
+            className="lg:mx-10 w-[80%] items-center py-10 bg-gradient-to-br from-primary to-secondary
               rounded-lg shadow-md transition-all duration-500"
           >
-            <h1 className="text-7xl text-center font-bold text-white">
+            <h1 className="text-3xl lg:text-5xl xl:text-7xl text-center font-bold text-white">
               Clinical Dashboards
             </h1>
           </motion.div>

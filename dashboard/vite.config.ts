@@ -10,4 +10,27 @@ export default defineConfig({
       "@": "/src",
     },
   },
+  base: "/",
+  server: {
+    host: "0.0.0.0",
+    port: 3003,
+    allowedHosts: [
+      "basirah360.com",
+      "www.basirah360.com",
+      "dashboard.basirah360.com",
+      "app.basirah360.com",
+      "localhost",
+    ],
+  },
+  preview: {
+    host: "0.0.0.0",
+    port: 3003,
+    allowedHosts: [
+      "basirah360.com",
+      "www.basirah360.com",
+      "dashboard.basirah360.com",
+      "app.basirah360.com",
+      "localhost",
+    ],
+  },
 })

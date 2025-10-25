@@ -18,41 +18,41 @@ import {
 
 export default function ManufacturingDashboard() {
   return (
-    <div className="p-3 flex flex-col h-full space-y-2">
+    <div className="p-3 flex flex-col h-full space-y-2 overflow-hidden">
       {/* ── Stat Cards ── */}
-      <div className="grid h-fit grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-2">
+      <div className="grid h-fit grid-cols-1 sm:grid-cols-2  lg:grid-cols-6 gap-2">
         <StatsCard
-          className="border border-border p-4 rounded-2xl"
+          className="border border-border p-3 rounded-2xl"
           title="OEE"
           value="80%"
           icon={<Activity />}
         />
         <StatsCard
-          className="border border-border p-4 rounded-2xl"
+          className="border border-border p-3 rounded-2xl"
           title="Total Output"
           value="42,500 Units"
           icon={<Factory />}
         />
         <StatsCard
-          className="border border-border p-4 rounded-2xl"
+          className="border border-border p-3 rounded-2xl"
           title="Downtime Hours"
           value={61}
           icon={<Timer />}
         />
         <StatsCard
-          className="border border-border p-4 rounded-2xl"
+          className="border border-border p-3 rounded-2xl"
           title="Scrap Rate"
           value="5.4%"
           icon={<TrendingDown />}
         />
         <StatsCard
-          className="border border-border p-4 rounded-2xl"
+          className="border border-border p-3 rounded-2xl"
           title="Compliance Rate"
           value="92%"
           icon={<Wrench />}
         />
         <StatsCard
-          className="border border-border p-4 rounded-2xl"
+          className="border border-border p-3 rounded-2xl"
           title="Shift Efficiency"
           value="88%"
           icon={<BarChart3 />}
@@ -61,7 +61,7 @@ export default function ManufacturingDashboard() {
 
       {/* ── Charts Section ── */}
       <div className="grid flex-1 grid-cols-1 lg:grid-cols-3 gap-2">
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-1">
           <OEETrendChart />
           <DowntimeByMachineChart />
         </div>

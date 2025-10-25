@@ -19,7 +19,7 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <OverlayProvider>
         <Router>
-          <main className='bg-background select-none text-foreground max-h-screen h-screen min-h-screen xl:overflow-hidden flex flex-col py-3 md:px-20'>
+          <main className='bg-background select-none text-foreground max-h-screen h-screen min-h-screen  flex flex-col py-3 md:px-20 box-border'>
             <Routes>
               <Route path="/" element={<><HomeNavBar /><Home /></>} />
               <Route path="/Clinical" element={<><NavBar /><Clinical /></>} />

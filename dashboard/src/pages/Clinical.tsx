@@ -9,33 +9,33 @@ const sections = [
   {
     title: 'Settings',
     items: [
-      { label: 'MasterBook', to: 'http://87.237.225.137:3000/MasterBook' },
-      { label: 'Region', to: 'http://87.237.225.137:3000/Region' },
-      { label: 'Pages', to: 'http://87.237.225.137:3000/Pages' },
-      { label: 'Roles', to: 'http://87.237.225.137:3000/Roles' },
-      { label: 'Users', to: 'http://87.237.225.137:3000/Users' },
-      { label: 'Domain', to: 'http://87.237.225.137:3000/Domain' },
+      { label: 'MasterBook', to: 'https://dashboard.basirah360.com/MasterBook' },
+      { label: 'Region', to: 'https://dashboard.basirah360.com/Region' },
+      { label: 'Pages', to: 'https://dashboard.basirah360.com/Pages' },
+      { label: 'Roles', to: 'https://dashboard.basirah360.com/Roles' },
+      { label: 'Users', to: 'https://dashboard.basirah360.com/Users' },
+      { label: 'Domain', to: 'https://dashboard.basirah360.com/Domain' },
     ],
   },
   {
     title: 'Mapping',
     items: [
-      { label: 'Facility', to: 'http://87.237.225.137:3000/Facility' },
+      { label: 'Facility', to: 'https://dashboard.basirah360.com/Facility' },
       {
         label: 'Facility Master Data',
-        to: 'http://87.237.225.137:3000/FacilityMasterData',
+        to: 'https://dashboard.basirah360.com/FacilityMasterData',
       },
       {
         label: 'Mapping Master Data',
-        to: 'http://87.237.225.137:3000/MappingMasterData',
+        to: 'https://dashboard.basirah360.com/MappingMasterData',
       },
       {
         label: 'Section Master',
-        to: 'http://87.237.225.137:3000/section-master',
+        to: 'https://dashboard.basirah360.com/section-master',
       },
       {
         label: 'Section Mapping',
-        to: 'http://87.237.225.137:3000/section-mapping',
+        to: 'https://dashboard.basirah360.com/section-mapping',
       },
     ],
   },
@@ -44,28 +44,28 @@ const sections = [
     items: [
       {
         label: 'Clinical Beds Overview New',
-        to: 'http://87.237.225.137:3000/N-Mhc-Beds',
+        to: 'https://dashboard.basirah360.com/N-Mhc-Beds',
       },
       {
         label: 'Clinical Beds Critical New',
-        to: 'http://87.237.225.137:3000/N-Critical-Care',
+        to: 'https://dashboard.basirah360.com/N-Critical-Care',
       },
       {
         label: 'Emergency Dashboard New',
-        to: 'http://87.237.225.137:3000/MHCEmergencyNew',
+        to: 'https://dashboard.basirah360.com/MHCEmergencyNew',
       },
       {
         label: 'Emergency Status',
-        to: 'http://87.237.225.137:3000/MHCEmergency-two-new',
+        to: 'https://dashboard.basirah360.com/MHCEmergency-two-new',
       },
-      { label: 'Admitted New', to: 'http://87.237.225.137:3000/Admitted-new' },
+      { label: 'Admitted New', to: 'https://dashboard.basirah360.com/Admitted-new' },
       {
         label: 'Clinical Morque-Data New',
-        to: 'http://87.237.225.137:3000/N-Morque-Data',
+        to: 'https://dashboard.basirah360.com/N-Morque-Data',
       },
       {
         label: 'Clinical Makkah Bed Details New',
-        to: 'http://87.237.225.137:3000/N-bed-makka-details',
+        to: 'https://dashboard.basirah360.com/N-bed-makka-details',
       },
     ],
   },

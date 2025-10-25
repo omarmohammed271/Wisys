@@ -13,7 +13,7 @@ const sections = [
       { label: 'Procurement Dashboard', to: '/procurement-dashboard' },
       { label: 'Finance Dashboard', to: '/finance-dashboard' },
       { label: 'Manufacturing Dashboard', to: '/manufacturing-dashboard' },
-      { label: 'Contracting dashboard (Arabic version)', to: 'http://87.237.225.137:3001/' },
+      { label: 'Contracting dashboard (Arabic version)', to: 'http://app.basirah360.com/' },
     ],
   },
 ];

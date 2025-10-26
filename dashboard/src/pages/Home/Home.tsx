@@ -99,7 +99,7 @@ export default function Home() {
                                 backgroundSize: "400% auto",
                               }}
                             >
-                              Digiations 360.
+                              Basirah360
                             </motion.h1>
                           </motion.div>
                         </div>

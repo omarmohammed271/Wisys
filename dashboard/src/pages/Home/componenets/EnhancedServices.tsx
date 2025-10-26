@@ -76,7 +76,8 @@ const EnhancedServices = () => {
         "Vision 2030 Compliance & Regulatory Guidance"
       ],
       tagline: "🔹 The Kingdom's premier digital transformation advisory powerhouse",
-      cta: "Engage Strategic Consulting"
+      cta: "Engage Strategic Consulting",
+      link: "https://techgeneration.sa/"
     },
     { 
       icon: "<>",
@@ -89,7 +90,8 @@ const EnhancedServices = () => {
         "24/7 DevOps & Infrastructure Management"
       ],
       tagline: "🔹 Saudi Arabia's most advanced platform engineering powerhouse",
-      cta: "Explore Tech-Build Services"
+      cta: "Explore Tech-Build Services",
+      link: "https://digiations.com/"
     },
     { 
       icon: "🎓",
@@ -102,7 +104,9 @@ const EnhancedServices = () => {
         "Custom Corporate Learning Pathways"
       ],
       tagline: "🔹 Saudi Arabia's most comprehensive digital skills academy",
-      cta: "Explore Academy Programs"
+      cta: "Explore Academy Programs",
+    
+      link: "https://raqmanaplus.academy/"
     }
   ];
 
@@ -180,7 +184,7 @@ const EnhancedServices = () => {
                 </div>
 
                 <div className="mt-8">
-                  <button className="px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-full font-semibold text-white-foreground hover:from-primary/90 hover:to-secondary/90 transition-all duration-300 transform hover:scale-105 flex items-center">
+                  <button onClick={() => window.open(service.link, '_blank')} className="px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-full font-semibold text-white-foreground hover:from-primary/90 hover:to-secondary/90 transition-all duration-300 transform hover:scale-105 flex items-center">
                     {service.cta}
                     <span className="ml-2">→</span>
                   </button>

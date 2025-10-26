@@ -77,7 +77,8 @@ const EnhancedServices = () => {
       ],
       tagline: "🔹 The Kingdom's premier digital transformation advisory powerhouse",
       cta: "Engage Strategic Consulting",
-      link: "https://techgeneration.sa/"
+   
+       link: "https://digiations.com/"
     },
     { 
       icon: "<>",
@@ -91,7 +92,7 @@ const EnhancedServices = () => {
       ],
       tagline: "🔹 Saudi Arabia's most advanced platform engineering powerhouse",
       cta: "Explore Tech-Build Services",
-      link: "https://digiations.com/"
+        link: "https://techgeneration.sa/"
     },
     { 
       icon: "🎓",

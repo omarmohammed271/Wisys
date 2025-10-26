@@ -19,7 +19,7 @@ const Preloader: React.FC = () => {
         >
           <div className="text-5xl h-15 font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 ">
             
-            Digiations 360.
+                Basirah360
 
           </div>
         </motion.div>

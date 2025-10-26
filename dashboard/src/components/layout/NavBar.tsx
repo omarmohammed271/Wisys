@@ -51,7 +51,7 @@ function NavBar(){
     const currentRoute = routes.find(route => route.link === location.pathname);
     const { textScalar, barScalar, iScalar } = useResponsiveScalars();
     return(
-        <div className="px-3 justify-between h-fit border-border backdrop-blur-md flex w-full min-[2000px]:py-[1px] items-center">
+        <div className="px-3 justify-between h-fit z-50 border-border backdrop-blur-md flex w-full min-[2000px]:py-[1px] items-center">
 
             {/* Digiations Logo */}
             <Link to={'/'}>

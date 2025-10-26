@@ -292,8 +292,6 @@ export default function ProcurementFunnel({ data }: any) {
         }
       />
 
-        
-
       {/* Chart */}
       <ReactECharts
         ref={chartRef}

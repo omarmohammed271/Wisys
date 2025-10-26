@@ -47,7 +47,7 @@ export function AverageTenureChart() {
             data={chartData}
             margin={{
               top: 20,
-              left: 12,
+              left: -32,
               right: 12,
             }}
           >

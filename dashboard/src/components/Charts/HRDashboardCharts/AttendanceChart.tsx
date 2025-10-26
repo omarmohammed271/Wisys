@@ -55,11 +55,11 @@ export function AttendanceChart() {
   )
 
   return (
-    <Card className="py-4 sm:py-0 border-border h-full max-md:h-[350px] flex flex-col overflow-hidden">
+    <Card className="py-2 sm:py-0 border-border h-full max-md:h-[350px] flex flex-col overflow-hidden">
       {/* Header */}
       <CardHeader className="flex flex-col items-stretch border-b border-border !p-0">
-        <div className="flex flex-1 flex-col justify-center gap-1 px-6 pb-3">
-          <CardTitle className="py-4 text-xl">Attendance / Absence</CardTitle>
+        <div className="flex flex-1 flex-col justify-center gap-1 px-4 pb-2">
+          <CardTitle className="py-2 text-sm sm:text-lg">Attendance / Absence</CardTitle>
         </div>
         <div className="flex">
           {(["attendance", "absence"] as (keyof typeof chartConfig)[]).map(
@@ -71,13 +71,13 @@ export function AttendanceChart() {
                   key === "attendance"
                     ? "bg-primary/10"
                     : "bg-secondary/10"
-                } border-border flex flex-1 flex-col justify-center gap-1 px-6 py-4 text-left even:border-l`}
+                } border-border flex flex-1 flex-col justify-center gap-1 px-4 py-2 text-left even:border-l`}
                 onClick={() => setActiveChart(key)}
               >
-                <span className="text-muted-foreground text-xs">
+                <span className="text-muted-foreground text-[0.6rem] sm:text-xs">
                   {chartConfig[key].label}
                 </span>
-                <span className="text-lg leading-none font-bold sm:text-xl">
+                <span className="text-sm leading-none font-bold sm:text-lg">
                   {total[key].toLocaleString()}
                 </span>
               </button>
@@ -87,22 +87,22 @@ export function AttendanceChart() {
       </CardHeader>
 
       {/* Chart */}
-      <CardContent className="px-2 sm:p-6 flex-1">
+      <CardContent className="px-1 sm:p-4 flex-1">
         <ChartContainer
           config={chartConfig}
           className="aspect-auto h-full w-full"
         >
           <LineChart
             data={chartData}
-            margin={{ top: 15, left: 12, right: 12 }}
+            margin={{ top: 15, left: 10, right: 10, bottom: 10 }}
           >
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="date"
               tickLine={false}
               axisLine={false}
-              tickMargin={8}
-              minTickGap={32}
+              tickMargin={4}
+              minTickGap={20}
               tickFormatter={(value) => {
                 const date = new Date(value)
                 return date.toLocaleDateString("en-US", {
@@ -110,11 +110,12 @@ export function AttendanceChart() {
                   day: "numeric",
                 })
               }}
+              fontSize={10}
             />
             <ChartTooltip
               content={
                 <ChartTooltipContent
-                  className="w-[150px]"
+                  className="w-[120px] text-xs"
                   labelFormatter={(value) =>
                     new Date(value).toLocaleDateString("en-US", {
                       month: "short",
@@ -130,14 +131,14 @@ export function AttendanceChart() {
               name="Attendance"
               type="monotone"
               stroke="var(--chart-1)"
-              strokeWidth={2}
+              strokeWidth={1.5}
               dot={false}
             >
               <LabelList
                 dataKey="attendance"
                 position="top"
                 formatter={(val: number) => `${val}`}
-                className="text-xs sm:text-sm"
+                className="text-[0.6rem] sm:text-xs"
               />
             </Line>
             <Line
@@ -145,14 +146,14 @@ export function AttendanceChart() {
               name="Absence"
               type="monotone"
               stroke="var(--chart-2)"
-              strokeWidth={2}
+              strokeWidth={1.5}
               dot={false}
             >
               <LabelList
                 dataKey="absence"
                 position="top"
                 formatter={(val: number) => `${val}`}
-                className="text-xs sm:text-sm"
+                className="text-[0.6rem] sm:text-xs"
               />
             </Line>
           </LineChart>

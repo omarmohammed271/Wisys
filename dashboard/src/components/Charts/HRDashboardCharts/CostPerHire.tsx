@@ -40,19 +40,20 @@ const chartConfig = {
 export function CostPerHireChart() {
   return (
     <Card className="h-full">
-      <CardHeader>
-        <CardTitle>Cost per Hire</CardTitle>
-        <CardDescription>Internal vs External sources (Jan – Jun 2024)</CardDescription>
+      <CardHeader className="pb-2">
+        <CardTitle className="text-sm sm:text-lg">Cost per Hire</CardTitle>
+        <CardDescription className="text-[0.6rem] sm:text-xs">Internal vs External sources (Jan – Jun 2024)</CardDescription>
       </CardHeader>
-      <CardContent className="h-full">
+      <CardContent className="h-full pt-2">
         <ChartContainer className="h-full max-w-full" config={chartConfig}>
           <AreaChart
             accessibilityLayer
             data={chartData}
             margin={{
-              top: 20,
-              left: 12,
-              right: 12,
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10,
             }}
           >
             <CartesianGrid vertical={false} />
@@ -60,12 +61,13 @@ export function CostPerHireChart() {
               dataKey="month"
               tickLine={false}
               axisLine={false}
-              tickMargin={8}
+              tickMargin={4}
               tickFormatter={(value) => value.slice(0, 3)}
+              fontSize={10}
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent indicator="dot" />}
+              content={<ChartTooltipContent indicator="dot" className="text-xs" />}
             />
             <Area
               dataKey="internal"
@@ -74,7 +76,6 @@ export function CostPerHireChart() {
               fillOpacity={0.4}
               stroke="var(--color-internal)"
               stackId="a"
-              label
             />
             <Area
               dataKey="external"
@@ -83,7 +84,6 @@ export function CostPerHireChart() {
               fillOpacity={0.4}
               stroke="var(--color-external)"
               stackId="a"
-              label
             />
           </AreaChart>
         </ChartContainer>

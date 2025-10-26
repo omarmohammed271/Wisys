@@ -42,23 +42,23 @@ export function MeetingsSurvivabilityChart() {
   return (
     <Card className="flex flex-col h-full">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Meetings Survivability</CardTitle>
-        <CardDescription>Distribution of meeting outcomes</CardDescription>
+        <CardTitle className="text-sm sm:text-lg">Meetings Survivability</CardTitle>
+        <CardDescription className="text-[0.6rem] sm:text-xs">Distribution of meeting outcomes</CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 h-full pb-4 mx-auto w-full">
-        <ChartContainer config={chartConfig} className="mx-auto h-full w-2/3">
-          <PieChart margin={{ top: 20 }}>
+      <CardContent className="flex-1 h-full pb-0 mx-auto w-full pt-0">
+        <ChartContainer config={chartConfig} className="mx-auto h-full w-full">
+          <PieChart margin={{ }}>
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+              content={<ChartTooltipContent hideLabel className="text-xs" />}
             />
             <Pie
               data={chartData}
               dataKey="meetings"
               nameKey="status"
-              innerRadius={45}
-              strokeWidth={3}
-              label
+              innerRadius={30}
+              strokeWidth={1}
+              
             >
               <Label
                 content={({ viewBox }) => {
@@ -73,14 +73,14 @@ export function MeetingsSurvivabilityChart() {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold"
+                          className="fill-foreground text-xl font-bold"
                         >
                           {totalMeetings.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
-                          y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground"
+                          y={(viewBox.cy || 0) + 16}
+                          className="fill-muted-foreground text-xs"
                         >
                           Meetings
                         </tspan>
@@ -88,16 +88,20 @@ export function MeetingsSurvivabilityChart() {
                     )
                   }
                 }}
+                
               />
+         
             </Pie>
-            <Legend
-              verticalAlign="bottom"
-              align="center"
-              iconType="circle"
-              wrapperStyle={{ paddingTop: "16px" }}
-            />
+                 <Legend
+                layout="horizontal"
+                verticalAlign="bottom"
+                align="center"
+                wrapperStyle={{ paddingTop: '10px' ,display:'flex',flexDirection:'row',justifyContent:'space-between' ,width:'fit' }}
+              />
           </PieChart>
+          
         </ChartContainer>
+        
       </CardContent>
     </Card>
   )

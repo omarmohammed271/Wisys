@@ -43,34 +43,36 @@ const chartConfig = {
 
 export function EngagementScoreChart() {
   return (
-    <Card className="h-full">
-      <CardHeader>
-        <CardTitle>Employee Engagement Score</CardTitle>
-        <CardDescription>Engagement levels across departments</CardDescription>
+    <Card className="h-full relative">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-sm sm:text-lg">Employee Engagement Score</CardTitle>
+        <CardDescription className="text-[0.6rem] sm:text-xs">Engagement levels across departments</CardDescription>
       </CardHeader>
-      <CardContent className="w-[80%] h-full mx-auto">
-        <ChartContainer config={chartConfig} className="w-full h-[88%]">
-          <ComposedChart data={chartData}>
+      <CardContent className="w-[100%] h-full  ">
+        <ChartContainer config={chartConfig} className="w-[90%] h-[65%] absolute ">
+          <ComposedChart data={chartData} margin={{ top: 10,  right: 10, bottom: 10 }}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="department"
               tickLine={false}
-              tickMargin={10}
+              tickMargin={5}
               axisLine={false}
+              fontSize={10}
             />
-            <YAxis domain={[0, 100]} />
+            <YAxis domain={[0, 100]} fontSize={10} />
 
             {/* Stick (bars) */}
+
             <Bar
               dataKey="engagement"
               fill={chartConfig.engagement.color}
-              barSize={4}
-              radius={[4, 4, 0, 0]}
+              barSize={3}
+              radius={[2, 2, 0, 0]}
             >
               <LabelList
                 dataKey="engagement"
                 position="top"
-                className="fill-foreground text-xs"
+                className="fill-foreground text-[0.6rem] sm:text-xs"
               />
             </Bar>
 
@@ -84,7 +86,7 @@ export function EngagementScoreChart() {
 
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent />}
+              content={<ChartTooltipContent className="text-xs" />}
             />
           </ComposedChart>
         </ChartContainer>

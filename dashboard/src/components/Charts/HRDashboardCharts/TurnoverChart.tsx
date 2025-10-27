@@ -52,8 +52,8 @@ export function TurnoverChart() {
   return (
     <Card className="py-0 border-border h-full max-md:h-[350px] flex flex-col overflow-hidden">
       <CardHeader className="flex flex-col items-stretch border-b border-border !p-0">
-        <div className="flex flex-1 flex-col justify-center gap-1 px-6 pb-3">
-          <CardTitle className="py-4 text-xl">Employee Turnover</CardTitle>
+        <div className="flex flex-1 flex-col justify-center gap-1 px-4 pb-2">
+          <CardTitle className="py-2 text-sm sm:text-lg">Employee Turnover</CardTitle>
         </div>
         <div className="flex">
         {(["hires", "exits"] as (keyof typeof total)[]).map((key) => {
@@ -64,13 +64,13 @@ export function TurnoverChart() {
               data-active={activeChart === chart}
               className={`${
                 chart === activeChart ? "bg-primary/10" : "bg-secondary/10"
-              } border-border flex flex-1 flex-col justify-center gap-1 px-6 py-4 text-left even:border-l`}
+              } border-border flex flex-1 flex-col justify-center gap-1 px-4 py-2 text-left even:border-l`}
               onClick={() => setActiveChart(chart)}
             >
-              <span className="text-muted-foreground text-xs">
+              <span className="text-muted-foreground text-[0.6rem] sm:text-xs">
                 {chartConfig[chart].label}
               </span>
-              <span className="text-lg leading-none font-bold sm:text-xl">
+              <span className="text-sm leading-none font-bold sm:text-lg">
                 {total[key].toLocaleString()}
               </span>
             </button>
@@ -79,7 +79,7 @@ export function TurnoverChart() {
         </div>
       </CardHeader>
 
-      <CardContent className="px-2 sm:p-6 flex-1">
+      <CardContent className="px-1 sm:p-4 flex-1">
         <ChartContainer
           config={chartConfig}
           className="aspect-auto h-full w-full"
@@ -87,15 +87,15 @@ export function TurnoverChart() {
           <BarChart
             accessibilityLayer
             data={chartData}
-            margin={{ top: 15, left: 12, right: 12 }}
+            margin={{ top: 10, left: 10, right: 10, bottom: 10 }}
           >
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="date"
               tickLine={false}
               axisLine={false}
-              tickMargin={8}
-              minTickGap={32}
+              tickMargin={4}
+              minTickGap={20}
               tickFormatter={(value) => {
                 const date = new Date(value)
                 return date.toLocaleDateString("en-US", {
@@ -103,11 +103,12 @@ export function TurnoverChart() {
                   year: "numeric",
                 })
               }}
+              fontSize={10}
             />
             <ChartTooltip
               content={
                 <ChartTooltipContent
-                  className="w-[150px]"
+                  className="w-[120px] text-xs"
                   labelFormatter={(value) =>
                     new Date(value).toLocaleDateString("en-US", {
                       month: "long",
@@ -122,7 +123,7 @@ export function TurnoverChart() {
                 dataKey="hires"
                 position="top"
                 formatter={(val: number) => `${val}`}
-                className="text-xs sm:text-sm min-[2000px]:text-base"
+                className="text-[0.6rem] sm:text-xs"
               />
             </Bar>
             <Bar dataKey="exits" fill="var(--color-exits)">
@@ -130,7 +131,7 @@ export function TurnoverChart() {
                 dataKey="exits"
                 position="top"
                 formatter={(val: number) => `${val}`}
-                className="text-xs sm:text-sm min-[2000px]:text-base"
+                className="text-[0.6rem] sm:text-xs"
               />
             </Bar>
           </BarChart>

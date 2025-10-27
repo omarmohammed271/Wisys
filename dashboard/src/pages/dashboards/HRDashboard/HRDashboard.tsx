@@ -90,7 +90,7 @@ export default function HRDashboard() {
         <div className=" flex flex-col *:h-1/2 space-y-2 col-span-2">
             {/* Turnover */}
             <EngagementScoreChart />
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2 ا">
               {/* Attendance / Absence */}
               <AverageTenureChart />
               {/* Attendance / Absence */}

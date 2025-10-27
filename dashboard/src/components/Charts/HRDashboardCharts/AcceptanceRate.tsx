@@ -50,7 +50,7 @@ export function AcceptanceRateChart() {
       <CardContent className="flex-1 pb-0 size-[80%] mx-auto">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto aspect-square "
         >
           <PieChart>
             <ChartTooltip
@@ -61,9 +61,9 @@ export function AcceptanceRateChart() {
               data={chartData}
               dataKey="value"
               nameKey="stage"
-              innerRadius={60}
-              strokeWidth={5}
-              label
+              innerRadius={40}
+              strokeWidth={3}
+            
             >
               <Label
                 content={({ viewBox }) => {
@@ -74,11 +74,13 @@ export function AcceptanceRateChart() {
                         y={viewBox.cy}
                         textAnchor="middle"
                         dominantBaseline="middle"
+                        style={{ zIndex: 9999, position: 'relative' }}
                       >
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold"
+                          style={{ zIndex: 9999, position: 'relative' }}
                         >
                           {acceptanceRate}%
                         </tspan>
@@ -86,6 +88,7 @@ export function AcceptanceRateChart() {
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
                           className="fill-muted-foreground text-sm"
+                          style={{ zIndex: 9999, position: 'relative' }}
                         >
                           Acceptance
                         </tspan>

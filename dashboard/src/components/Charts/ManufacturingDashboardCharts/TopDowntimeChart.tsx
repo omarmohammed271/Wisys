@@ -63,7 +63,7 @@ export function TopDowntimeChart() {
         <CardTitle>Top Downtime by Machine</CardTitle>
         <CardDescription>January – June 2024</CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 mx-auto pb-0 md:w-[80%]">
+      <CardContent className="flex-1 mx-auto pb-0 w-[100%]">
         <ChartContainer
           config={chartConfig}
           className="mx-auto max-md:aspect-square max-h-[250px]"

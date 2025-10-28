@@ -43,14 +43,14 @@ const chartConfig = {
 
 export function EngagementScoreChart() {
   return (
-    <Card className="h-full relative">
-      <CardHeader className="pb-2">
+    <Card className="relative w-full min-h-[270px]">
+      <CardHeader className="pb-0">
         <CardTitle className="text-sm sm:text-lg">Employee Engagement Score</CardTitle>
         <CardDescription className="text-[0.6rem] sm:text-xs">Engagement levels across departments</CardDescription>
       </CardHeader>
       <CardContent className="w-[100%] h-full  ">
         <ChartContainer config={chartConfig} className="w-[90%] h-[65%] absolute ">
-          <ComposedChart data={chartData} margin={{ top: 10,  right: 10, bottom: 10 }}>
+          <ComposedChart data={chartData} margin={{ top: 10,  right: 10, bottom: 10 ,left:-40 }}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="department"

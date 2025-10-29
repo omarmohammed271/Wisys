@@ -35,13 +35,13 @@ const chartConfig = {
 
 export function ScrapRateChart() {
   return (
-    <Card className="h-[50%]">
+    <Card className="h-[100%]">
       <CardHeader>
         <CardTitle>Scrap Rate Trend</CardTitle>
         <CardDescription>Jan – Jun 2024</CardDescription>
       </CardHeader>
       <CardContent className="size-[65%] mx-auto">
-        <ChartContainer config={chartConfig} className="size-[110%]">
+        <ChartContainer config={chartConfig} className="size-[100%]">
           <LineChart
             accessibilityLayer
             data={chartData}

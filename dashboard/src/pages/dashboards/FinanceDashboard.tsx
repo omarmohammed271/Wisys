@@ -12,7 +12,7 @@ import FLollipopChart from '@/components/Charts/FinanceCharts/FLollipopChart';
 // -------- Dashboard --------
 export default function FinanceDashboard() {
   return (
-    <div className="h-screen overflow-hidden">
+    <div className="h-screen lg:overflow-hidden">
       <StatsCardData />
 
       <div className="p-4 grid grid-cols-1 lg:grid-cols-3 gap-3">

@@ -71,7 +71,7 @@ export default function MLOverlay({ questions, answers }: ChatbotProps) {
       </div>
 
       <div
-        className={`fixed flex justify-center items-center right-0 lg:right-[5%] top-[5%] h-screen w-full lg:max-[3000px]:w-[500px] min-[2000px]:w-[2000px] ${
+        className={`fixed flex justify-center items-center right-0 z-40 lg:right-[5%] top-[5%] h-screen w-full lg:max-[3000px]:w-[500px] min-[2000px]:w-[2000px] ${
           !open && "pointer-events-none"
         }`}
       >

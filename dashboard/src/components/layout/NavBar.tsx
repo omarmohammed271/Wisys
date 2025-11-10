@@ -1,7 +1,7 @@
 import { ModeToggle } from "../mode-toggle";
 import logo from "@/assets/img/Digiations.png"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "../ui/navigation-menu";
-import { BadgeCent, CircleUserRound, Factory, Grid2x2, Waypoints } from "lucide-react";
+import { BadgeCent, CircleUserRound, Dock, DockIcon, Factory, Grid2x2, Waypoints } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -41,6 +41,12 @@ const routes: RoutesData[] = [
         name: "Finance Dashboard",
         link: "/finance-dashboard",
         icon: <BadgeCent />,
+    },
+    {
+        id: "5",
+        name: "Contracting dashboard (Arabic version)",
+        link: "http://app2.digiations360.com/",
+        icon: <Dock />,
     },
     
 ]

@@ -67,7 +67,7 @@ const getGradientColor = (tab: string) => {
 // -------------------------------------------------------------
 // Component
 // -------------------------------------------------------------
-export default function ClinicalDashboards() {
+export default function Clinical() {
   const [activeTab, setActiveTab] = useState<keyof typeof tabs>("settings");
 
   return (
@@ -88,7 +88,7 @@ export default function ClinicalDashboards() {
       <div className="relative z-10 min-h-screen">
         {/* Title */}
         <motion.div
-          className="max-w-7xl mx-auto px-6 pb-16 text-center"
+          className="max-w-7xl mx-auto px-6 pb-16 max-lg:pt-7 text-center"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
@@ -159,7 +159,7 @@ export default function ClinicalDashboards() {
           </motion.div>
 
           {/* Animated Tab Content Grid */}
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             <motion.div
               key={activeTab}
               initial={{ opacity: 0, y: 20 }}

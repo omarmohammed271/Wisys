@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Settings, MapPin, LayoutDashboard } from "lucide-react";
+import { Settings, MapPin, LayoutDashboard, Cog, BarChart3, Database } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 // -------------------------------------------------------------
 const tabs = {
   settings: {
-    label: "Settings",
-    icon: Settings,
+    label: "Data Ingestion",
+    icon: Database,
     items: [
       { label: "MasterBook", to: "http://app.digiations360.com/MasterBook" },
       { label: "Region", to: "http://app.digiations360.com/Region" },
@@ -21,8 +21,8 @@ const tabs = {
     ],
   },
   mapping: {
-    label: "Mapping",
-    icon: MapPin,
+    label: "Data Processing",
+    icon: Cog,
     items: [
       { label: "Facility", to: "http://app.digiations360.com/Facility" },
       {
@@ -38,8 +38,8 @@ const tabs = {
     ],
   },
   dashboard: {
-    label: "Dashboard",
-    icon: LayoutDashboard,
+    label: "Data Visualization",
+    icon: BarChart3,
     items: [
       { label: "Clinical Beds Overview New", to: "http://app.digiations360.com/N-Mhc-Beds" },
       { label: "Clinical Beds Critical New", to: "http://app.digiations360.com/N-Critical-Care" },
@@ -111,7 +111,7 @@ export default function ClinicalDashboards() {
           >
             <div
               className={cn(
-                "relative flex gap-3 overflow-x-auto scrollbar-none p-2 rounded-2xl",
+                "relative flex gap-3 max-lg:overflow-x-auto scrollbar-none p-2 rounded-2xl",
                 "border border-gray-300 dark:border-white/10 backdrop-blur-md transition-all duration-500 ease-out",
                 "shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(150,100,255,0.3)]",
                 "bg-gradient-to-r from-white/10 via-white/5 to-white/10"

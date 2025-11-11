@@ -4,33 +4,17 @@ import { defineConfig } from "vite"
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "http://basirah360.com/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       "@": "/src",
     },
   },
-  base: "/",
   server: {
-    host: "0.0.0.0",
-    port: 3003,
-    allowedHosts: [
-      "digiations360.com",
-      "www.digiations360.com",
-      "app.digiations360.com",
-      "app.digiations360.com",
-      "localhost",
-    ],
+    allowedHosts: ["basirah360.com"],
   },
   preview: {
-    host: "0.0.0.0",
-    port: 3003,
-    allowedHosts: [
-      "digiations360.com",
-      "www.digiations360.com",
-      "app.digiations360.com",
-      "app.digiations360.com",
-      "localhost",
-    ],
+    allowedHosts: ["basirah360.com"],
   },
 })

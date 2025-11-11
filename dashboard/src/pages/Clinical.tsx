@@ -12,26 +12,34 @@ const tabs = {
     label: "Data Ingestion",
     icon: Database,
     items: [
-      { label: "MasterBook", to: "http://app.digiations360.com/MasterBook" },
-      { label: "Region", to: "http://app.digiations360.com/Region" },
-      { label: "Pages", to: "http://app.digiations360.com/Pages" },
-      { label: "Roles", to: "http://app.digiations360.com/Roles" },
-      { label: "Users", to: "http://app.digiations360.com/Users" },
-      { label: "Domain", to: "http://app.digiations360.com/Domain" },
+      { label: 'MasterBook', to: 'https://app2.basirah360.com/MasterBook' },
+      { label: 'Region', to: 'https://app2.basirah360.com/Region' },
+      { label: 'Pages', to: 'https://dashboard.basirah360.com/Pages' },
+      { label: 'Roles', to: 'https://app2.basirah360.com/Roles' },
+      { label: 'Users', to: 'https://app2.basirah360.com/Users' },
+      { label: 'Domain', to: 'https://app2.basirah360.com/Domain' },
     ],
   },
   mapping: {
     label: "Data Processing",
     icon: Cog,
     items: [
-      { label: "Facility", to: "http://app.digiations360.com/Facility" },
+      { label: 'Facility', to: 'https://app2.basirah360.com/Facility' },
       {
-        label: "Facility Master Data",
-        to: "http://app.digiations360.com/FacilityMasterData",
+        label: 'Facility Master Data',
+        to: 'https://app2.basirah360.com/FacilityMasterData',
       },
       {
-        label: "Mapping Master Data",
-        to: "http://app.digiations360.com/MappingMasterData",
+        label: 'Mapping Master Data',
+        to: 'https://app2.basirah360.com/MappingMasterData',
+      },
+      {
+        label: 'Section Master',
+        to: 'https://app2.basirah360.com/section-master',
+      },
+      {
+        label: 'Section Mapping',
+        to: 'https://app2.basirah360.com/section-mapping',
       },
       { label: "Section Master", to: "http://app.digiations360.com/section-master" },
       { label: "Section Mapping", to: "http://app.digiations360.com/section-mapping" },
@@ -41,13 +49,31 @@ const tabs = {
     label: "Data Visualization",
     icon: BarChart3,
     items: [
-      { label: "Clinical Beds Overview New", to: "http://app.digiations360.com/N-Mhc-Beds" },
-      { label: "Clinical Beds Critical New", to: "http://app.digiations360.com/N-Critical-Care" },
-      { label: "Emergency Dashboard New", to: "http://app.digiations360.com/MHCEmergencyNew" },
-      { label: "Emergency Status", to: "http://app.digiations360.com/MHCEmergency-two-new" },
-      { label: "Admitted New", to: "http://app.digiations360.com/Admitted-new" },
-      { label: "Clinical Morque-Data New", to: "http://app.digiations360.com/N-Morque-Data" },
-      { label: "Clinical Makkah Bed Details New", to: "http://app.digiations360.com/N-bed-makka-details" },
+      {
+        label: 'Clinical Beds Overview New',
+        to: 'https://app2.basirah360.com/N-Mhc-Beds',
+      },
+      {
+        label: 'Clinical Beds Critical New',
+        to: 'https://app2.basirah360.com/N-Critical-Care',
+      },
+      {
+        label: 'Emergency Dashboard New',
+        to: 'https://app2.basirah360.com/MHCEmergencyNew',
+      },
+      {
+        label: 'Emergency Status',
+        to: 'https://app2.basirah360.com/MHCEmergency-two-new',
+      },
+      { label: 'Admitted New', to: 'https://app2.basirah360.com/Admitted-new' },
+      {
+        label: 'Clinical Morque-Data New',
+        to: 'https://app2.basirah360.com/N-Morque-Data',
+      },
+      {
+        label: 'Clinical Makkah Bed Details New',
+        to: 'https://app2.basirah360.com/N-bed-makka-details',
+      },
     ],
   },
 } as const;

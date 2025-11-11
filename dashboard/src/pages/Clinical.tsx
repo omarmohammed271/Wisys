@@ -185,7 +185,7 @@ export default function Clinical() {
           </motion.div>
 
           {/* Animated Tab Content Grid */}
-          <AnimatePresence>
+          <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
               initial={{ opacity: 0, y: 20 }}
@@ -196,13 +196,14 @@ export default function Clinical() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {tabs[activeTab].items.map((item, index) => (
                   <motion.div
-                    key={item.label}
+                    key={`${item.label}-${index}`} // <- fixed: unique key per item
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.03 }}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     className="relative group"
+                    style={{ willChange: "transform, opacity" }} // <- helps browser optimize
                   >
                     {/* Gradient Border Card */}
                     <Link

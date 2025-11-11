@@ -39,13 +39,13 @@ export function DowntimeByMachineChart() {
         <CardTitle>Downtime by Machine</CardTitle>
         <CardDescription>Recorded hours (Jan – Jun 2024)</CardDescription>
       </CardHeader>
-      <CardContent className="w-[80%] mx-auto">
+      <CardContent className="w-[90%] mx-auto">
         <ChartContainer config={chartConfig}>
           <BarChart
             accessibilityLayer
             data={chartData}
             layout="horizontal"
-            margin={{ top: 20, left: 12, right: 12 }}
+            margin={{ top: 10, left: -40 }}
           >
             <CartesianGrid vertical={false}/>
             <YAxis

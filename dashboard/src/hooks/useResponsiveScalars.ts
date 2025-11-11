@@ -16,7 +16,6 @@ export function useResponsiveScalars(): Scalars {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      console.log("Window width changed:", width);
 
       let newTextScalar = 1;
       let newBarScalar = 1;

@@ -20,7 +20,7 @@ import {
 
 export default function HRDashboard() {
   return (
-    <div className="p-3 flex flex-col h-[90vh] overflow-hidden space-y-2">
+    <div className="p-3 flex flex-col h-[90vh] overflow-x-hidden sm:overflow-x-hidden lg:overflow-hidden md:grid-cols-2  space-y-2">
       {/* Stat Cards */}
       <div className="grid h-fit grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-2">
         <StatsCard
@@ -67,7 +67,7 @@ export default function HRDashboard() {
       </div>
 
       {/* Charts Section */}
-      <div className="grid flex-1 grid-cols-1 lg:grid-cols-5 gap-2">
+      <div className=" md:grid flex-1 grid-cols-1  md:grid-cols-2 xl:grid-cols-5 gap-2 ">
         {/* Upper */}
         <div className=" flex flex-col space-y-2 col-span-1">
             {/* Attendance / Absence */}
@@ -87,10 +87,11 @@ export default function HRDashboard() {
             {/* Turnover */}
             <CostPerHireChart />
         </div>
-        <div className=" flex flex-col *:h-1/2 space-y-2 col-span-2">
+        <div className=" flex flex-col lg:*:h-3/4 space-y-2 sm:col-span-1 lg:col-span-2  ">
             {/* Turnover */}
+            
             <EngagementScoreChart />
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1  sm:grid-cols-1 lg:grid-cols-2 gap-2 ">
               {/* Attendance / Absence */}
               <AverageTenureChart />
               {/* Attendance / Absence */}

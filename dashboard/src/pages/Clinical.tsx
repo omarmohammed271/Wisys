@@ -1,13 +1,16 @@
-import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Settings, MapPin, LayoutDashboard, Cog, BarChart3, Database } from "lucide-react";
+import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
-// ------------------------------
-// Data object for sections/items
-// ------------------------------
-const sections = [
-  {
-    title: 'Settings',
+// -------------------------------------------------------------
+// Tabs & Section Definitions
+// -------------------------------------------------------------
+const tabs = {
+  settings: {
+    label: "Data Ingestion",
+    icon: Database,
     items: [
       { label: 'MasterBook', to: 'https://app2.basirah360.com/MasterBook' },
       { label: 'Region', to: 'https://app2.basirah360.com/Region' },
@@ -17,8 +20,9 @@ const sections = [
       { label: 'Domain', to: 'https://app2.basirah360.com/Domain' },
     ],
   },
-  {
-    title: 'Mapping',
+  mapping: {
+    label: "Data Processing",
+    icon: Cog,
     items: [
       { label: 'Facility', to: 'https://app2.basirah360.com/Facility' },
       {
@@ -37,10 +41,13 @@ const sections = [
         label: 'Section Mapping',
         to: 'https://app2.basirah360.com/section-mapping',
       },
+      { label: "Section Master", to: "http://app.digiations360.com/section-master" },
+      { label: "Section Mapping", to: "http://app.digiations360.com/section-mapping" },
     ],
   },
-  {
-    title: 'Dashboard',
+  dashboard: {
+    label: "Data Visualization",
+    icon: BarChart3,
     items: [
       {
         label: 'Clinical Beds Overview New',
@@ -69,113 +76,168 @@ const sections = [
       },
     ],
   },
-];
+} as const;
 
-// ------------------------------
-// Animation variants
-// ------------------------------
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.5 },
-  },
+// -------------------------------------------------------------
+// Utility: Gradient Colors by Tab
+// -------------------------------------------------------------
+const getGradientColor = (tab: string) => {
+  const gradients: Record<string, string> = {
+    settings: "from-blue-500 to-cyan-500",
+    mapping: "from-purple-500 to-pink-500",
+    dashboard: "from-pink-500 to-orange-500",
+  };
+  return gradients[tab] || "from-blue-500 to-purple-500";
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' as const },
-  },
-};
-
-// ------------------------------
-// Main Component
-// ------------------------------
+// -------------------------------------------------------------
+// Component
+// -------------------------------------------------------------
 export default function Clinical() {
+  const [activeTab, setActiveTab] = useState<keyof typeof tabs>("settings");
+
   return (
-    <div className="container lg:pt-10 lg:min-h-[88vh] lg:overflow-hidden pb-10 relative mx-auto">
-      {/* Background dots */}
-      <div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 2 }}
-        >
-          <div
-            className={cn(
-              'absolute inset-0',
-              '[background-size:30px_30px]',
-              '[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]',
-              'dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]'
-            )}
-          />
-        </motion.div>
-        {/* Radial fade overlay */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_0%,black)] dark:bg-background"></div>
-      </div>
+    <div className="container lg:pt-10 sm:h-[80vh] lg:overflow-hidden pb-10 relative mx-auto">
+      {/* Decorative dotted background */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 2 }}
+        className={cn(
+          "absolute inset-0 [background-size:30px_30px]",
+          "[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]",
+          "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"
+        )}
+      />
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_0%,black)] dark:bg-background" />
 
-      {/* Header */}
-      <div className="w-full relative">
-        <div className="flex w-full justify-center lg:px-20">
-          <motion.div
-            initial={{ opacity: 0, y: -40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: 'easeOut' }}
-            className="lg:mx-10 w-[80%] items-center py-10 bg-gradient-to-br from-primary to-secondary
-              rounded-lg shadow-md transition-all duration-500"
+      <div className="relative z-10 min-h-screen">
+        {/* Title */}
+        <motion.div
+          className="max-w-7xl mx-auto px-6 pb-16 max-lg:pt-7 text-center"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1
+            className="text-5xl sm:text-5xl lg:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+            style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
           >
-            <h1 className="text-3xl lg:text-5xl xl:text-7xl text-center font-bold text-white">
-              Clinical Dashboards
-            </h1>
-          </motion.div>
-        </div>
+            Clinical Dashboards
+          </h1>
+        </motion.div>
 
-        {/* Sections Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid md:grid-cols-2 lg:grid-cols-3 h-full w-2/3 mx-auto mt-10 gap-10"
-        >
-          {sections.map((section, i) => (
-            <motion.div
-              key={section.title}
-              variants={itemVariants}
-              className=""
+        {/* Tabs Bar */}
+        <div className="max-w-6xl mx-auto px-6 pb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mb-10 flex justify-center"
+          >
+            <div
+              className={cn(
+                "relative flex gap-3 max-lg:overflow-x-auto scrollbar-none p-2 rounded-2xl",
+                "border border-gray-300 dark:border-white/10 backdrop-blur-md transition-all duration-500 ease-out",
+                "shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(150,100,255,0.3)]",
+                "bg-gradient-to-r from-white/10 via-white/5 to-white/10"
+              )}
             >
-              <h1 className="text-3xl font-medium mb-6">{section.title}</h1>
-              <div className="relative">
-                {/* Vertical line */}
-                <div
-                  className="absolute start-2 top-0 h-full w-1 
-                  bg-gradient-to-b from-transparent via-secondary/40 dark:via-muted to-transparent"
-                ></div>
+              {(Object.keys(tabs) as Array<keyof typeof tabs>).map((tabKey) => {
+                const { icon: TabIcon, label } = tabs[tabKey];
+                const isActive = activeTab === tabKey;
 
-                {/* Items */}
-                <div className="space-y-8 relative ps-5">
-                  {section.items.map((item) => (
-                    <motion.div
-                      key={item.label}
-                      variants={itemVariants}
-                      className="flex items-center gap-4"
+                return (
+                  <motion.button
+                    key={tabKey}
+                    onClick={() => setActiveTab(tabKey)}
+                    whileHover={{ scale: isActive ? 1 : 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className={cn(
+                      "relative px-5 py-2 rounded-lg flex items-center gap-3 transition-all duration-300 shrink-0",
+                      isActive ? "text-white" : "text-gray-500 hover:text-gray-300"
+                    )}
+                  >
+                    {/* Active tab highlight */}
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className={cn(
+                          "absolute inset-0 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.15)]",
+                          "bg-gradient-to-r",
+                          getGradientColor(tabKey)
+                        )}
+                        transition={{
+                          type: "spring",
+                          bounce: 0.2,
+                          duration: 0.6,
+                        }}
+                      />
+                    )}
+                    <TabIcon className="w-5 h-5 relative z-10" />
+                    <span className="relative z-10 whitespace-nowrap font-medium">
+                      {label}
+                    </span>
+                  </motion.button>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          {/* Animated Tab Content Grid */}
+          <AnimatePresence>
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {tabs[activeTab].items.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.03 }}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="relative group"
+                  >
+                    {/* Gradient Border Card */}
+                    <Link
+                      to={item.to}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn(
+                        "relative block rounded-2xl p-[1px] transition-all duration-300",
+                        "bg-gradient-to-r",
+                        `${getGradientColor(activeTab)}/20`
+                      )}
                     >
-                      <div className="w-4 h-4 rounded-full bg-gradient-to-br from-primary to-secondary relative -start-4.5"></div>
-                      <Link
-                        to={item.to}
-                        className="text-lg hover:text-foreground/60 transition"
+                      <div
+                        className={cn(
+                          "bg-white dark:bg-background backdrop-blur-sm rounded-2xl px-5 py-3",
+                          "flex items-center gap-3"
+                        )}
                       >
-                        {item.label}
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
+                        <div
+                          className={cn(
+                            "w-3 h-3 rounded-full bg-gradient-to-r",
+                            getGradientColor(activeTab)
+                          )}
+                        />
+                        <span className="truncate transition-colors">
+                          {item.label}
+                        </span>
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
-          ))}
-        </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );

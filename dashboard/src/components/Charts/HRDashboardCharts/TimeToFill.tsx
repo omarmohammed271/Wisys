@@ -36,35 +36,36 @@ const chartConfig = {
 export function TimeToFillChart() {
   return (
     <Card className="h-full">
-      <CardHeader>
-        <CardTitle>Time to Fill</CardTitle>
-        <CardDescription>Average days per filled role (Jan – Jun 2024)</CardDescription>
+      <CardHeader className="pb-2">
+        <CardTitle className="text-sm sm:text-lg">Time to Fill</CardTitle>
+        <CardDescription className="text-[0.6rem] sm:text-xs">Average days per filled role (Jan – Jun 2024)</CardDescription>
       </CardHeader>
-      <CardContent className="h-full">
+      <CardContent className="h-full pt-2">
         <ChartContainer
           config={chartConfig}
           className="flex flex-col justify-center h-full max-w-full"
         >
-          <BarChart accessibilityLayer data={chartData} margin={{ top: 15 }}>
+          <BarChart accessibilityLayer data={chartData} margin={{ top: 10, left: 10, right: 10, bottom: 10 }}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"
               tickLine={false}
-              tickMargin={10}
+              tickMargin={5}
               axisLine={false}
               tickFormatter={(value) => value.slice(0, 3)}
+              fontSize={10}
             />
-            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+            <ChartTooltip cursor={false} content={<ChartTooltipContent className="text-xs" />} />
             <Bar
               dataKey="timeToFill"
               fill="var(--color-timeToFill)"
-              radius={8}
+              radius={4}
             >
               <LabelList
                 dataKey="timeToFill"
                 position="top"
                 formatter={(val: number) => `${val}d`}
-                className="text-xs sm:text-sm"
+                className="text-[0.6rem] sm:text-xs"
               />
             </Bar>
           </BarChart>

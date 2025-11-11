@@ -18,7 +18,7 @@ import {
 
 export default function ManufacturingDashboard() {
   return (
-    <div className="p-3 flex flex-col h-full space-y-2 overflow-hidden">
+    <div className="p-3 flex flex-col h-full space-y-2 lg:overflow-hidden">
       {/* ── Stat Cards ── */}
       <div className="grid h-fit grid-cols-1 sm:grid-cols-2  lg:grid-cols-6 gap-2">
         <StatsCard

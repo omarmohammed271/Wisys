@@ -47,12 +47,12 @@ export function ProductionOutputByShiftChart() {
         <CardTitle>Production Output by Shift</CardTitle>
         <CardDescription>Units produced per shift (Mon – Fri)</CardDescription>
       </CardHeader>
-      <CardContent className="w-[80%] mx-auto">
+      <CardContent className="w-[90%] mx-auto">
         <ChartContainer config={chartConfig}>
           <BarChart
             accessibilityLayer
             data={chartData}
-            margin={{ top: 16, left: 12, right: 12 }}
+            margin={{  }}
           >
             <CartesianGrid vertical={false} />
             <XAxis

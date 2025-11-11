@@ -70,7 +70,7 @@ export default function Chatbot({ questions, answers }: ChatbotProps) {
       </div>
 
       <div
-        className={`fixed flex justify-center items-center right-0 lg:right-[5%] top-[5%] h-screen w-full lg:w-[500px] ${
+        className={`fixed flex justify-center items-center right-0 z-40 lg:right-[5%] top-[5%] h-screen w-full lg:w-[500px] ${
           !open && "pointer-events-none"
         }`}
       >

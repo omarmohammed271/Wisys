@@ -41,8 +41,8 @@ const tabs = {
         label: 'Section Mapping',
         to: 'https://app2.basirah360.com/section-mapping',
       },
-      { label: "Section Master", to: "http://app.digiations360.com/section-master" },
-      { label: "Section Mapping", to: "http://app.digiations360.com/section-mapping" },
+      // { label: "Section Master", to: "http://app.digiations360.com/section-master" },
+      // { label: "Section Mapping", to: "http://app.digiations360.com/section-mapping" },
     ],
   },
   dashboard: {

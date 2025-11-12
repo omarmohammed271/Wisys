@@ -16,7 +16,7 @@ const tabs = {
       { label: 'Procurement Dashboard', to: '/procurement-dashboard' },
       { label: 'Finance Dashboard', to: '/finance-dashboard' },
       { label: 'Manufacturing Dashboard', to: '/manufacturing-dashboard' },
-      { label: 'Contracting dashboard (Arabic version)', to: 'http://app2.digiations360.com/' },
+      { label: 'Contracting dashboard (Arabic version)', to: 'http://app.basirah-360.com/' },
     ],
   },
 } as const;
@@ -194,7 +194,7 @@ const sections = [
       { label: 'Procurement Dashboard', to: '/procurement-dashboard' },
       { label: 'Finance Dashboard', to: '/finance-dashboard' },
       { label: 'Manufacturing Dashboard', to: '/manufacturing-dashboard' },
-      { label: 'Contracting dashboard (Arabic version)', to: 'http://app.basirah360.com/' },
+      { label: 'Contracting dashboard (Arabic version)', to: 'http://app.basirah-360.com/' },
     ],
   },
 ];

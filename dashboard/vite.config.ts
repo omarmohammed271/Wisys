@@ -11,4 +11,7 @@ export default defineConfig({
       "@": "/src",
     },
   },
+  preview: {
+    allowedHosts: ["basirah-360.com"],
+  },
 })

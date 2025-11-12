@@ -4,7 +4,7 @@ import { defineConfig } from "vite"
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "http://basirah-360.com/",
+  base: "https://basirah-360.com/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

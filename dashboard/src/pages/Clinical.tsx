@@ -120,10 +120,10 @@ export default function Clinical() {
           transition={{ duration: 0.8 }}
         >
           <h1
-            className="text-5xl sm:text-5xl lg:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+            className="text-3xl sm:text-5xl lg:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
             style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
           >
-            Clinical Dashboards
+            Proud-First-Saudi Healthcare Data Model
           </h1>
         </motion.div>
 

@@ -1,4 +1,4 @@
-import StatsCard from './StatsCards';
+import StatsCard from "@/components/Cards/StatsCards";
 import {
   TrendingUp,
   PieChart,

@@ -9,14 +9,14 @@ import { cn } from "@/lib/utils";
 // -------------------------------------------------------------
 const tabs = {
   dashboard: {
-    label: "Data Visualization",
+    label: "AI Intelligence - Data Decision Dashboards",
     icon: BarChart3,
     items: [
-      { label: 'HR Dashboard', to: '/hr-dashboard' },
-      { label: 'Procurement Dashboard', to: '/procurement-dashboard' },
-      { label: 'Finance Dashboard', to: '/finance-dashboard' },
-      { label: 'Manufacturing Dashboard', to: '/manufacturing-dashboard' },
-      { label: 'Contracting dashboard (Arabic version)', to: 'http://app2.basirah-360.com/' },
+      { label: 'HR KPIs', to: '/hr-dashboard' },
+      { label: 'Procurement KPIs', to: '/procurement-dashboard' },
+      { label: 'Finance KPIs', to: '/finance-dashboard' },
+      { label: 'Manufacturing KPIs', to: '/manufacturing-dashboard' },
+      { label: 'Contracting KPIs (Arabic version)', to: 'http://app2.digiations360.com/' },
     ],
   },
 } as const;
@@ -63,10 +63,10 @@ export default function NonClinical() {
           transition={{ duration: 0.8 }}
         >
           <h1
-            className="text-5xl sm:text-5xl lg:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+            className="text-3xl sm:text-5xl lg:text-7xl md:h-40 font-extrabold bg-clip-text text-transparent text-wrap bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
             style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
           >
-            Non-Clinical Dashboards
+            Non-Healthcare Enterprise Ecosystem
           </h1>
         </motion.div>
 
@@ -139,7 +139,7 @@ export default function NonClinical() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {tabs[activeTab].items.map((item, index) => (
                   <motion.div
-                    key={item.label}
+                    key={`${item.label}-${index}`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.03 }}

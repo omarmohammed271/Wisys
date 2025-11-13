@@ -41,8 +41,8 @@ const tabs = {
         label: 'Section Mapping',
         to: 'https://app.basirah-360.com/section-mapping',
       },
-      { label: "Section Master", to: "http://app.basirah-360.com/section-master" },
-      { label: "Section Mapping", to: "http://app.basirah-360.com/section-mapping" },
+      // { label: "Section Master", to: "http://app.digiations360.com/section-master" },
+      // { label: "Section Mapping", to: "http://app.digiations360.com/section-mapping" },
     ],
   },
   dashboard: {
@@ -120,10 +120,10 @@ export default function Clinical() {
           transition={{ duration: 0.8 }}
         >
           <h1
-            className="text-5xl sm:text-5xl lg:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+            className="text-3xl sm:text-5xl lg:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
             style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
           >
-            Clinical Dashboards
+            Proud-First-Saudi Healthcare Data Model
           </h1>
         </motion.div>
 
@@ -185,7 +185,7 @@ export default function Clinical() {
           </motion.div>
 
           {/* Animated Tab Content Grid */}
-          <AnimatePresence>
+          <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
               initial={{ opacity: 0, y: 20 }}
@@ -196,13 +196,14 @@ export default function Clinical() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {tabs[activeTab].items.map((item, index) => (
                   <motion.div
-                    key={item.label}
+                    key={`${item.label}-${index}`} // <- fixed: unique key per item
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.03 }}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     className="relative group"
+                    style={{ willChange: "transform, opacity" }} // <- helps browser optimize
                   >
                     {/* Gradient Border Card */}
                     <Link

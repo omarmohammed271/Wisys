@@ -1,7 +1,8 @@
 'use client';
 
 import StatsCard from "@/components/Cards/StatsCards";
-import * as React from 'react';
+import { FileText, ShoppingCart, ArrowUpRight, Package, CreditCard, File } from 'lucide-react';
+
 import ProcurementFunnel from '@/components/Charts/ProcurementDshboardCharts/ProcurementFunnel';
 import RequestToPODonut from '@/components/Charts/ProcurementDshboardCharts/RequestToPODonut';
 import POVsReceiptsBar from '@/components/Charts/ProcurementDshboardCharts/POVsReceiptsBar';
@@ -10,9 +11,9 @@ import DeliveryDelaysBar from '@/components/Charts/ProcurementDshboardCharts/Del
 import OverUnderScatter from '@/components/Charts/ProcurementDshboardCharts/OverUnderScatter';
 import InvoicePaymentStatusBar from '@/components/Charts/ProcurementDshboardCharts/InvoicePaymentStatusBar';
 import PaymentLeadTimeLine from '@/components/Charts/ProcurementDshboardCharts/PaymentLeadTimeLine';
-import { FileText, ShoppingCart, ArrowUpRight, Package, CreditCard, File } from 'lucide-react';
 import TopVendorsBySpend from '@/components/Charts/ProcurementDshboardCharts/TopVendorsBySpend';
 import VendorPerformanceRadar from '@/components/Charts/ProcurementDshboardCharts/VendorPerformance';
+
 import Chatbot from '@/components/AIOverlay/Chatbot';
 import MLOverlay from '@/components/AIOverlay/MLOverlay';
 
@@ -124,11 +125,12 @@ export default function ProcurementDashboard() {
 
       {/* Charts Section */}
       <div className="space-y-2 md:grid flex-1 grid-cols-1 min-[2400px]:max-h-[85.5vh] *:*:h-[500px] *:*:xl:h-1/2 md:grid-cols-2 xl:grid-cols-5 gap-2">
-        {/* Upper */}
+
         <div className=" flex flex-col space-y-2 col-span-1">
           <ProcurementFunnel data={{ OPRQ: 120, OPOR: 100, OPDN: 80, OPCH: 65, OVPM: 50 }} />
           <RequestToPODonut requests={120} purchaseOrders={95} />
         </div>
+
         <div className=" flex flex-col space-y-2 col-span-1">
           <POVsReceiptsBar 
             categories={["Jan", "Feb", "Mar", "Apr", "May", "Jun"]}
@@ -140,6 +142,7 @@ export default function ProcurementDashboard() {
             delays={[5, 8, 3, 10]}
           />
         </div>
+
         <div className=" flex flex-col space-y-2 col-span-1">
           <ReceiptsVsInvoicesStacked
             categories={["Jan", "Feb", "Mar", "Apr", "May", "Jun"]}
@@ -150,8 +153,8 @@ export default function ProcurementDashboard() {
             months={["Jan", "Feb", "Mar", "Apr", "May"]}
             leadTimes={[12, 15, 10, 18, 14]}
           />
-
         </div>
+
         <div className=" flex flex-col gap-y-2 col-span-1">
           <OverUnderScatter
             vendors={["Vendor A", "Vendor B", "Vendor C", "Vendor D"]}
@@ -165,6 +168,7 @@ export default function ProcurementDashboard() {
             unpaid={[10, 5, 15, 20, 8]}
           />
         </div>
+
         <div className='md:flex mb-2 justify-center xl:flex-col max-xl:space-x-2 space-y-2 col-span-2 xl:col-span-1 p-2 bg-gradient-to-br border-border from-primary/10 to-secondary/10 border rounded-xl '>
           <TopVendorsBySpend
             vendors={[
@@ -182,6 +186,7 @@ export default function ProcurementDashboard() {
             { vendorName: 'Vendor C', fulfillmentAccuracy: 92, avgDeliveryTime: 5, priceVariance: 3 },
           ]} />
         </div>
+        
       </div>
       <Chatbot questions={chatbotQuestions} answers={chatbotAnswers} />
       <MLOverlay questions={mlQuestions} answers={mlAnswers} />

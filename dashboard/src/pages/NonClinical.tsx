@@ -40,7 +40,7 @@ export default function NonClinical() {
   const [activeTab, setActiveTab] = useState<keyof typeof tabs>("dashboard");
 
   return (
-    <div className="container lg:pt-10 sm:h-[80vh] lg:overflow-hidden pb-10 relative mx-auto">
+    <div className="container lg:pt-10 lg:overflow-hidden pb-10 relative mx-auto">
       {/* Decorative dotted background */}
       <motion.div
         initial={{ opacity: 0 }}

@@ -63,10 +63,10 @@ export default function NonClinical() {
           transition={{ duration: 0.8 }}
         >
           <h1
-            className="text-3xl sm:text-5xl lg:text-7xl md:h-40 font-extrabold bg-clip-text text-transparent text-wrap bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+            className="text-3xl sm:text-5xl lg:text-6xl md:h-33 font-extrabold bg-clip-text text-transparent text-wrap bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
             style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
           >
-            Non-Healthcare Enterprise Ecosystem
+            Non-Healthcare <br /> Enterprise Ecosystem
           </h1>
         </motion.div>
 

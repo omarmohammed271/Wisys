@@ -49,7 +49,7 @@ export default function LollipopChart({
       axisLine: { lineStyle: { color: textColor } },
       splitLine: { lineStyle: { color: isDark ? "#374151" : "#e5e7eb" } },
     },
-    grid: { left: "5%", right: "5%", bottom: "15%", top: "20%", containLabel: true },
+    grid: { left: "5%", right: "5%", bottom: "10%", top: "18%", containLabel: true },
     series: [
       {
         type: "bar",

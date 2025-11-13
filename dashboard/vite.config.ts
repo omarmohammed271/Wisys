@@ -4,17 +4,14 @@ import { defineConfig } from "vite"
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "http://basirah360.com/",
+  base: "/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       "@": "/src",
     },
   },
-  server: {
-    allowedHosts: ["basirah360.com"],
-  },
   preview: {
-    allowedHosts: ["basirah360.com"],
+    allowedHosts: ["basirah-360.com"],
   },
 })

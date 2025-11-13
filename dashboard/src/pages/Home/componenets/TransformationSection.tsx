@@ -57,7 +57,7 @@ const TransformationSection = () => {
             
             {/* Primary CTA Button */}
             <a 
-              href="https://dashboard.basirah360.com/login" 
+              href="https://dashboard.basirah-360.com/login" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-full flex items-center justify-center px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors mb-6"

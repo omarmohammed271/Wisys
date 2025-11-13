@@ -50,6 +50,7 @@ export default function BudgetActualBubbleChart({
       axisLine: { lineStyle: { color: subTextColor } },
       splitLine: { lineStyle: { color: isDark ? "#374151" : "#e5e7eb" } },
     },
+    grid: { left: "5%", right: "5%", bottom: "10%", top: "18%", containLabel: true },
     series: [
       {
         name: "Budget vs Actual",

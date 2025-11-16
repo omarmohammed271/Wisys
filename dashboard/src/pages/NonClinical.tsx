@@ -16,7 +16,7 @@ const tabs = {
       { label: 'Procurement KPIs', to: '/procurement-dashboard' },
       { label: 'Finance KPIs', to: '/finance-dashboard' },
       { label: 'Manufacturing KPIs', to: '/manufacturing-dashboard' },
-      { label: 'Contracting KPIs (Arabic version)', to: 'http://app2.digiations360.com/' },
+      { label: 'Contracting KPIs (Arabic version)', to: 'https://app2.digiations360.com/' },
     ],
   },
 } as const;

@@ -16,7 +16,7 @@ const tabs = {
       { label: 'Procurement KPIs', to: '/procurement-dashboard' },
       { label: 'Finance KPIs', to: '/finance-dashboard' },
       { label: 'Manufacturing KPIs', to: '/manufacturing-dashboard' },
-      { label: 'Contracting KPIs (Arabic version)', to: 'https://app2.digiations360.com/' },
+      { label: 'Contracting KPIs (Arabic version)', to: 'https://app2.basirah-360.com/' },
     ],
   },
 } as const;
@@ -150,7 +150,7 @@ export default function NonClinical() {
                     {/* Gradient Border Card */}
                     <Link
                       to={item.to}
-                      target="_blank"
+                  
                       rel="noopener noreferrer"
                       className={cn(
                         "relative block rounded-2xl p-[1px] transition-all duration-300",

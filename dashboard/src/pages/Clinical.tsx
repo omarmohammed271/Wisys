@@ -208,7 +208,7 @@ export default function Clinical() {
                     {/* Gradient Border Card */}
                     <Link
                       to={item.to}
-                      target="_blank"
+                     
                       rel="noopener noreferrer"
                       className={cn(
                         "relative block rounded-2xl p-[1px] transition-all duration-300",

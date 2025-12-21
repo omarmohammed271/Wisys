@@ -45,7 +45,7 @@ const routes: RoutesData[] = [
     {
         id: "5",
         name: "Contracting dashboard (Arabic version)",
-        link: "http://app2.digiations360.com/",
+        link: "https://app2.basirah-360.com/",
         icon: <Dock />,
     },
     

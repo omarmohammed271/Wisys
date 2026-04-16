@@ -1,4 +1,4 @@
-import { ContractData } from '../api/mockdata';
+import type { ContractData } from '../api/mockdata';
 
 // Main component props interface
 export interface ContractsTableProps {

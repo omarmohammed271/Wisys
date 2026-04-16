@@ -32,7 +32,7 @@ function App() {
                 <div className='flex flex-col flex-1'>
                   <ProcurmentDashboard />
                 </div>
-                </>
+              </>
               } />
               <Route path="/manufacturing-dashboard" element={<><NavBar /><ManufacturingDashboard /></>} />
               <Route path="/finance-dashboard" element={<><NavBar /><FinanceDashboard /></>} />

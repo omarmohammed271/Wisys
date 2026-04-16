@@ -9,14 +9,14 @@ import { cn } from "@/lib/utils";
 // -------------------------------------------------------------
 const tabs = {
   dashboard: {
-    label: "AI Intelligence - Data Decision Dashboards",
+    label: "AI Intelligence - Data Decision Dashboards",
     icon: BarChart3,
     items: [
       { label: 'HR KPIs', to: '/hr-dashboard' },
       { label: 'Procurement KPIs', to: '/procurement-dashboard' },
       { label: 'Finance KPIs', to: '/finance-dashboard' },
       { label: 'Manufacturing KPIs', to: '/manufacturing-dashboard' },
-      { label: 'Contracting KPIs (Arabic version)', to: 'https://app2.basirah-360.com/' },
+      { label: 'Contracting KPIs (Arabic version)', to: '/contracts-dashboard' },
     ],
   },
 } as const;
@@ -150,7 +150,7 @@ export default function NonClinical() {
                     {/* Gradient Border Card */}
                     <Link
                       to={item.to}
-                  
+
                       rel="noopener noreferrer"
                       className={cn(
                         "relative block rounded-2xl p-[1px] transition-all duration-300",
@@ -194,7 +194,7 @@ const sections = [
       { label: 'Procurement Dashboard', to: '/procurement-dashboard' },
       { label: 'Finance Dashboard', to: '/finance-dashboard' },
       { label: 'Manufacturing Dashboard', to: '/manufacturing-dashboard' },
-      { label: 'Contracting dashboard (Arabic version)', to: 'http://app2.basirah-360.com/' },
+      { label: 'Contracting dashboard (Arabic version)', to: '/contracts-dashboard' },
     ],
   },
 ];

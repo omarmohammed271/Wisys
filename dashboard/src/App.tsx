@@ -7,6 +7,7 @@ import HomeNavBar from './components/layout/HomeNavBar'
 import ProcurmentDashboard from './pages/dashboards/ProcurmentDashboard'
 import ManufacturingDashboard from './pages/dashboards/ManufacturingDashboard'
 import FinanceDashboard from './pages/dashboards/FinanceDashboard'
+import ContractsDashboard from './pages/dashboards/Dashbaord_contracts/views/Contracts'
 import Home from './pages/Home/Home'
 import Contact from './pages/Contact'
 import NonClinical from './pages/NonClinical'
@@ -35,6 +36,7 @@ function App() {
               } />
               <Route path="/manufacturing-dashboard" element={<><NavBar /><ManufacturingDashboard /></>} />
               <Route path="/finance-dashboard" element={<><NavBar /><FinanceDashboard /></>} />
+              <Route path="/contracts-dashboard" element={<><NavBar /><ContractsDashboard /></>} />
             </Routes>
           </main>
         </Router>

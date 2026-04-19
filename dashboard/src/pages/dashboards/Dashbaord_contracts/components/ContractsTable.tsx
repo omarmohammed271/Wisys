@@ -85,7 +85,15 @@ const ContractsTable: React.FC<ContractsTableProps> = ({
         <InnerGradientBox className="h-[90%] w-full rounded p-1 overflow-hidden">
           <div className="w-full h-full overflow-auto custom-scrollbar">
             <table className={`w-full text-right border-collapse ${getTableStyles()}`}>
-              <thead className={`sticky top-0 z-10 ${isDark ? 'bg-[#111]' : 'bg-white'}`}>
+              <thead 
+                className="sticky top-0 z-10 backdrop-blur-md shadow-sm"
+                style={{
+                  background: `
+                    linear-gradient(88deg, rgba(147, 1, 145, 0.10) -0.58%, rgba(0, 0, 0, 0.04) 50.32%),
+                    linear-gradient(88deg, rgba(0, 0, 0, 0.04) 49.09%, rgba(147, 1, 145, 0.10) 100%)
+                  `
+                }}
+              >
                 <tr>
                   {TABLE_COLUMNS.map((column) => (
                     <th

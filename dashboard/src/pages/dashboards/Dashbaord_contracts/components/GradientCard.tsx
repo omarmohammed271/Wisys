@@ -1,26 +1,63 @@
-import React, { type ReactNode } from 'react';
-import { cn } from '@/lib/utils';
-import { useTheme } from '@/components/theme-provider';
+import React, { CSSProperties } from "react";
+
+type CardVariant = "first" | "second";
 
 interface GradientCardProps {
-  children: ReactNode;
+  variant?: CardVariant;
+  children?: React.ReactNode;
+  style?: CSSProperties;
   className?: string;
-  variant?: string;
 }
 
-export default function GradientCard({ children, className }: GradientCardProps) {
-  const { theme } = useTheme();
-  // Using custom variant dark logic from theme provider via body class
-  // Let's rely on tailwind's dark: variant instead of JS evaluation if possible
+const baseRadius = "10px";
 
+const stylesByVariant: Record<CardVariant, CSSProperties> = {
+  first: {
+    borderRadius: baseRadius,
+    background: `
+      linear-gradient(
+        88deg,
+        rgba(147, 1, 145, 0.30) -0.58%,
+        rgba(0, 0, 0, 0.12) 30.37%
+      )
+    `,
+  },
+  second: {
+    borderRadius: baseRadius,
+    background: `
+      linear-gradient(
+        88deg,
+        rgba(0, 0, 0, 0.12) 69.05%,
+        rgba(147, 1, 145, 0.30) 100%
+      )
+    `,
+    boxShadow: `
+      0 7.777px 2.222px 0 rgba(0, 0, 0, 0.00),
+      0 5.555px 2.222px 0 rgba(0, 0, 0, 0.01),
+      0 3.333px 2.222px 0 rgba(0, 0, 0, 0.05),
+      0 1.111px 1.111px 0 rgba(0, 0, 0, 0.09),
+      0 0 1.111px 0 rgba(0, 0, 0, 0.10)
+    `,
+  },
+};
+
+export default function GradientCard({
+  variant = "first",
+  children,
+  style,
+  className = "",
+}: GradientCardProps) {
   return (
     <div
-      className={cn(
-        "rounded-[clamp(0.5rem,0.4vw,5rem)] overflow-hidden transition-all duration-300 ease-in-out w-full h-full",
-        "hover:-translate-y-1 hover:shadow-lg hover:shadow-black/10",
-        "bg-white border border-gray-200 dark:bg-black dark:border-white/10",
-        className
-      )}
+      className={className}
+      style={{
+        padding: "16px",
+        height: "100%",
+        width: "100%",
+        boxSizing: "border-box",
+        ...stylesByVariant[variant],
+        ...style,
+      }}
     >
       {children}
     </div>

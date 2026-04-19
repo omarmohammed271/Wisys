@@ -1,21 +1,47 @@
-import React, { type ReactNode } from 'react';
-import { cn } from '@/lib/utils';
+import React, { CSSProperties } from "react";
+
+type InnerVariant = "first" | "second";
 
 interface InnerGradientBoxProps {
-  children: ReactNode;
+  variant?: InnerVariant;
+  children?: React.ReactNode;
+  style?: CSSProperties;
   className?: string;
-  variant?: string;
 }
 
-export default function InnerGradientBox({ children, className }: InnerGradientBoxProps) {
+const innerStylesByVariant: Record<InnerVariant, CSSProperties> = {
+  first: {
+    borderRadius: "16px",
+    background: `
+      linear-gradient(88deg, rgba(147, 1, 145, 0.10) -0.58%, rgba(0, 0, 0, 0.04) 50.32%),
+      linear-gradient(88deg, rgba(0, 0, 0, 0.04) 49.09%, rgba(147, 1, 145, 0.10) 100%)
+    `,
+  },
+  second: {
+    borderRadius: "20px",
+    background: `
+      linear-gradient(88deg, rgba(147, 1, 145, 0.10) -0.58%, rgba(0, 0, 0, 0.04) 50.32%),
+      linear-gradient(88deg, rgba(0, 0, 0, 0.04) 49.09%, rgba(147, 1, 145, 0.10) 100%)
+    `,
+  },
+};
+
+export default function InnerGradientBox({
+  variant = "first",
+  children,
+  style,
+  className = "",
+}: InnerGradientBoxProps) {
   return (
     <div
-      className={cn(
-        "rounded-lg p-1 w-full h-full",
-        "bg-gradient-to-r from-gray-50 to-gray-100",
-        "dark:bg-gradient-to-r dark:from-[#ffffff0a] dark:to-[#ffffff1a]",
-        className
-      )}
+      className={className}
+      style={{
+        width: "100%",
+        height: "100%",
+        boxSizing: "border-box",
+        ...innerStylesByVariant[variant],
+        ...style,
+      }}
     >
       {children}
     </div>

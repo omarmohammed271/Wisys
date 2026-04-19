@@ -9,6 +9,8 @@ import LineChartCard from '../components/LineChartCard';
 import ContractsTable from '../components/ContractsTable';
 import DashboardLayout from '../components/dashboardLayout';
 import { Summary } from '../components/summary';
+import GradientCard from '../components/GradientCard';
+import InnerGradientBox from '../components/InnerGradientBox';
 
 export default function ContractsDashboard() {
   const { theme } = useTheme();
@@ -34,55 +36,65 @@ export default function ContractsDashboard() {
         ))}
       </div>
       
-      <div style={{ gridArea: 'SingleChartCard', padding: 0, background: BgLiner, borderRadius: RadiusResposive }}>
-        <RegionChart 
-          data={mockContractsData.contractTypeDistribution} 
-          icon="mdi:chart-bar"
-          title="توزيع العقود حسب النوع"
-          width="100%"
-          height="100%"
-        />
-      </div>
+      <GradientCard variant="first" style={{ gridArea: 'SingleChartCard', padding: 0, borderRadius: RadiusResposive }}>
+        <InnerGradientBox variant="first" style={{ borderRadius: RadiusResposive }}>
+          <RegionChart 
+            data={mockContractsData.contractTypeDistribution} 
+            icon="mdi:chart-bar"
+            title="توزيع العقود حسب النوع"
+            width="100%"
+            height="100%"
+          />
+        </InnerGradientBox>
+      </GradientCard>
 
-      <div style={{ gridArea: 'statusChart', padding: 0, background: BgLiner, borderRadius: RadiusResposive }}>
-        <PieChartCard 
-          data={mockContractsData.contractStatusDistribution} 
-          icon="mdi:chart-pie"
-          title="توزيع العقود حسب الحالة"
-          width="100%"
-          height="100%"
-        />
-      </div>
+      <GradientCard variant="second" style={{ gridArea: 'statusChart', padding: 0, borderRadius: RadiusResposive }}>
+        <InnerGradientBox variant="second" style={{ borderRadius: RadiusResposive }}>
+          <PieChartCard 
+            data={mockContractsData.contractStatusDistribution} 
+            icon="mdi:chart-pie"
+            title="توزيع العقود حسب الحالة"
+            width="100%"
+            height="100%"
+          />
+        </InnerGradientBox>
+      </GradientCard>
 
-      <div style={{ gridArea: 'ProgressChartCard', padding: 0, background: BgLiner, borderRadius: RadiusResposive }}>
-        <RegionalProgressChart 
-          data={mockContractsData.regionalContractData}
-          icon="mdi:map-marker"
-          title="توزيع العقود حسب المناطق"
-          width="100%"
-          height="100%"
-        />
-      </div>
+      <GradientCard variant="first" style={{ gridArea: 'ProgressChartCard', padding: 0, borderRadius: RadiusResposive }}>
+        <InnerGradientBox variant="first" style={{ borderRadius: RadiusResposive }}>
+          <RegionalProgressChart 
+            data={mockContractsData.regionalContractData}
+            icon="mdi:map-marker"
+            title="توزيع العقود حسب المناطق"
+            width="100%"
+            height="100%"
+          />
+        </InnerGradientBox>
+      </GradientCard>
 
-      <div style={{ gridArea: 'lineCharttime', background: BgLiner, borderRadius: RadiusResposive }}>
-        <LineChartCard 
-          data={mockContractsData.contractTimeSeriesData}
-          icon="mdi:chart-line"
-          title="قيم العقود عبر الزمن"
-          width="100%"
-          height="100%"
-        />
-      </div>  
+      <GradientCard variant="second" style={{ gridArea: 'lineCharttime', padding: 0, borderRadius: RadiusResposive }}>
+        <InnerGradientBox variant="second" style={{ borderRadius: RadiusResposive }}>
+          <LineChartCard 
+            data={mockContractsData.contractTimeSeriesData}
+            icon="mdi:chart-line"
+            title="قيم العقود عبر الزمن"
+            width="100%"
+            height="100%"
+          />
+        </InnerGradientBox>
+      </GradientCard>  
 
-      <div style={{ gridArea: 'contractsList', background: BgLiner, borderRadius: RadiusResposive }}>
-        <ContractsTable 
-          data={mockContractsData.contracts}
-          icon="mdi:table"
-          title="قائمة العقود"
-          width="100%"
-          height="100%"
-        />
-      </div> 
+      <GradientCard variant="first" style={{ gridArea: 'contractsList', padding: 0, borderRadius: RadiusResposive }}>
+        <InnerGradientBox variant="first" style={{ borderRadius: RadiusResposive }}>
+          <ContractsTable 
+            data={mockContractsData.contracts}
+            icon="mdi:table"
+            title="قائمة العقود"
+            width="100%"
+            height="100%"
+          />
+        </InnerGradientBox>
+      </GradientCard>  
     </DashboardLayout>
   );
 }

@@ -1,5 +1,4 @@
 import { ModeToggle } from "../mode-toggle";
-import logo from "@/assets/img/Digiations.png"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "../ui/navigation-menu";
 import { BadgeCent, CircleUserRound, Factory, Grid2x2, Waypoints, Phone, Building2, Users, Cpu, Stethoscope, Monitor } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -51,16 +50,10 @@ function HomeNavBar() {
 
     return (
         <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'p-2 backdrop-blur-md bg-background/80 ' : 'p-3'}`}>
-            <div className="flex items-center justify-between max-w-7xl mx-auto">
-                {/* Logo */}
-                <Link to={'/'}>
-                    <div className="flex items-center">
-                        <img src={logo} alt="Digiation" className="w-30" />
-                    </div>
-                </Link>
-
+            <div className="relative flex items-center max-w-7xl mx-auto">
+                <div className="flex-1" />
                 {/* Navigation Menu */}
-                <div className="hidden md:flex items-center space-x-8">
+                <div className="hidden md:flex items-center space-x-8 absolute left-1/2 -translate-x-1/2">
                     <Link to={'/'} className="text-foreground hover:text-primary transition-colors font-medium">
                         Home
                     </Link>
@@ -103,7 +96,7 @@ function HomeNavBar() {
                     </Link>
                 </div>
 
-                <div className="flex items-center space-x-4">
+                <div className="ml-auto flex items-center space-x-4">
                     <ModeToggle />
                 </div>
             </div>

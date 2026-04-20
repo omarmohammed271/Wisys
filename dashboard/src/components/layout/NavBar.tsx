@@ -1,5 +1,4 @@
 import { ModeToggle } from "../mode-toggle";
-import logo from "@/assets/img/Digiations.png"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "../ui/navigation-menu";
 import { BadgeCent, CircleUserRound, Dock, DockIcon, Factory, Grid2x2, Waypoints } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -59,18 +58,6 @@ function NavBar() {
     const { textScalar, barScalar, iScalar } = useResponsiveScalars();
     return (
         <div className="px-3 justify-between h-fit border-border backdrop-blur-md flex w-full min-[2000px]:py-[1px] items-center">
-
-            {/* Digiations Logo */}
-            <Link to={'/'}>
-                <div className="">
-                    <img
-                        src={logo}
-                        alt="Digiation"
-                        style={{
-                            width: `${5 * textScalar}rem`, // logo scales with barScalar
-                        }} />
-                </div>
-            </Link>
 
             {currentRoute &&
                 (<div className="text-muted-foreground max-md:hidden font-medium"

@@ -58,10 +58,6 @@ function HomeNavBar() {
                         Home
                     </Link>
 
-                    <a href="#about-digiation" className="text-foreground hover:text-primary transition-colors font-medium">
-                        About
-                    </a>
-
                     {/* Services Dropdown */}
                     <NavigationMenu viewport={false}>
                         <NavigationMenuList>
@@ -91,9 +87,7 @@ function HomeNavBar() {
 
                    
 
-                    <Link to={'/contact'} className="text-foreground hover:text-primary transition-colors font-medium">
-                        Contact
-                    </Link>
+
                 </div>
 
                 <div className="ml-auto flex items-center space-x-4">

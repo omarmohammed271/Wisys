@@ -112,7 +112,7 @@ export default function Home() {
                           <div className="animate-in fade-in-55 transition-all">
                             <span className="w-full flex justify-center mb-6">
                               <h1 className="text-xl text-muted-foreground lg:w-1/2 text-center">
-                                Powered by Digiations that turns enterprise data into regulated, real-time intelligence—
+                               That turns enterprise data into regulated, real-time intelligence—
                                 architected in Saudi Arabia for Vision 2030. Sovereign AI, clinical-grade governance,
                                 and seamless integration—at enterprise scale.
                               </h1>

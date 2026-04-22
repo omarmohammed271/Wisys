@@ -16,7 +16,7 @@ import MakkahTransformation from "./componenets/MakkahTransformation";
 import ClinicalNonClinicalExcellence from "./componenets/ClinicalNonClinicalExcellence";
 import DigiationSection from "./componenets/DigiationSection";
 import TransformationSection from "./componenets/TransformationSection";
-import EnhancedServices from './componenets/EnhancedServices';
+// import EnhancedServices from './componenets/EnhancedServices';
 
 export default function Home() {
   const [preloader, setPreloader] = useState(true);
@@ -178,9 +178,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="pt-20 w-full">
+          {/* <div className="pt-20 w-full">
             <EnhancedServices />
-          </div>
+          </div> */}
 
           {/* Clinical & Non-Clinical Excellence Section */}
           <ClinicalNonClinicalExcellence />

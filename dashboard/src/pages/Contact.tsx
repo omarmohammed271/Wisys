@@ -86,12 +86,7 @@ const Contact = () => {
                 <div className="bg-primary/10 p-3 rounded-full">
                   <Mail className="text-primary" size={24} />
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-1">Email Address</h3>
-                  <p className="text-muted-foreground">
-                    info@digiations.com
-                  </p>
-                </div>
+              
               </div>
 
               <div className="flex items-start space-x-4">

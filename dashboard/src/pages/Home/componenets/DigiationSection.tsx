@@ -16,7 +16,7 @@ const DigiationSection = () => {
         {/* Main Title and Subtitle */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            About Digiations
+            About Us
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Leading solution provider specializing in Data and AI-driven platforms, transforming business ecosystems through intelligent data integration and advanced analytics.

@@ -31,7 +31,7 @@ const TransformationSection = () => {
             </div>
             
             <p className="text-muted-foreground mb-6">
-              Experience our Digiations 360 platform firsthand with our interactive demo environment.
+              Experience ourplatform firsthand with our interactive demo environment.
             </p>
             
             {/* Demo Credentials Card */}
@@ -48,9 +48,6 @@ const TransformationSection = () => {
             
             {/* Tag/Label */}
             <div className="flex items-center mb-6">
-              <span className="px-3 py-1 bg-emerald-500 text-white text-xs font-semibold rounded-full mr-3">
-                Digiations 360
-              </span>
               <span className="text-sm text-muted-foreground">Full Platform Demo</span>
             </div>
             
@@ -75,7 +72,7 @@ const TransformationSection = () => {
         {/* Footer Section */}
         <div className="mt-16 pt-2 border-t border-border">
           <p className="text-center text-sm text-muted-foreground">
-            © 2024 Digiations. Transforming business ecosystems through intelligent data integration.
+            © 2024 . Transforming business ecosystems through intelligent data integration.
           </p>
         </div>
       </div>
